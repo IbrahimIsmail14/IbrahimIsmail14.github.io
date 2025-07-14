@@ -1,1039 +1,525 @@
+
 <!DOCTYPE html>
-
-<html lang="en">
-
+<html lang="en" class="dark">
 <head>
-
-<meta charset="UTF-8" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<title>Driving Empire Car Value List</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Teko:wght@500;700&display=swap" rel="stylesheet">
-
-
-
-<style>
-
-  :root {
-
-    --primary-color: #f04e23;
-
-    --background-color: #1a1a1a;
-
-    --surface-color: #2c2c2c;
-
-    --text-color: #f0f0f0;
-
-    --muted-text-color: #888;
-
-    --border-color: #444;
-
-    --header-font: 'Teko', sans-serif;
-
-    --body-font: 'Roboto', sans-serif;
-
-  }
-
-
-
-  body {
-
-    font-family: var(--body-font);
-
-    background: var(--background-color);
-
-    color: var(--text-color);
-
-    margin: 0;
-
-    padding: 20px;
-
-    font-size: 16px;
-
-    line-height: 1.6;
-
-  }
-
-
-
-  .main-header {
-
-      text-align: center;
-
-      margin-bottom: 30px;
-
-  }
-
-
-
-  .main-header h1 {
-
-      font-family: var(--header-font);
-
-      font-size: 4rem;
-
-      color: var(--primary-color);
-
-      margin: 0;
-
-      letter-spacing: 2px;
-
-      text-shadow: 0 0 10px rgba(240, 78, 35, 0.5);
-
-  }
-
-
-
-  .main-header .subtitle {
-
-      font-size: 1.2rem;
-
-      color: var(--muted-text-color);
-
-      margin-top: -10px;
-
-  }
-
-
-
-  .container {
-
-      max-width: 1400px;
-
-      margin: 0 auto;
-
-      padding: 0 20px;
-
-  }
-
-
-
-  .filter-controls {
-
-      display: grid;
-
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-
-      gap: 15px;
-
-      padding: 20px;
-
-      background: var(--surface-color);
-
-      border-radius: 8px;
-
-      margin-bottom: 30px;
-
-      border: 1px solid var(--border-color);
-
-  }
-
-
-
-  input[type="search"], select {
-
-      width: 100%;
-
-      padding: 12px;
-
-      border-radius: 5px;
-
-      border: 1px solid var(--border-color);
-
-      background: #333;
-
-      color: var(--text-color);
-
-      font-size: 16px;
-
-      box-sizing: border-box;
-
-  }
-
-
-
-  input[type="search"]::placeholder {
-
-      color: var(--muted-text-color);
-
-  }
-
-
-
-  .price-filter {
-
-      display: flex;
-
-      flex-direction: column;
-
-      justify-content: center;
-
-      color: var(--muted-text-color);
-
-  }
-
-
-
-  #priceValue {
-
-      color: var(--text-color);
-
-      font-weight: 500;
-
-  }
-
-
-
-  input[type="range"] {
-
-      -webkit-appearance: none;
-
-      appearance: none;
-
-      width: 100%;
-
-      height: 8px;
-
-      background: #444;
-
-      border-radius: 5px;
-
-      outline: none;
-
-      margin-top: 5px;
-
-  }
-
-
-
-  input[type="range"]::-webkit-slider-thumb {
-
-      -webkit-appearance: none;
-
-      appearance: none;
-
-      width: 20px;
-
-      height: 20px;
-
-      background: var(--primary-color);
-
-      cursor: pointer;
-
-      border-radius: 50%;
-
-  }
-
-
-
-  input[type="range"]::-moz-range-thumb {
-
-      width: 20px;
-
-      height: 20px;
-
-      background: var(--primary-color);
-
-      cursor: pointer;
-
-      border-radius: 50%;
-
-  }
-
-
-
-  #resetFilters {
-
-      padding: 12px;
-
-      background-color: var(--primary-color);
-
-      color: white;
-
-      border: none;
-
-      border-radius: 5px;
-
-      cursor: pointer;
-
-      font-size: 16px;
-
-      font-weight: 500;
-
-      transition: background-color 0.3s;
-
-  }
-
-
-
-  #resetFilters:hover {
-
-      background-color: #d43e12;
-
-  }
-
-
-
-  .table-container {
-
-      overflow-x: auto;
-
-      background: var(--surface-color);
-
-      border-radius: 8px;
-
-      border: 1px solid var(--border-color);
-
-  }
-
-
-
-  table {
-
-      width: 100%;
-
-      border-collapse: collapse;
-
-  }
-
-
-
-  thead {
-
-      background: #111;
-
-  }
-
-
-
-  th, td {
-
-      padding: 15px;
-
-      border-bottom: 1px solid var(--border-color);
-
-      text-align: left;
-
-      vertical-align: middle;
-
-  }
-
-
-
-  th {
-
-      cursor: pointer;
-
-      user-select: none;
-
-      font-weight: 700;
-
-      color: var(--primary-color);
-
-      white-space: nowrap;
-
-  }
-
-
-
-  th .sort-indicator {
-
-      display: inline-block;
-
-      margin-left: 8px;
-
-      color: var(--muted-text-color);
-
-      opacity: 0.5;
-
-  }
-
-
-
-  th.sorted .sort-indicator {
-
-      opacity: 1;
-
-      color: var(--text-color);
-
-  }
-
-
-
-  tbody tr {
-
-      transition: background-color 0.2s ease-in-out;
-
-  }
-
-
-
-  tbody tr:nth-child(even) {
-
-      background: #272727;
-
-  }
-
-
-
-  tbody tr:hover {
-
-      background: #3e3e3e;
-
-  }
-
-
-
-  .car-img {
-
-      width: 100px;
-
-      height: 56px;
-
-      object-fit: cover;
-
-      border-radius: 5px;
-
-      margin-right: 15px;
-
-      vertical-align: middle;
-
-      box-shadow: 0 0 8px rgba(0,0,0,0.5);
-
-  }
-
-
-
-  .name-cell {
-
-      display: flex;
-
-      align-items: center;
-
-      font-weight: 500;
-
-  }
-
-
-
-  #noResults {
-
-      text-align: center;
-
-      padding: 40px;
-
-      font-size: 1.2rem;
-
-      color: var(--muted-text-color);
-
-  }
-
-
-
-  .hidden {
-
-      display: none;
-
-  }
-
-
-
-  footer {
-
-      text-align: center;
-
-      color: #666;
-
-      font-size: 14px;
-
-      margin-top: 40px;
-
-  }
-
-</style>
-
-
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Driving Empire Car Value List 2.0</title>
+    
+    <!-- Tailwind CSS for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Teko:wght@500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        // Customizing Tailwind theme for our design
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Teko', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-primary': '#f04e23',
+                        'brand-primary-hover': '#d43e12',
+                        'gray': {
+                            900: '#121212',
+                            800: '#1a1a1a',
+                            700: '#2c2c2c',
+                            600: '#444444',
+                            500: '#6b7280',
+                            400: '#9ca3af',
+                            300: '#d1d5db',
+                            200: '#e5e7eb',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Basic scrollbar styling for a consistent dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #2c2c2c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #6b7280;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f04e23;
+        }
+
+        /* Custom range slider style */
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 8px;
+            background: #444;
+            border-radius: 5px;
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            cursor: pointer;
+            border-radius: 50%;
+            background-color: #f04e23;
+            transition: transform 0.2s;
+        }
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+    </style>
 </head>
+<body class="bg-gray-900 text-gray-200 font-sans antialiased">
 
-<body>
+<div class="container mx-auto p-4 md:p-8">
 
+    <!-- Header Section -->
+    <header class="text-center mb-8">
+        <h1 class="font-display text-5xl md:text-7xl font-bold text-brand-primary tracking-wider uppercase" style="text-shadow: 0 0 15px rgba(240, 78, 35, 0.4);">
+            Driving Empire
+        </h1>
+        <p class="text-lg text-gray-400">Advanced Community Car Value List</p>
+    </header>
 
+    <!-- Quick Statistics Section -->
+    <section id="statsSection" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 text-center">
+        <div class="bg-gray-800 p-4 rounded-lg shadow-md border border-gray-700">
+            <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider">Visible Cars</h3>
+            <p id="statVisibleCars" class="text-2xl font-bold text-brand-primary">0</p>
+        </div>
+        <div class="bg-gray-800 p-4 rounded-lg shadow-md border border-gray-700">
+            <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider">Average Price</h3>
+            <p id="statAvgPrice" class="text-2xl font-bold text-white">$0</p>
+        </div>
+        <div class="bg-gray-800 p-4 rounded-lg shadow-md border border-gray-700">
+            <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider">Top Speed</h3>
+            <p id="statTopSpeed" class="text-2xl font-bold text-white">0 mph</p>
+        </div>
+        <div class="bg-gray-800 p-4 rounded-lg shadow-md border border-gray-700">
+            <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider">Quickest 0-60</h3>
+            <p id="statQuickestAccel" class="text-2xl font-bold text-white">0s</p>
+        </div>
+    </section>
 
-<header class="main-header">
+    <!-- Filter and Controls Section -->
+    <div class="bg-gray-800 p-4 rounded-lg shadow-lg mb-6 border border-gray-700">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+            <!-- Search Input -->
+            <div class="relative xl:col-span-1">
+                <input type="search" id="searchInput" placeholder="Search by name or brand..." class="w-full bg-gray-700 border-gray-600 rounded-md py-2.5 pl-4 pr-10 text-white placeholder-gray-400 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition">
+                <span class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </span>
+            </div>
+            <!-- Dropdown Filters -->
+            <select id="manufacturerFilter" class="w-full bg-gray-700 border-gray-600 rounded-md py-2.5 px-4 text-white focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition">
+                <option value="">All Manufacturers</option>
+            </select>
+            <select id="categoryFilter" class="w-full bg-gray-700 border-gray-600 rounded-md py-2.5 px-4 text-white focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition">
+                <option value="">All Categories</option>
+            </select>
+            <select id="tierFilter" class="w-full bg-gray-700 border-gray-600 rounded-md py-2.5 px-4 text-white focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition">
+                <option value="">All Tiers</option>
+            </select>
+            <!-- Price Range -->
+            <div class="md:col-span-2 lg:col-span-1 xl:col-span-1 flex flex-col justify-center">
+                 <label for="priceRange" class="text-sm text-gray-400 mb-1">Max Price: <span id="priceValue" class="font-bold text-white">$20,000,000</span></label>
+                 <input type="range" id="priceRange" min="0" max="20000000" step="10000" value="20000000">
+            </div>
+        </div>
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 mt-4 pt-4 border-t border-gray-700">
+            <button id="resetFilters" class="flex-grow flex items-center justify-center gap-2 bg-brand-primary text-white font-bold py-2.5 px-4 rounded-md hover:bg-brand-primary-hover transition-colors shadow">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h5M20 20v-5h-5M4 4l16 16"></path></svg>
+                Reset Filters
+            </button>
+            <div id="viewToggle" class="flex-grow flex items-center justify-center gap-2 bg-gray-600 text-white font-bold py-2.5 px-4 rounded-md hover:bg-gray-500 transition-colors cursor-pointer shadow">
+                <svg id="viewIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                <span id="viewText">Switch to Card View</span>
+            </div>
+        </div>
+    </div>
 
-    <h1>Driving Empire</h1>
+    <!-- Main Content Area -->
+    <main id="content-area">
+        <!-- Table View Container -->
+        <div id="tableView" class="bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-700">
+            <div class="overflow-x-auto">
+                <table id="carTable" class="w-full whitespace-nowrap">
+                    <thead class="bg-gray-900 text-left text-sm uppercase">
+                        <tr>
+                            <th data-column="name" data-type="string" class="p-4 font-semibold text-brand-primary tracking-wider cursor-pointer select-none">Vehicle</th>
+                            <th data-column="price" data-type="number" class="p-4 font-semibold text-brand-primary tracking-wider cursor-pointer select-none">Price ($)</th>
+                            <th data-column="manufacturer" data-type="string" class="p-4 font-semibold text-brand-primary tracking-wider cursor-pointer select-none">Manufacturer</th>
+                            <th data-column="category" data-type="string" class="p-4 font-semibold text-brand-primary tracking-wider cursor-pointer select-none">Category</th>
+                            <th data-column="tier" data-type="string" class="p-4 font-semibold text-brand-primary tracking-wider cursor-pointer select-none">Tier</th>
+                            <th data-column="speed" data-type="number" class="p-4 font-semibold text-brand-primary tracking-wider cursor-pointer select-none">Top Speed</th>
+                            <th data-column="accel" data-type="number" class="p-4 font-semibold text-brand-primary tracking-wider cursor-pointer select-none">0-60</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-700">
+                        <!-- Rows will be injected by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Card View Container (hidden by default) -->
+        <div id="cardView" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Cards will be injected by JavaScript -->
+        </div>
 
-    <p class="subtitle">Community Car Value List</p>
+        <!-- No Results Message -->
+        <div id="noResults" class="hidden text-center py-20">
+            <svg class="mx-auto h-12 w-12 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" /></svg>
+            <h3 class="mt-2 text-xl font-medium text-gray-300">No vehicles found</h3>
+            <p class="mt-1 text-md text-gray-500">Try adjusting your search or filter criteria.</p>
+        </div>
+    </main>
 
-</header>
-
-
-
-<main class="container">
-
-    <div class="filter-controls">
-
-        <input type="search" id="searchInput" placeholder="Search by name, brand..." />
-
-        <select id="manufacturerFilter">
-
-            <option value="">All Manufacturers</option>
-
-        </select>
-
-        <select id="categoryFilter">
-
-            <option value="">All Categories</option>
-
-        </select>
-
-        <select id="tierFilter">
-
-            <option value="">All Tiers</option>
-
-        </select>
-
-        <div class="price-filter">
-
-            <label for="priceRange">Max Price: $<span id="priceValue">20,000,000</span></label>
-
-            <input type="range" id="priceRange" min="0" max="20000000" step="10000" value="20000000">
-
-        </div>
-
-        <button id="resetFilters">Reset Filters</button>
-
-    </div>
-
-
-
-    <div class="table-container">
-
-        <table id="carTable">
-
-            <thead>
-
-                <tr>
-
-                    <th data-column="name" data-type="string">Vehicle Name</th>
-
-                    <th data-column="price" data-type="number">Price ($)</th>
-
-                    <th data-column="manufacturer" data-type="string">Manufacturer</th>
-
-                    <th data-column="category" data-type="string">Category</th>
-
-                    <th data-column="tier" data-type="string">Performance Tier</th>
-
-                    <th data-column="speed" data-type="number">Top Speed (mph)</th>
-
-                    <th data-column="accel" data-type="number">0-60 (sec)</th>
-
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                </tbody>
-
-        </table>
-
-        <p id="noResults" class="hidden">No vehicles match your criteria.</p>
-
-    </div>
-
-</main>
-
-
-
-<footer>
-
-    &copy; 2025 Driving Empire Value List
-
-</footer>
-
-
+    <!-- Footer -->
+    <footer class="text-center text-gray-500 text-sm mt-12">
+        &copy; 2025 Driving Empire Value List 2.0 | Data is for community reference and subject to change.
+    </footer>
+</div>
 
 <script>
-
 document.addEventListener("DOMContentLoaded", () => {
-
-    // --- CAR DATA (Embedded) ---
-
-    const allCars = [
-
-      { "name": "Audi A4 (2013)", "price": 30000, "manufacturer": "Audi", "category": "Licensed", "tier": "Entry", "speed": 130, "accel": 7.5, "img": "https://cdn.drivingempire.com/cars/audi_a4_2013.png" },
-
-      { "name": "Audi RS 7 Sportback (2021)", "price": 107000, "manufacturer": "Audi", "category": "Licensed", "tier": "Entry", "speed": 190, "accel": 3.5, "img": "https://cdn.drivingempire.com/cars/audi_rs7_2021.png" },
-
-      { "name": "BMW 328i (2015)", "price": 28000, "manufacturer": "BMW", "category": "Licensed", "tier": "Entry", "speed": 130, "accel": 7.3, "img": "https://cdn.drivingempire.com/cars/bmw_328i_2015.png" },
-
-      { "name": "Ford Mustang GT (2017)", "price": 45000, "manufacturer": "Ford", "category": "Licensed", "tier": "Entry", "speed": 155, "accel": 4.5, "img": "https://cdn.drivingempire.com/cars/ford_mustang_gt_2017.png" },
-
-      { "name": "Honda Civic (2018)", "price": 25000, "manufacturer": "Honda", "category": "Licensed", "tier": "Entry", "speed": 125, "accel": 7.7, "img": "https://cdn.drivingempire.com/cars/honda_civic_2018.png" },
-
-      { "name": "Tesla Model 3 (2020)", "price": 60000, "manufacturer": "Tesla", "category": "Licensed", "tier": "Entry", "speed": 145, "accel": 3.2, "img": "https://cdn.drivingempire.com/cars/tesla_model_3_2020.png" },
-
-      { "name": "Volkswagen Golf GTI (2020)", "price": 35000, "manufacturer": "Volkswagen", "category": "Licensed", "tier": "Entry", "speed": 130, "accel": 6.2, "img": "https://cdn.drivingempire.com/cars/volkswagen_golf_gti_2020.png" },
-
-      { "name": "Nissan 370Z (2009)", "price": 50000, "manufacturer": "Nissan", "category": "Licensed", "tier": "Entry", "speed": 155, "accel": 5, "img": "https://cdn.drivingempire.com/cars/nissan_370z_2009.png" },
-
-      { "name": "McLaren 720S", "price": 275000, "manufacturer": "McLaren", "category": "Licensed", "tier": "A-Tier", "speed": 212, "accel": 2.8, "img": "https://cdn.drivingempire.com/cars/mclaren_720s.png" },
-
-      { "name": "Lamborghini Huracán Performante", "price": 350000, "manufacturer": "Lamborghini", "category": "Licensed", "tier": "A-Tier", "speed": 202, "accel": 2.9, "img": "https://cdn.drivingempire.com/cars/lamborghini_huracan_performante.png" },
-
-      { "name": "Porsche 911 GT3 RS (2022)", "price": 300000, "manufacturer": "Porsche", "category": "Licensed", "tier": "A-Tier", "speed": 198, "accel": 3, "img": "https://cdn.drivingempire.com/cars/porsche_911_gt3_rs_2022.png" },
-
-      { "name": "Ferrari F8 Tributo", "price": 400000, "manufacturer": "Ferrari", "category": "Licensed", "tier": "A-Tier", "speed": 211, "accel": 2.9, "img": "https://cdn.drivingempire.com/cars/ferrari_f8_tributo.png" },
-
-      { "name": "Aston Martin Vantage (2020)", "price": 200000, "manufacturer": "Aston Martin", "category": "Licensed", "tier": "A-Tier", "speed": 195, "accel": 3.6, "img": "https://cdn.drivingempire.com/cars/aston_martin_vantage_2020.png" },
-
-      { "name": "Bentley Continental GT (2020)", "price": 450000, "manufacturer": "Bentley", "category": "Licensed", "tier": "A-Tier", "speed": 198, "accel": 3.9, "img": "https://cdn.drivingempire.com/cars/bentley_continental_gt_2020.png" },
-
-      { "name": "Audi R8 V10 (2019)", "price": 350000, "manufacturer": "Audi", "category": "Licensed", "tier": "A-Tier", "speed": 205, "accel": 3.2, "img": "https://cdn.drivingempire.com/cars/audi_r8_v10_2019.png" },
-
-      { "name": "Mercedes-AMG GT R (2018)", "price": 375000, "manufacturer": "Mercedes-Benz", "category": "Licensed", "tier": "A-Tier", "speed": 198, "accel": 3.5, "img": "https://cdn.drivingempire.com/cars/mercedes_amg_gt_r_2018.png" },
-
-      { "name": "McLaren 765LT", "price": 775000, "manufacturer": "McLaren", "category": "Licensed", "tier": "S-Tier", "speed": 205, "accel": 2.7, "img": "https://cdn.drivingempire.com/cars/mclaren_765lt.png" },
-
-      { "name": "Porsche Taycan Turbo S (2021)", "price": 1000000, "manufacturer": "Porsche", "category": "Licensed", "tier": "S-Tier", "speed": 161, "accel": 2.4, "img": "https://cdn.drivingempire.com/cars/porsche_taycan_turbo_s_2021.png" },
-
-      { "name": "Ferrari 812 Superfast", "price": 1200000, "manufacturer": "Ferrari", "category": "Licensed", "tier": "S-Tier", "speed": 211, "accel": 2.9, "img": "https://cdn.drivingempire.com/cars/ferrari_812_superfast.png" },
-
-      { "name": "Lamborghini Aventador SVJ", "price": 1400000, "manufacturer": "Lamborghini", "category": "Licensed", "tier": "S-Tier", "speed": 217, "accel": 2.8, "img": "https://cdn.drivingempire.com/cars/lamborghini_aventador_svj.png" },
-
-      { "name": "Audi RS Q8 (2020)", "price": 550000, "manufacturer": "Audi", "category": "Licensed", "tier": "S-Tier", "speed": 190, "accel": 3.5, "img": "https://cdn.drivingempire.com/cars/audi_rs_q8_2020.png" },
-
-      { "name": "Rolls-Royce Cullinan (2020)", "price": 1200000, "manufacturer": "Rolls-Royce", "category": "Licensed", "tier": "S-Tier", "speed": 155, "accel": 5.2, "img": "https://cdn.drivingempire.com/cars/rolls_royce_cullinan_2020.png" },
-
-      { "name": "Bugatti Chiron (2016)", "price": 1450000, "manufacturer": "Bugatti", "category": "Licensed", "tier": "S-Tier", "speed": 261, "accel": 2.4, "img": "https://cdn.drivingempire.com/cars/bugatti_chiron_2016.png" },
-
-      { "name": "Koenigsegg Agera RS", "price": 1300000, "manufacturer": "Koenigsegg", "category": "Licensed", "tier": "S-Tier", "speed": 273, "accel": 2.6, "img": "https://cdn.drivingempire.com/cars/koenigsegg_agera_rs.png" },
-
-      { "name": "SSC Tuatara (2020)", "price": 3100000, "manufacturer": "SSC", "category": "Licensed", "tier": "Hypercar", "speed": 282, "accel": 2.5, "img": "https://cdn.drivingempire.com/cars/ssc_tuatara_2020.png" },
-
-      { "name": "Hennessey Venom F5 (2021)", "price": 5000000, "manufacturer": "Hennessey", "category": "Licensed", "tier": "Hypercar", "speed": 301, "accel": 2, "img": "https://cdn.drivingempire.com/cars/hennessey_venom_f5_2021.png" },
-
-      { "name": "Pagani Huayra (2012)", "price": 2700000, "manufacturer": "Pagani", "category": "Licensed", "tier": "Hypercar", "speed": 238, "accel": 2.8, "img": "https://cdn.drivingempire.com/cars/pagani_huayra_2012.png" },
-
-      { "name": "Bugatti Veyron (2005)", "price": 4800000, "manufacturer": "Bugatti", "category": "Licensed", "tier": "Hypercar", "speed": 267, "accel": 2.4, "img": "https://cdn.drivingempire.com/cars/bugatti_veyron_2005.png" },
-
-      { "name": "Koenigsegg Jesko (2020)", "price": 4900000, "manufacturer": "Koenigsegg", "category": "Licensed", "tier": "Hypercar", "speed": 300, "accel": 2.5, "img": "https://cdn.drivingempire.com/cars/koenigsegg_jesko_2020.png" },
-
-      { "name": "Ferrari LaFerrari (2013)", "price": 2000000, "manufacturer": "Ferrari", "category": "Licensed", "tier": "Hypercar", "speed": 217, "accel": 2.6, "img": "https://cdn.drivingempire.com/cars/ferrari_laferrari_2013.png" },
-
-      { "name": "Lamborghini Sian (2020)", "price": 3500000, "manufacturer": "Lamborghini", "category": "Licensed", "tier": "Hypercar", "speed": 217, "accel": 2.8, "img": "https://cdn.drivingempire.com/cars/lamborghini_sian_2020.png" },
-
-      { "name": "Rimac Nevera (2021)", "price": 2800000, "manufacturer": "Rimac", "category": "Licensed", "tier": "Hypercar", "speed": 258, "accel": 1.8, "img": "https://cdn.drivingempire.com/cars/rimac_nevera_2021.png" },
-
-      { "name": "Roblox Race Car (2012)", "price": 20000000, "manufacturer": "Roblox (Event)", "category": "Event Exclusive", "tier": "Ultra-Rare", "speed": 310, "accel": 1.9, "img": "https://cdn.drivingempire.com/cars/roblox_race_car_2012.png" },
-
-      { "name": "McLaren F1 (1993)", "price": 20000000, "manufacturer": "McLaren", "category": "Licensed", "tier": "Ultra-Rare", "speed": 240, "accel": 3.2, "img": "https://cdn.drivingempire.com/cars/mclaren_f1_1993.png" },
-
-      { "name": "Devel Sixteen (2024)", "price": 12000000, "manufacturer": "Devel", "category": "Limited", "tier": "Ultra-Rare", "speed": 310, "accel": 1.8, "img": "https://cdn.drivingempire.com/cars/devel_sixteen_2024.png" },
-
-      { "name": "Ferrari FXX K Evo (2015)", "price": 7000000, "manufacturer": "Ferrari", "category": "Limited", "tier": "Ultra-Rare", "speed": 217, "accel": 2.5, "img": "https://cdn.drivingempire.com/cars/ferrari_fxx_k_evo_2015.png" },
-
-      { "name": "Bugatti Divo (2018)", "price": 6500000, "manufacturer": "Bugatti", "category": "Limited", "tier": "Ultra-Rare", "speed": 236, "accel": 2.4, "img": "https://cdn.drivingempire.com/cars/bugatti_divo_2018.png" },
-
-      { "name": "Koenigsegg One:1 (2014)", "price": 6000000, "manufacturer": "Koenigsegg", "category": "Limited", "tier": "Ultra-Rare", "speed": 273, "accel": 2.8, "img": "https://cdn.drivingempire.com/cars/koenigsegg_one1_2014.png" },
-
-      { "name": "Lamborghini Veneno (2013)", "price": 5500000, "manufacturer": "Lamborghini", "category": "Limited", "tier": "Ultra-Rare", "speed": 221, "accel": 2.9, "img": "https://cdn.drivingempire.com/cars/lamborghini_veneno_2013.png" },
-
-      { "name": "Hennessey Venom GT (2011)", "price": 5200000, "manufacturer": "Hennessey", "category": "Limited", "tier": "Ultra-Rare", "speed": 270, "accel": 2.2, "img": "https://cdn.drivingempire.com/cars/hennessey_venom_gt_2011.png" }
-
-    ];
-
-
-
-    // --- DOM ELEMENT SELECTORS ---
-
-    const tableBody = document.querySelector("#carTable tbody");
-
-    const searchInput = document.getElementById("searchInput");
-
-    const manufacturerFilter = document.getElementById("manufacturerFilter");
-
-    const categoryFilter = document.getElementById("categoryFilter");
-
-    const tierFilter = document.getElementById("tierFilter");
-
-    const priceRange = document.getElementById("priceRange");
-
-    const priceValue = document.getElementById("priceValue");
-
-    const resetFiltersBtn = document.getElementById("resetFilters");
-
-    const noResultsEl = document.getElementById("noResults");
-
-    const headers = document.querySelectorAll("#carTable th");
-
-
-
-    // --- STATE MANAGEMENT ---
-
-    let currentSort = {
-
-        column: 'price',
-
-        direction: 'desc'
-
-    };
-
-
-
-    // --- INITIALIZATION ---
-
-    function initialize() {
-
-        populateFilters(allCars);
-
-        applyFiltersAndRender();
-
-        setupEventListeners();
-
-    }
-
-
-
-    function populateFilters(cars) {
-
-        const manufacturers = [...new Set(cars.map(car => car.manufacturer))].sort();
-
-        const categories = [...new Set(cars.map(car => car.category))].sort();
-
-        const tiers = [...new Set(cars.map(car => car.tier))].sort();
-
-
-
-        populateSelect(manufacturerFilter, manufacturers);
-
-        populateSelect(categoryFilter, categories);
-
-        populateSelect(tierFilter, tiers);
-
-       
-
-        const maxPrice = Math.max(...cars.map(c => c.price));
-
-        priceRange.max = maxPrice;
-
-        priceRange.value = maxPrice;
-
-        priceValue.textContent = maxPrice.toLocaleString();
-
-    }
-
-
-
-    function populateSelect(selectElement, items) {
-
-        items.forEach(item => {
-
-            const option = document.createElement('option');
-
-            option.value = item;
-
-            option.textContent = item;
-
-            selectElement.appendChild(option);
-
-        });
-
-    }
-
-
-
-    // --- EVENT LISTENERS ---
-
-    function setupEventListeners() {
-
-        searchInput.addEventListener("input", applyFiltersAndRender);
-
-        manufacturerFilter.addEventListener("change", applyFiltersAndRender);
-
-        categoryFilter.addEventListener("change", applyFiltersAndRender);
-
-        tierFilter.addEventListener("change", applyFiltersAndRender);
-
-        priceRange.addEventListener("input", () => {
-
-             priceValue.textContent = parseInt(priceRange.value).toLocaleString();
-
-        });
-
-        priceRange.addEventListener("change", applyFiltersAndRender);
-
-
-
-        resetFiltersBtn.addEventListener("click", resetFilters);
-
-
-
-        headers.forEach(header => {
-
-            header.addEventListener("click", () => {
-
-                const column = header.dataset.column;
-
-                const type = header.dataset.type;
-
-                if (currentSort.column === column) {
-
-                    currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
-
-                } else {
-
-                    currentSort.column = column;
-
-                    currentSort.direction = type === 'number' ? 'desc' : 'asc';
-
-                }
-
-                applyFiltersAndRender();
-
-            });
-
-        });
-
-    }
-
-
-
-    // --- FILTERING LOGIC ---
-
-    function filterCars() {
-
-        const searchText = searchInput.value.toLowerCase();
-
-        const selectedManufacturer = manufacturerFilter.value;
-
-        const selectedCategory = categoryFilter.value;
-
-        const selectedTier = tierFilter.value;
-
-        const maxPrice = parseInt(priceRange.value);
-
-
-
-        return allCars.filter(car => {
-
-            const matchesSearch = searchText === '' ||
-
-                car.name.toLowerCase().includes(searchText) ||
-
-                car.manufacturer.toLowerCase().includes(searchText);
-
-
-
-            const matchesManufacturer = selectedManufacturer === '' || car.manufacturer === selectedManufacturer;
-
-            const matchesCategory = selectedCategory === '' || car.category === selectedCategory;
-
-            const matchesTier = selectedTier === '' || car.tier === selectedTier;
-
-            const matchesPrice = car.price <= maxPrice;
-
-
-
-            return matchesSearch && matchesManufacturer && matchesCategory && matchesTier && matchesPrice;
-
-        });
-
-    }
-
-
-
-    // --- SORTING LOGIC ---
-
-    function sortCars(cars) {
-
-        const { column, direction } = currentSort;
-
-        const modifier = direction === 'asc' ? 1 : -1;
-
-       
-
-        return [...cars].sort((a, b) => {
-
-            const valA = a[column];
-
-            const valB = b[column];
-
-
-
-            if (typeof valA === 'string') {
-
-                return valA.localeCompare(valB) * modifier;
-
-            } else {
-
-                if (valA < valB) return -1 * modifier;
-
-                if (valA > valB) return 1 * modifier;
-
-                return 0;
-
-            }
-
-        });
-
-    }
-
-
-
-    // --- RENDERING LOGIC ---
-
-    function renderTable(cars) {
-
-        tableBody.innerHTML = "";
-
-        if (cars.length === 0) {
-
-            noResultsEl.classList.remove('hidden');
-
-            return;
-
-        }
-
-       
-
-        noResultsEl.classList.add('hidden');
-
-        const fragment = document.createDocumentFragment();
-
-        cars.forEach(car => {
-
-            const row = document.createElement("tr");
-
-            row.innerHTML = `
-
-                <td class="name-cell">
-
-                    <img src="${car.img}" alt="${car.name}" class="car-img" loading="lazy" />
-
-                    ${car.name}
-
-                </td>
-
-                <td>${car.price.toLocaleString()}</td>
-
-                <td>${car.manufacturer}</td>
-
-                <td>${car.category}</td>
-
-                <td>${car.tier}</td>
-
-                <td>${car.speed}</td>
-
-                <td>${car.accel}</td>
-
-            `;
-
-            fragment.appendChild(row);
-
-        });
-
-        tableBody.appendChild(fragment);
-
-        updateSortIndicators();
-
-    }
-
-   
-
-    function updateSortIndicators() {
-
-        headers.forEach(header => {
-
-            header.classList.remove('sorted');
-
-            let indicator = header.querySelector('.sort-indicator');
-
-            if (indicator) {
-
-                indicator.remove();
-
-            }
-
-
-
-            if (header.dataset.column === currentSort.column) {
-
-                header.classList.add('sorted');
-
-                indicator = document.createElement('span');
-
-                indicator.className = 'sort-indicator';
-
-                indicator.textContent = currentSort.direction === 'asc' ? '▲' : '▼';
-
-                header.appendChild(indicator);
-
-            }
-
-        });
-
-    }
-
-
-
-    function applyFiltersAndRender() {
-
-        const filtered = filterCars();
-
-        const sorted = sortCars(filtered);
-
-        renderTable(sorted);
-
-    }
-
-   
-
-    // --- UTILITY FUNCTIONS ---
-
-    function resetFilters() {
-
-        searchInput.value = '';
-
-        manufacturerFilter.value = '';
-
-        categoryFilter.value = '';
-
-        tierFilter.value = '';
-
-        priceRange.value = priceRange.max;
-
-        priceValue.textContent = parseInt(priceRange.max).toLocaleString();
-
-       
-
-        currentSort = { column: 'price', direction: 'desc' }; // Reset sort to default
-
-        applyFiltersAndRender();
-
-    }
-
-
-
-    // --- START THE APP ---
-
-    initialize();
-
+    // --- CAR DATA (Expanded for variety) ---
+    const allCars = [
+        { "name": "Audi A4 (2013)", "price": 30000, "manufacturer": "Audi", "category": "Licensed", "tier": "Entry", "speed": 130, "accel": 7.5, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=A4" },
+        { "name": "Audi RS 7 Sportback (2021)", "price": 107000, "manufacturer": "Audi", "category": "Licensed", "tier": "Entry", "speed": 190, "accel": 3.5, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=RS7" },
+        { "name": "BMW 328i (2015)", "price": 28000, "manufacturer": "BMW", "category": "Licensed", "tier": "Entry", "speed": 130, "accel": 7.3, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=328i" },
+        { "name": "Ford Mustang GT (2017)", "price": 45000, "manufacturer": "Ford", "category": "Licensed", "tier": "Entry", "speed": 155, "accel": 4.5, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=Mustang" },
+        { "name": "Honda Civic (2018)", "price": 25000, "manufacturer": "Honda", "category": "Licensed", "tier": "Entry", "speed": 125, "accel": 7.7, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=Civic" },
+        { "name": "Tesla Model 3 (2020)", "price": 60000, "manufacturer": "Tesla", "category": "Licensed", "tier": "Entry", "speed": 145, "accel": 3.2, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=Model+3" },
+        { "name": "Volkswagen Golf GTI (2020)", "price": 35000, "manufacturer": "Volkswagen", "category": "Licensed", "tier": "Entry", "speed": 130, "accel": 6.2, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=GTI" },
+        { "name": "Nissan 370Z (2009)", "price": 50000, "manufacturer": "Nissan", "category": "Licensed", "tier": "Entry", "speed": 155, "accel": 5, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=370Z" },
+        { "name": "McLaren 720S", "price": 275000, "manufacturer": "McLaren", "category": "Licensed", "tier": "A-Tier", "speed": 212, "accel": 2.8, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=720S" },
+        { "name": "Lamborghini Huracán Performante", "price": 350000, "manufacturer": "Lamborghini", "category": "Licensed", "tier": "A-Tier", "speed": 202, "accel": 2.9, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=Huracan" },
+        { "name": "Porsche 911 GT3 RS (2022)", "price": 300000, "manufacturer": "Porsche", "category": "Licensed", "tier": "A-Tier", "speed": 198, "accel": 3, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=GT3+RS" },
+        { "name": "Ferrari F8 Tributo", "price": 400000, "manufacturer": "Ferrari", "category": "Licensed", "tier": "A-Tier", "speed": 211, "accel": 2.9, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=F8" },
+        { "name": "Aston Martin Vantage (2020)", "price": 200000, "manufacturer": "Aston Martin", "category": "Licensed", "tier": "A-Tier", "speed": 195, "accel": 3.6, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=Vantage" },
+        { "name": "Bentley Continental GT (2020)", "price": 450000, "manufacturer": "Bentley", "category": "Licensed", "tier": "A-Tier", "speed": 198, "accel": 3.9, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=Continental" },
+        { "name": "Audi R8 V10 (2019)", "price": 350000, "manufacturer": "Audi", "category": "Licensed", "tier": "A-Tier", "speed": 205, "accel": 3.2, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=R8" },
+        { "name": "Mercedes-AMG GT R (2018)", "price": 375000, "manufacturer": "Mercedes-Benz", "category": "Licensed", "tier": "A-Tier", "speed": 198, "accel": 3.5, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=AMG+GT+R" },
+        { "name": "McLaren 765LT", "price": 775000, "manufacturer": "McLaren", "category": "Licensed", "tier": "S-Tier", "speed": 205, "accel": 2.7, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=765LT" },
+        { "name": "Porsche Taycan Turbo S (2021)", "price": 1000000, "manufacturer": "Porsche", "category": "Licensed", "tier": "S-Tier", "speed": 161, "accel": 2.4, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=Taycan" },
+        { "name": "Ferrari 812 Superfast", "price": 1200000, "manufacturer": "Ferrari", "category": "Licensed", "tier": "S-Tier", "speed": 211, "accel": 2.9, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=812" },
+        { "name": "Lamborghini Aventador SVJ", "price": 1400000, "manufacturer": "Lamborghini", "category": "Licensed", "tier": "S-Tier", "speed": 217, "accel": 2.8, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=SVJ" },
+        { "name": "Audi RS Q8 (2020)", "price": 550000, "manufacturer": "Audi", "category": "Licensed", "tier": "S-Tier", "speed": 190, "accel": 3.5, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=RSQ8" },
+        { "name": "Rolls-Royce Cullinan (2020)", "price": 1200000, "manufacturer": "Rolls-Royce", "category": "Licensed", "tier": "S-Tier", "speed": 155, "accel": 5.2, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=Cullinan" },
+        { "name": "Bugatti Chiron (2016)", "price": 1450000, "manufacturer": "Bugatti", "category": "Licensed", "tier": "S-Tier", "speed": 261, "accel": 2.4, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=Chiron" },
+        { "name": "Koenigsegg Agera RS", "price": 1300000, "manufacturer": "Koenigsegg", "category": "Licensed", "tier": "S-Tier", "speed": 273, "accel": 2.6, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=Agera+RS" },
+        { "name": "SSC Tuatara (2020)", "price": 3100000, "manufacturer": "SSC", "category": "Licensed", "tier": "Hypercar", "speed": 282, "accel": 2.5, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=Tuatara" },
+        { "name": "Hennessey Venom F5 (2021)", "price": 5000000, "manufacturer": "Hennessey", "category": "Licensed", "tier": "Hypercar", "speed": 301, "accel": 2, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=Venom+F5" },
+        { "name": "Pagani Huayra (2012)", "price": 2700000, "manufacturer": "Pagani", "category": "Licensed", "tier": "Hypercar", "speed": 238, "accel": 2.8, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=Huayra" },
+        { "name": "Bugatti Veyron (2005)", "price": 4800000, "manufacturer": "Bugatti", "category": "Licensed", "tier": "Hypercar", "speed": 267, "accel": 2.4, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=Veyron" },
+        { "name": "Koenigsegg Jesko (2020)", "price": 4900000, "manufacturer": "Koenigsegg", "category": "Licensed", "tier": "Hypercar", "speed": 300, "accel": 2.5, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=Jesko" },
+        { "name": "Ferrari LaFerrari (2013)", "price": 2000000, "manufacturer": "Ferrari", "category": "Licensed", "tier": "Hypercar", "speed": 217, "accel": 2.6, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=LaFerrari" },
+        { "name": "Lamborghini Sian (2020)", "price": 3500000, "manufacturer": "Lamborghini", "category": "Licensed", "tier": "Hypercar", "speed": 217, "accel": 2.8, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=Sian" },
+        { "name": "Rimac Nevera (2021)", "price": 2800000, "manufacturer": "Rimac", "category": "Licensed", "tier": "Hypercar", "speed": 258, "accel": 1.8, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=Nevera" },
+        { "name": "Roblox Race Car (2012)", "price": 20000000, "manufacturer": "Roblox (Event)", "category": "Event Exclusive", "tier": "Ultra-Rare", "speed": 310, "accel": 1.9, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=Roblox+Racer" },
+        { "name": "McLaren F1 (1993)", "price": 20000000, "manufacturer": "McLaren", "category": "Licensed", "tier": "Ultra-Rare", "speed": 240, "accel": 3.2, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=F1" },
+        { "name": "Devel Sixteen (2024)", "price": 12000000, "manufacturer": "Devel", "category": "Limited", "tier": "Ultra-Rare", "speed": 310, "accel": 1.8, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=Sixteen" },
+        { "name": "Ferrari FXX K Evo (2015)", "price": 7000000, "manufacturer": "Ferrari", "category": "Limited", "tier": "Ultra-Rare", "speed": 217, "accel": 2.5, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=FXX+K+Evo" },
+        { "name": "Bugatti Divo (2018)", "price": 6500000, "manufacturer": "Bugatti", "category": "Limited", "tier": "Ultra-Rare", "speed": 236, "accel": 2.4, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=Divo" },
+        { "name": "Koenigsegg One:1 (2014)", "price": 6000000, "manufacturer": "Koenigsegg", "category": "Limited", "tier": "Ultra-Rare", "speed": 273, "accel": 2.8, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=One:1" },
+        { "name": "Lamborghini Veneno (2013)", "price": 5500000, "manufacturer": "Lamborghini", "category": "Limited", "tier": "Ultra-Rare", "speed": 221, "accel": 2.9, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=Veneno" },
+        { "name": "Hennessey Venom GT (2011)", "price": 5200000, "manufacturer": "Hennessey", "category": "Limited", "tier": "Ultra-Rare", "speed": 270, "accel": 2.2, "img": "https://placehold.co/200x112/2c2c2c/f0f0f0?text=Venom+GT" }
+    ];
+
+    // --- DOM ELEMENT SELECTORS ---
+    const tableBody = document.querySelector("#carTable tbody");
+    const cardViewContainer = document.getElementById("cardView");
+    const searchInput = document.getElementById("searchInput");
+    const manufacturerFilter = document.getElementById("manufacturerFilter");
+    const categoryFilter = document.getElementById("categoryFilter");
+    const tierFilter = document.getElementById("tierFilter");
+    const priceRange = document.getElementById("priceRange");
+    const priceValue = document.getElementById("priceValue");
+    const resetFiltersBtn = document.getElementById("resetFilters");
+    const noResultsEl = document.getElementById("noResults");
+    const headers = document.querySelectorAll("#carTable th");
+    const viewToggle = document.getElementById("viewToggle");
+    const tableView = document.getElementById("tableView");
+    
+    // Stats selectors
+    const statVisibleCars = document.getElementById('statVisibleCars');
+    const statAvgPrice = document.getElementById('statAvgPrice');
+    const statTopSpeed = document.getElementById('statTopSpeed');
+    const statQuickestAccel = document.getElementById('statQuickestAccel');
+
+    // --- STATE MANAGEMENT ---
+    let currentSort = { column: 'price', direction: 'desc' };
+    let currentView = 'table'; // 'table' or 'card'
+
+    // --- INITIALIZATION ---
+    function initialize() {
+        populateFilters(allCars);
+        applyFiltersAndRender();
+        setupEventListeners();
+    }
+
+    function populateFilters(cars) {
+        const manufacturers = [...new Set(cars.map(car => car.manufacturer))].sort();
+        const categories = [...new Set(cars.map(car => car.category))].sort();
+        const tiers = [...new Set(cars.map(car => car.tier))].sort();
+
+        populateSelect(manufacturerFilter, manufacturers);
+        populateSelect(categoryFilter, categories);
+        populateSelect(tierFilter, tiers);
+        
+        const maxPrice = Math.max(...cars.map(c => c.price));
+        priceRange.max = maxPrice;
+        priceRange.value = maxPrice;
+        priceValue.textContent = '$' + parseInt(maxPrice).toLocaleString();
+    }
+
+    function populateSelect(selectElement, items) {
+        items.forEach(item => {
+            const option = document.createElement('option');
+            option.value = item;
+            option.textContent = item;
+            selectElement.appendChild(option);
+        });
+    }
+
+    // --- EVENT LISTENERS ---
+    function setupEventListeners() {
+        searchInput.addEventListener("input", applyFiltersAndRender);
+        manufacturerFilter.addEventListener("change", applyFiltersAndRender);
+        categoryFilter.addEventListener("change", applyFiltersAndRender);
+        tierFilter.addEventListener("change", applyFiltersAndRender);
+        
+        priceRange.addEventListener("input", () => {
+             priceValue.textContent = '$' + parseInt(priceRange.value).toLocaleString();
+        });
+        priceRange.addEventListener("change", applyFiltersAndRender);
+
+        resetFiltersBtn.addEventListener("click", resetFilters);
+        
+        viewToggle.addEventListener('click', toggleView);
+
+        headers.forEach(header => {
+            header.addEventListener("click", () => {
+                const column = header.dataset.column;
+                if (!column) return;
+                const type = header.dataset.type;
+                if (currentSort.column === column) {
+                    currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+                } else {
+                    currentSort.column = column;
+                    currentSort.direction = type === 'number' ? 'desc' : 'asc';
+                }
+                applyFiltersAndRender();
+            });
+        });
+    }
+
+    // --- FILTERING & SORTING ---
+    function getProcessedCars() {
+        const searchText = searchInput.value.toLowerCase();
+        const selectedManufacturer = manufacturerFilter.value;
+        const selectedCategory = categoryFilter.value;
+        const selectedTier = tierFilter.value;
+        const maxPrice = parseInt(priceRange.value);
+
+        // Filter
+        const filtered = allCars.filter(car => {
+            const matchesSearch = searchText === '' || car.name.toLowerCase().includes(searchText) || car.manufacturer.toLowerCase().includes(searchText);
+            const matchesManufacturer = selectedManufacturer === '' || car.manufacturer === selectedManufacturer;
+            const matchesCategory = selectedCategory === '' || car.category === selectedCategory;
+            const matchesTier = selectedTier === '' || car.tier === selectedTier;
+            const matchesPrice = car.price <= maxPrice;
+            return matchesSearch && matchesManufacturer && matchesCategory && matchesTier && matchesPrice;
+        });
+
+        // Sort
+        const { column, direction } = currentSort;
+        const modifier = direction === 'asc' ? 1 : -1;
+        const sorted = [...filtered].sort((a, b) => {
+            const valA = a[column];
+            const valB = b[column];
+            if (typeof valA === 'string') {
+                return valA.localeCompare(valB) * modifier;
+            } else {
+                if (valA < valB) return -1 * modifier;
+                if (valA > valB) return 1 * modifier;
+                return 0;
+            }
+        });
+        
+        return sorted;
+    }
+
+    // --- RENDERING ---
+    function applyFiltersAndRender() {
+        const processedCars = getProcessedCars();
+        
+        if (processedCars.length === 0) {
+            noResultsEl.classList.remove('hidden');
+            tableView.classList.add('hidden');
+            cardViewContainer.classList.add('hidden');
+        } else {
+            noResultsEl.classList.add('hidden');
+            if(currentView === 'table') {
+                 renderTable(processedCars);
+            } else {
+                 renderCards(processedCars);
+            }
+        }
+        updateStats(processedCars);
+        updateSortIndicators();
+    }
+
+    function renderTable(cars) {
+        tableView.classList.remove('hidden');
+        cardViewContainer.classList.add('hidden');
+        tableBody.innerHTML = "";
+        const fragment = document.createDocumentFragment();
+        cars.forEach(car => {
+            const row = document.createElement("tr");
+            row.className = "bg-gray-800 hover:bg-gray-700/50 transition-colors duration-200";
+            row.innerHTML = `
+                <td class="p-4 flex items-center gap-4">
+                    <img src="${car.img}" alt="${car.name}" class="w-24 h-14 object-cover rounded-md shadow-lg" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/96x56/1a1a1a/6b7280?text=N/A';" />
+                    <span class="font-semibold text-white">${car.name}</span>
+                </td>
+                <td class="p-4 text-gray-300 font-mono">$${car.price.toLocaleString()}</td>
+                <td class="p-4 text-gray-300">${car.manufacturer}</td>
+                <td class="p-4 text-gray-300">${car.category}</td>
+                <td class="p-4 text-gray-300">${car.tier}</td>
+                <td class="p-4 text-gray-300">${car.speed} mph</td>
+                <td class="p-4 text-gray-300">${car.accel}s</td>
+            `;
+            fragment.appendChild(row);
+        });
+        tableBody.appendChild(fragment);
+    }
+
+    function renderCards(cars) {
+        tableView.classList.add('hidden');
+        cardViewContainer.classList.remove('hidden');
+        cardViewContainer.innerHTML = "";
+        const fragment = document.createDocumentFragment();
+        cars.forEach(car => {
+            const card = document.createElement("div");
+            card.className = "bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-700 transform hover:-translate-y-1 transition-transform duration-300";
+            card.innerHTML = `
+                <img src="${car.img}" alt="${car.name}" class="w-full h-40 object-cover" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x160/1a1a1a/6b7280?text=Image+Not+Found';">
+                <div class="p-4">
+                    <h3 class="font-bold text-lg text-white truncate">${car.name}</h3>
+                    <p class="text-sm text-gray-400 mb-2">${car.manufacturer}</p>
+                    <p class="text-xl font-semibold text-brand-primary mb-3">$${car.price.toLocaleString()}</p>
+                    <div class="grid grid-cols-3 gap-2 text-center text-sm">
+                        <div class="bg-gray-700/50 p-2 rounded-md">
+                            <span class="text-xs text-gray-400">Speed</span>
+                            <p class="font-semibold text-white">${car.speed} mph</p>
+                        </div>
+                        <div class="bg-gray-700/50 p-2 rounded-md">
+                            <span class="text-xs text-gray-400">0-60</span>
+                            <p class="font-semibold text-white">${car.accel}s</p>
+                        </div>
+                        <div class="bg-gray-700/50 p-2 rounded-md">
+                             <span class="text-xs text-gray-400">Tier</span>
+                             <p class="font-semibold text-white">${car.tier}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            fragment.appendChild(card);
+        });
+        cardViewContainer.appendChild(fragment);
+    }
+    
+    // --- UI UPDATES & UTILITIES ---
+    function updateSortIndicators() {
+        headers.forEach(header => {
+            const column = header.dataset.column;
+            if(!column) return;
+            
+            header.classList.remove('bg-gray-700/50');
+            let indicator = header.querySelector('.sort-indicator');
+            if (indicator) indicator.remove();
+
+            if (column === currentSort.column) {
+                header.classList.add('bg-gray-700/50');
+                indicator = document.createElement('span');
+                indicator.className = 'sort-indicator ml-2';
+                indicator.textContent = currentSort.direction === 'asc' ? '▲' : '▼';
+                header.appendChild(indicator);
+            }
+        });
+    }
+
+    function updateStats(cars) {
+        statVisibleCars.textContent = cars.length;
+
+        if (cars.length === 0) {
+            statAvgPrice.textContent = "$0";
+            statTopSpeed.textContent = "0 mph";
+            statQuickestAccel.textContent = "0s";
+            return;
+        }
+
+        const totalValue = cars.reduce((sum, car) => sum + car.price, 0);
+        statAvgPrice.textContent = '$' + Math.round(totalValue / cars.length).toLocaleString();
+
+        const topSpeedCar = cars.reduce((prev, current) => (prev.speed > current.speed) ? prev : current);
+        statTopSpeed.innerHTML = `${topSpeedCar.speed} mph <span class="block text-xs text-gray-500 truncate">${topSpeedCar.name}</span>`;
+        
+        const quickestCar = cars.reduce((prev, current) => (prev.accel < current.accel) ? prev : current);
+        statQuickestAccel.innerHTML = `${quickestCar.accel}s <span class="block text-xs text-gray-500 truncate">${quickestCar.name}</span>`;
+    }
+
+    function resetFilters() {
+        searchInput.value = '';
+        manufacturerFilter.value = '';
+        categoryFilter.value = '';
+        tierFilter.value = '';
+        priceRange.value = priceRange.max;
+        priceValue.textContent = '$' + parseInt(priceRange.max).toLocaleString();
+        
+        currentSort = { column: 'price', direction: 'desc' }; // Reset sort
+        applyFiltersAndRender();
+    }
+    
+    function toggleView() {
+        currentView = currentView === 'table' ? 'card' : 'table';
+        const viewIcon = document.getElementById('viewIcon');
+        const viewText = document.getElementById('viewText');
+
+        if(currentView === 'card') {
+            viewText.textContent = 'Switch to Table View';
+            viewIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>`;
+        } else {
+            viewText.textContent = 'Switch to Card View';
+            viewIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>`;
+        }
+        applyFiltersAndRender();
+    }
+
+    // --- START THE APP ---
+    initialize();
 });
-
 </script>
 
-
-
 </body>
-
-</html>
+</html> add picture with every car  
