@@ -382,25 +382,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --- RENDERING ---
-    function applyFiltersAndRender() {
-        const processedCars = getProcessedCars();
-        
-        if (processedCars.length === 0) {
-            noResultsEl.classList.remove('hidden');
-            tableView.classList.add('hidden');
-            cardViewContainer.classList.add('hidden');
-        } else {
-            noResultsEl.classList.add('hidden');
-            if(currentView === 'table') {
-                renderTable(processedCars);
-            } else {
-                renderCards(processedCars);
-            }
-        }
-        updateStats(processedCars);
-        updateSortIndicators();
-    }
-
     function renderTable(cars) {
         tableView.classList.remove('hidden');
         cardViewContainer.classList.add('hidden');
@@ -411,7 +392,7 @@ document.addEventListener("DOMContentLoaded", () => {
             row.className = "bg-gray-800 hover:bg-gray-700/50 transition-colors duration-200";
             row.innerHTML = `
                 <td class="p-4 flex items-center gap-4">
-                    <img src="${car.img}" alt="${car.name}" class="w-24 h-14 object-cover rounded-md shadow-lg transition-transform duration-200 hover:scale-105" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/96x56/1a1a1a/6b7280?text=N/A';" />
+                    <img src="${car.img}" alt="${car.name}" class="w-24 h-14 object-cover rounded-md shadow-lg transition-transform duration-200 hover:scale-105" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517056637305-b040e3f0545f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.0.3&q=80&w=400';">
                     <span class="font-semibold text-white">${car.name}</span>
                 </td>
                 <td class="p-4 text-gray-300 font-mono">$${car.price.toLocaleString()}</td>
@@ -435,7 +416,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const card = document.createElement("div");
             card.className = "bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-700 transform hover:-translate-y-1 transition-transform duration-300";
             card.innerHTML = `
-                <img src="${car.img}" alt="${car.name}" class="w-full h-40 object-cover transition-transform duration-300 hover:scale-105" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x160/1a1a1a/6b7280?text=Image+Not+Found';">
+                <img src="${car.img}" alt="${car.name}" class="w-full h-40 object-cover transition-transform duration-300 hover:scale-105" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517056637305-b040e3f0545f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.0.3&q=80&w=400';">
                 <div class="p-4">
                     <h3 class="font-bold text-lg text-white truncate">${car.name}</h3>
                     <p class="text-sm text-gray-400 mb-2">${car.manufacturer}</p>
@@ -462,6 +443,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     // --- UI UPDATES & UTILITIES ---
+    function applyFiltersAndRender() {
+        const processedCars = getProcessedCars();
+        
+        if (processedCars.length === 0) {
+            noResultsEl.classList.remove('hidden');
+            tableView.classList.add('hidden');
+            cardViewContainer.classList.add('hidden');
+        } else {
+            noResultsEl.classList.add('hidden');
+            if(currentView === 'table') {
+                renderTable(processedCars);
+            } else {
+                renderCards(processedCars);
+            }
+        }
+        updateStats(processedCars);
+        updateSortIndicators();
+    }
+
     function updateSortIndicators() {
         headers.forEach(header => {
             const column = header.dataset.column;
