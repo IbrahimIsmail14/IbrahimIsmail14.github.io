@@ -266,6 +266,42 @@
             color: #23a0f0;
             text-shadow: 0 0 5px rgba(35, 160, 240, 0.7);
         }
+        
+        /* Image hover zoom */
+        .img-hover-zoom {
+            overflow: hidden;
+        }
+        .img-hover-zoom img {
+            transition: transform 0.5s ease;
+        }
+        .img-hover-zoom:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Neon border for ultra rare cars */
+        .neon-border {
+            box-shadow: 0 0 10px rgba(245, 166, 35, 0.5);
+            position: relative;
+        }
+        .neon-border::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: inherit;
+            background: linear-gradient(45deg, #ff00cc, #3333ff, #00ffcc, #ffcc00);
+            background-size: 400% 400%;
+            z-index: -1;
+            animation: neon-border-animate 3s ease infinite;
+            opacity: 0.7;
+        }
+        @keyframes neon-border-animate {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-200 font-sans antialiased min-h-screen">
@@ -437,7 +473,7 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-    // --- CAR DATA (Expanded for variety) ---
+    // --- CAR DATA (Updated with your images) ---
     const allCars = [
         { "name": "Audi A4 (2013)", "price": 30000, "manufacturer": "Audi", "category": "Licensed", "tier": "Entry", "speed": 130, "accel": 7.5, "img": "https://images.unsplash.com/photo-1594394017772-e87747864197?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
         { "name": "Audi RS 7 Sportback (2021)", "price": 107000, "manufacturer": "Audi", "category": "Licensed", "tier": "Entry", "speed": 190, "accel": 3.5, "img": "https://images.unsplash.com/photo-1629867909335-515433100236?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
@@ -471,10 +507,10 @@ document.addEventListener("DOMContentLoaded", () => {
         { "name": "Ferrari LaFerrari (2013)", "price": 2000000, "manufacturer": "Ferrari", "category": "Licensed", "tier": "Hypercar", "speed": 217, "accel": 2.6, "img": "https://images.unsplash.com/photo-1621250269096-d80582d1c68f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
         { "name": "Lamborghini Sian (2020)", "price": 3500000, "manufacturer": "Lamborghini", "category": "Licensed", "tier": "Hypercar", "speed": 217, "accel": 2.8, "img": "https://images.unsplash.com/photo-1621250269096-d80582d1c68f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
         { "name": "Rimac Nevera (2021)", "price": 2800000, "manufacturer": "Rimac", "category": "Licensed", "tier": "Hypercar", "speed": 258, "accel": 1.8, "img": "https://images.unsplash.com/photo-1621250269096-d80582d1c68f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
-        { "name": "Roblox Race Car (2012)", "price": 20000000, "manufacturer": "Roblox (Event)", "category": "Event Exclusive", "tier": "Ultra-Rare", "speed": 310, "accel": 1.9, "img": "https://images.unsplash.com/photo-1621250269096-d80582d1c68f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
-        { "name": "McLaren F1 (1993)", "price": 20000000, "manufacturer": "McLaren", "category": "Licensed", "tier": "Ultra-Rare", "speed": 240, "accel": 3.2, "img": "https://images.unsplash.com/photo-1621250269096-d80582d1c68f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
-        { "name": "Devel Sixteen (2024)", "price": 12000000, "manufacturer": "Devel", "category": "Limited", "tier": "Ultra-Rare", "speed": 310, "accel": 1.8, "img": "https://images.unsplash.com/photo-1621250269096-d80582d1c68f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
-        { "name": "Ferrari FXX K Evo (2015)", "price": 7000000, "manufacturer": "Ferrari", "category": "Limited", "tier": "Ultra-Rare", "speed": 217, "accel": 2.5, "img": "https://images.unsplash.com/photo-1621250269096-d80582d1c68f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+        { "name": "Roblox Race Car (2012)", "price": 20000000, "manufacturer": "Roblox (Event)", "category": "Event Exclusive", "tier": "Ultra-Rare", "speed": 310, "accel": 1.9, "img": "https://i.ytimg.com/vi/lpUHbT2Rz1c/maxresdefault.jpg" },
+        { "name": "McLaren F1 (1993)", "price": 20000000, "manufacturer": "McLaren", "category": "Licensed", "tier": "Ultra-Rare", "speed": 240, "accel": 3.2, "img": "https://tse1.mm.bing.net/th/id/OIP.DLCTvI8EEkFzJngIp2r4fAAAAA?pid=Api&P=0&h=220" },
+        { "name": "Devel Sixteen (2024)", "price": 12000000, "manufacturer": "Devel", "category": "Limited", "tier": "Ultra-Rare", "speed": 310, "accel": 1.8, "img": "https://tse3.mm.bing.net/th/id/OIP.PMaabGNHZ3iLeKzVP9-DbAHaEC?pid=Api&P=0&h=220" },
+        { "name": "Ferrari FXX K Evo (2015)", "price": 7000000, "manufacturer": "Ferrari", "category": "Limited", "tier": "Ultra-Rare", "speed": 217, "accel": 2.5, "img": "https://tse4.mm.bing.net/th/id/OIP.xOqXpYc2EAYntJkZOVYMnwHaEK?pid=Api&P=0&h=220" },
         { "name": "Bugatti Divo (2018)", "price": 6500000, "manufacturer": "Bugatti", "category": "Limited", "tier": "Ultra-Rare", "speed": 236, "accel": 2.4, "img": "https://images.unsplash.com/photo-1621250269096-d80582d1c68f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
         { "name": "Koenigsegg One:1 (2014)", "price": 6000000, "manufacturer": "Koenigsegg", "category": "Limited", "tier": "Ultra-Rare", "speed": 273, "accel": 2.8, "img": "https://images.unsplash.com/photo-1621250269096-d80582d1c68f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
         { "name": "Lamborghini Veneno (2013)", "price": 5500000, "manufacturer": "Lamborghini", "category": "Limited", "tier": "Ultra-Rare", "speed": 221, "accel": 2.9, "img": "https://images.unsplash.com/photo-1621250269096-d80582d1c68f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
@@ -663,7 +699,9 @@ document.addEventListener("DOMContentLoaded", () => {
             
             row.innerHTML = `
                 <td class="p-4 flex items-center gap-4">
-                    ${showImages ? `<img src="${car.img}" alt="${car.name}" class="w-24 h-14 object-cover rounded-lg shadow-lg transition-transform duration-200 hover:scale-105" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517056637305-b040e3f0545f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.0.3&q=80&w=400';">` : ''}
+                    ${showImages ? `<div class="img-hover-zoom w-24 h-14 rounded-lg shadow-lg overflow-hidden">
+                        <img src="${car.img}" alt="${car.name}" class="w-full h-full object-cover" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517056637305-b040e3f0545f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.0.3&q=80&w=400';">
+                    </div>` : ''}
                     <span class="font-semibold text-white">${car.name}</span>
                 </td>
                 <td class="p-4 font-mono font-bold text-brand-accent">$${car.price.toLocaleString()}</td>
@@ -701,10 +739,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 else if (car.tier.includes('Ultra-Rare')) tierClass = 'tier-ultra';
             }
             
+            // Add neon border for ultra rare cars
+            const isUltraRare = car.tier.includes('Ultra-Rare');
+            const cardClasses = `bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-xl overflow-hidden border border-gray-700 transform hover:-translate-y-2 transition-all duration-300 card-shine hover:shadow-xl hover:shadow-brand-primary/10 ${isUltraRare ? 'neon-border' : ''}`;
+            
             const card = document.createElement("div");
-            card.className = "bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-xl overflow-hidden border border-gray-700 transform hover:-translate-y-2 transition-all duration-300 card-shine hover:shadow-xl hover:shadow-brand-primary/10";
+            card.className = cardClasses;
             card.innerHTML = `
-                ${showImages ? `<img src="${car.img}" alt="${car.name}" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517056637305-b040e3f0545f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.0.3&q=80&w=400';">` : ''}
+                ${showImages ? `<div class="img-hover-zoom w-full h-48 overflow-hidden">
+                    <img src="${car.img}" alt="${car.name}" class="w-full h-full object-cover transition-transform duration-500" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517056637305-b040e3f0545f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.0.3&q=80&w=400';">
+                </div>` : ''}
                 <div class="p-5">
                     <div class="flex justify-between items-start mb-2">
                         <h3 class="font-bold text-lg text-white truncate">${car.name}</h3>
