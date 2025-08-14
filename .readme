@@ -1,0 +1,65 @@
+📖 Quran Explorer
+
+Quran Explorer is a modern, easy-to-use web application that allows you to read, search, and listen to the Holy Quran from any device.
+It’s designed for simplicity, speed, and accessibility, so anyone can connect with the Quran anytime, anywhere.
+
+🌐 Live Demo: Click here to visit Quran Explorer
+
+✨ Features
+
+🕋 Full Quran Access – Read all Surahs with clear Arabic text
+
+🔍 Search Function – Find verses quickly by keyword or Surah name
+
+🎧 Audio Playback – Listen to recitations from renowned Qaris
+
+📱 Mobile Friendly – Works smoothly on phones, tablets, and desktops
+
+🌙 Elegant UI – Clean design for distraction-free reading
+
+📖 Navigation by Surah – Easily jump between chapters
+
+🚀 How to Use
+
+Visit the website – Quran Explorer
+
+Browse or search for your desired Surah
+
+Read or listen instantly — no downloads required
+
+Use the search bar to find specific topics or Ayahs
+
+📌 Tech Stack
+
+HTML5, CSS3, JavaScript – Core frontend technologies
+
+Bootstrap/Tailwind – For responsive, modern UI
+
+Audio API – For streaming Quran recitations
+
+GitHub Pages – Hosting platform
+
+📷 Screenshots
+Homepage	Surah View	Audio Player
+
+	
+	
+🤝 Contributing
+
+Contributions are welcome! Here’s how you can help:
+
+Report bugs
+
+Suggest new features (e.g., translations, tafsir)
+
+Submit pull requests for improvements
+
+📬 Contact
+
+If you have feedback, suggestions, or questions:
+📧 Email: [Your Email Here]
+💬 GitHub: @YourGitHubUsername
+
+⭐ Support
+
+If you like this project, please give it a star ⭐ on GitHub and share it with friends & family!
