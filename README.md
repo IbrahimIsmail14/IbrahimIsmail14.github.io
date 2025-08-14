@@ -1,83 +1,65 @@
-# 🚗 Driving Empire Car Values
+📖 Quran Explorer
 
-Welcome to the **Driving Empire Car Values** website!  
-This project is built to help players of the Roblox game **Driving Empire** quickly view, compare, and understand the **value, stats, and rarity** of cars in the game.
+Quran Explorer is a modern, easy-to-use web application that allows you to read, search, and listen to the Holy Quran from any device.
+It’s designed for simplicity, speed, and accessibility, so anyone can connect with the Quran anytime, anywhere.
 
-🔗 **Live Website**: [https://ibrahimismail14.github.io/](https://ibrahimismail14.github.io/)
+🌐 Live Demo: Click here to visit Quran Explorer
 
----
+✨ Features
 
-## 📋 Features
+🕋 Full Quran Access – Read all Surahs with clear Arabic text
 
-- ✅ List of cars with:
-  - Price 💰
-  - Brand 🏷️
-  - Rarity ⭐
-  - Top Speed 🚀
-  - Acceleration ⚡
-  - Customization Slots 🛠️
-- 🧠 Organized layout (Limited, Ultra-Rare, etc.)
-- 📱 Fully responsive — mobile-friendly!
-- 🎯 Clean, easy-to-read design
+🔍 Search Function – Find verses quickly by keyword or Surah name
 
----
+🎧 Audio Playback – Listen to recitations from renowned Qaris
 
-## 🛠 Tech Stack
+📱 Mobile Friendly – Works smoothly on phones, tablets, and desktops
 
-- HTML
-- CSS
-- JavaScript
-- GitHub Pages for hosting
+🌙 Elegant UI – Clean design for distraction-free reading
 
----
+📖 Navigation by Surah – Easily jump between chapters
 
-## 🧠 Ideas for the Future
+🚀 How to Use
 
-- ✅ Add more cars (goal: 150+!)
-- 🔍 Car search and filtering
-- 📊 Value trends and resale info
-- 👤 Login system for saved favorites
-- ⚖️ Compare mode between cars
-- 📱 Progressive Web App (PWA) version
+Visit the website – Quran Explorer
 
----
+Browse or search for your desired Surah
 
-## 🤝 Contributing
+Read or listen instantly — no downloads required
 
-Want to help improve the site?  
-Here’s how you can contribute:
+Use the search bar to find specific topics or Ayahs
 
-1. **Star** ⭐ this repo
-2. **Fork** it
-3. Submit pull requests with:
-   - New cars/data
-   - UI improvements
-   - Bug fixes
-4. Or [start a Discussion](https://github.com/ibrahimismail14/ibrahimismail14.github.io/discussions) to share ideas!
+📌 Tech Stack
 
----
+HTML5, CSS3, JavaScript – Core frontend technologies
 
-## 🐞 Reporting Issues
+Bootstrap/Tailwind – For responsive, modern UI
 
-Found a bug or incorrect car stat?
+Audio API – For streaming Quran recitations
 
-- Open an [Issue](https://github.com/ibrahimismail14/ibrahimismail14.github.io/issues)
-- Include steps to reproduce or screenshot
+GitHub Pages – Hosting platform
 
----
+📷 Screenshots
+Homepage	Surah View	Audio Player
 
-## 🙏 Credits
+	
+	
+🤝 Contributing
 
-- Built with ❤️ by [@ibrahimismail14](https://github.com/ibrahimismail14)
-- Inspired by the **Driving Empire** Roblox community
+Contributions are welcome! Here’s how you can help:
 
----
+Report bugs
 
-## 📜 License
+Suggest new features (e.g., translations, tafsir)
 
-This project is open-source and available under the **MIT License**.
+Submit pull requests for improvements
 
----
+📬 Contact
 
-> “Helping DE players make smarter car choices.”
+If you have feedback, suggestions, or questions:
+📧 Email: afreenfarhan2020@gmail.com
+💬 GitHub: @Ibrahimismail14
 
+⭐ Support
+
+If you like this project, please give it a star ⭐ on GitHub and share it with friends & family!
