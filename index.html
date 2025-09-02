@@ -22,6 +22,8 @@
       --gold: #d4af37;
       --light-gold: #f0e6c2;
       --accent: #8b5cf6;
+      --play-btn: #10b981;
+      --pause-btn: #f59e0b;
     }
 
     * {
@@ -347,14 +349,20 @@
       color: var(--light-gold);
     }
 
+    .play-controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem auto;
+    }
+
     .play-all-btn {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.8rem;
-      margin: 2rem auto;
       padding: 1rem 2.5rem;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      background: linear-gradient(135deg, var(--play-btn) 0%, #059669 100%);
       color: white;
       border: none;
       border-radius: 50px;
@@ -362,13 +370,34 @@
       font-size: 1.2rem;
       font-weight: 600;
       transition: var(--transition);
-      box-shadow: 0 8px 20px rgba(13, 148, 136, 0.4);
+      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
       position: relative;
       overflow: hidden;
       z-index: 1;
     }
 
-    .play-all-btn::before {
+    .pause-all-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      padding: 1rem 2.5rem;
+      background: linear-gradient(135deg, var(--pause-btn) 0%, #d97706 100%);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .play-all-btn::before,
+    .pause-all-btn::before {
       content: "";
       position: absolute;
       top: 0;
@@ -381,16 +410,19 @@
       z-index: -1;
     }
 
-    .play-all-btn:hover {
+    .play-all-btn:hover,
+    .pause-all-btn:hover {
       transform: translateY(-4px);
       box-shadow: 0 12px 25px rgba(13, 148, 136, 0.5);
     }
 
-    .play-all-btn:hover::before {
+    .play-all-btn:hover::before,
+    .pause-all-btn:hover::before {
       opacity: 1;
     }
 
-    .play-all-btn:active {
+    .play-all-btn:active,
+    .pause-all-btn:active {
       transform: translateY(2px);
       box-shadow: 0 4px 12px rgba(13, 148, 136, 0.4);
     }
@@ -923,6 +955,97 @@
       font-size: 1rem;
     }
 
+    /* Visual enhancements */
+    .glow-effect {
+      position: relative;
+    }
+    
+    .glow-effect::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      z-index: -1;
+      background: linear-gradient(45deg, var(--primary), var(--accent), var(--gold), var(--primary));
+      background-size: 400% 400%;
+      border-radius: inherit;
+      animation: glowing 20s ease infinite;
+      filter: blur(10px);
+      opacity: 0.6;
+    }
+    
+    @keyframes glowing {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .floating-element {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .currently-playing {
+      box-shadow: 0 0 15px rgba(13, 148, 136, 0.5) !important;
+      border: 2px solid var(--primary) !important;
+      transform: scale(1.02);
+    }
+    
+    .play-status {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.9);
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      z-index: 999;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+    }
+    
+    .dark .play-status {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .play-status.hidden {
+      opacity: 0;
+      transform: translateX(-50%) translateY(20px);
+      pointer-events: none;
+    }
+    
+    .play-status-progress {
+      width: 120px;
+      height: 4px;
+      background: #e2e8f0;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    
+    .dark .play-status-progress {
+      background: #334155;
+    }
+    
+    .play-status-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
     @media (max-width: 768px) {
       .header-content {
         gap: 0.8rem;
@@ -981,6 +1104,26 @@
         font-size: 1.2rem;
       }
       
+      .play-controls {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .play-all-btn, .pause-all-btn {
+        width: 100%;
+        max-width: 280px;
+      }
+      
+      .play-status {
+        bottom: 70px;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+      }
+      
+      .play-status-progress {
+        width: 80px;
+      }
+      
       .duas-container {
         grid-template-columns: 1fr;
       }
@@ -1015,7 +1158,7 @@
         padding: 1.5rem 1rem;
       }
       
-      .play-all-btn {
+      .play-all-btn, .pause-all-btn {
         padding: 0.9rem 1.8rem;
         font-size: 1.1rem;
       }
@@ -1033,6 +1176,16 @@
       
       .dua-arabic {
         font-size: 1.6rem;
+      }
+      
+      .play-status {
+        bottom: 60px;
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+      }
+      
+      .play-status-progress {
+        width: 60px;
       }
     }
   </style>
@@ -1081,7 +1234,7 @@
   </div>
 
   <div id="content">
-    <div class="surah-header">
+    <div class="surah-header floating-element">
       <h2 class="surah-title">Quran Explorer</h2>
       <p>Select a Surah to begin your journey</p>
       <div class="reciter-info">
@@ -1091,6 +1244,17 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="play-status hidden" id="playStatus">
+    <i class="fas fa-play-circle" id="playStatusIcon"></i>
+    <span id="playStatusText">Playing Ayah 1 of 7</span>
+    <div class="play-status-progress">
+      <div class="play-status-bar" id="playStatusBar"></div>
+    </div>
+    <button class="control-btn" onclick="pauseAllAudios()" style="padding: 0.3rem 0.6rem;">
+      <i class="fas fa-pause"></i>
+    </button>
   </div>
 
   <div class="footer">
@@ -1112,12 +1276,20 @@
     const currentReciterImage = document.getElementById('currentReciterImage');
     const loadingProgress = document.getElementById('loadingProgress');
     const surahCount = document.getElementById('surah-count');
+    const playStatus = document.getElementById('playStatus');
+    const playStatusText = document.getElementById('playStatusText');
+    const playStatusIcon = document.getElementById('playStatusIcon');
+    const playStatusBar = document.getElementById('playStatusBar');
 
     let selectedLang = langSelector.value;
     let selectedReciter = reciterSelector.value;
     let allSurahs = [];
     let currentSurah = null;
     let currentReciterData = reciterSelector.options[reciterSelector.selectedIndex].dataset;
+    let isPlayingAll = false;
+    let currentAudioIndex = 0;
+    let audioElements = [];
+    let playTimeout = null;
 
     // Dua Data
     const duas = [
@@ -1267,6 +1439,30 @@
       currentReciterImage.src = selectedOption.dataset.img;
     }
 
+    function updatePlayStatus(ayahNumber, totalAyahs) {
+      playStatusText.textContent = `Playing Ayah ${ayahNumber} of ${totalAyahs}`;
+      playStatusBar.style.width = `${(ayahNumber / totalAyahs) * 100}%`;
+      
+      // Highlight the current playing ayah
+      document.querySelectorAll('.ayah-card').forEach(card => {
+        card.classList.remove('currently-playing');
+      });
+      
+      const currentAyahCard = document.querySelector(`#audio-${ayahNumber-1}`)?.closest('.ayah-card');
+      if (currentAyahCard) {
+        currentAyahCard.classList.add('currently-playing');
+        currentAyahCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    function showPlayStatus() {
+      playStatus.classList.remove('hidden');
+    }
+
+    function hidePlayStatus() {
+      playStatus.classList.add('hidden');
+    }
+
     if (localStorage.getItem('quranExplorerDark') === 'true') {
       document.body.classList.add('dark');
     }
@@ -1346,7 +1542,7 @@
         document.title = `Quran Explorer – ${name}`;
         
         let html = `
-          <div class="surah-header">
+          <div class="surah-header floating-element">
             <h2 class="surah-title">${name} (${surah.name})</h2>
             <p>${surah.englishNameTranslation} • ${surah.revelationType}</p>
             <div class="surah-meta">
@@ -1361,9 +1557,14 @@
               </div>
             </div>
           </div>
-          <button class="play-all-btn" onclick="playAllAudios()">
-            <i class="fas fa-play"></i> Play Entire Surah
-          </button>
+          <div class="play-controls">
+            <button class="play-all-btn" onclick="playAllAudios()">
+              <i class="fas fa-play"></i> Play Entire Surah
+            </button>
+            <button class="pause-all-btn" onclick="pauseAllAudios()">
+              <i class="fas fa-pause"></i> Pause Playback
+            </button>
+          </div>
         `;
         
         const totalAyahs = surah.ayahs.length;
@@ -1455,35 +1656,75 @@
     }
 
     function playAllAudios() {
-      const audios = Array.from(document.querySelectorAll('audio'));
-      if (audios.length === 0) return;
+      // If already playing, just resume from current position
+      if (isPlayingAll && audioElements.length > 0) {
+        audioElements[currentAudioIndex].play();
+        playStatusIcon.className = 'fas fa-play-circle';
+        showPlayStatus();
+        return;
+      }
+      
+      // Otherwise start from beginning
+      audioElements = Array.from(document.querySelectorAll('audio'));
+      if (audioElements.length === 0) return;
       
       // Stop any currently playing audio
-      audios.forEach(audio => {
+      audioElements.forEach(audio => {
         if (!audio.paused) {
           audio.pause();
           audio.currentTime = 0;
         }
       });
       
-      let index = 0;
+      isPlayingAll = true;
+      currentAudioIndex = 0;
+      playStatusIcon.className = 'fas fa-play-circle';
+      showPlayStatus();
       
       function playNext() {
-        if (index < audios.length) {
-          const currentAudio = audios[index];
+        if (currentAudioIndex < audioElements.length && isPlayingAll) {
+          const currentAudio = audioElements[currentAudioIndex];
+          
+          // Update status
+          updatePlayStatus(currentAudioIndex + 1, audioElements.length);
+          
           currentAudio.play();
           
-          // Scroll to current ayah
-          currentAudio.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          
           currentAudio.onended = () => {
-            index++;
-            playNext();
+            if (isPlayingAll) {
+              currentAudioIndex++;
+              if (currentAudioIndex < audioElements.length) {
+                playNext();
+              } else {
+                // Finished playing all
+                isPlayingAll = false;
+                hidePlayStatus();
+              }
+            }
           };
         }
       }
       
       playNext();
+    }
+
+    function pauseAllAudios() {
+      isPlayingAll = false;
+      
+      // Pause the current audio
+      if (audioElements[currentAudioIndex]) {
+        audioElements[currentAudioIndex].pause();
+      }
+      
+      playStatusIcon.className = 'fas fa-pause-circle';
+      
+      // Auto-hide status after a delay
+      clearTimeout(playTimeout);
+      playTimeout = setTimeout(() => {
+        if (!isPlayingAll) {
+          hidePlayStatus();
+        }
+      }, 3000);
     }
 
     // Load Duas Section
@@ -1499,7 +1740,7 @@
       });
       
       let html = `
-        <div class="surah-header">
+        <div class="surah-header floating-element">
           <h2 class="surah-title">Daily Duas</h2>
           <p>Supplications for various occasions and needs</p>
           <div class="reciter-info">
@@ -1522,7 +1763,7 @@
         
         duasByCategory[category].forEach(dua => {
           html += `
-            <div class="dua-card">
+            <div class="dua-card floating-element">
               <div class="dua-title">
                 <i class="fas fa-bookmark"></i> ${dua.title}
               </div>
@@ -1594,4 +1835,4 @@
     });
   </script>
 </body>
-</html> 
+</html>
