@@ -12,8 +12,8 @@
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Complete Quran Explorer - Read, listen, and understand the Holy Quran with translations, tafsir, recitations, daily prayers, Islamic knowledge, and more.">
-    <meta name="keywords" content="Quran, Islam, Muslim, Arabic, translation, tafsir, recitation, prayer, dua, Islamic knowledge">
+    <meta name="description" content="Complete Quran Explorer - Read, listen, and understand the Holy Quran with translations, tafsir, recitations, daily prayers, Islamic knowledge, and accurate prayer times.">
+    <meta name="keywords" content="Quran, Islam, Muslim, Arabic, translation, tafsir, recitation, prayer times, salah, dua, Islamic knowledge">
     <title>Quran Explorer - Complete Islamic Resource: Quran, Tafsir, Prayers & Knowledge</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3006614855562533" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&family=Amiri&family=Scheherazade&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -40,6 +40,12 @@
             --warning: #d97706;
             --error: #dc2626;
             --info: #0ea5e9;
+            --fajr: #6366f1;
+            --sunrise: #f59e0b;
+            --dhuhr: #10b981;
+            --asr: #0ea5e9;
+            --maghrib: #d97706;
+            --isha: #7c3aed;
         }
 
         * {
@@ -530,6 +536,117 @@
             transform: rotate(180deg);
         }
 
+        /* Prayer Times Section */
+        .prayer-times-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .prayer-card {
+            background: var(--card-light);
+            border-radius: 18px;
+            padding: 2rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .dark .prayer-card {
+            background: var(--card-dark);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .prayer-card.current {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .prayer-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            opacity: 0.8;
+        }
+
+        .prayer-card.fajr::after { background: var(--fajr); }
+        .prayer-card.sunrise::after { background: var(--sunrise); }
+        .prayer-card.dhuhr::after { background: var(--dhuhr); }
+        .prayer-card.asr::after { background: var(--asr); }
+        .prayer-card.maghrib::after { background: var(--maghrib); }
+        .prayer-card.isha::after { background: var(--isha); }
+
+        .prayer-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .prayer-card.fajr .prayer-icon { color: var(--fajr); }
+        .prayer-card.sunrise .prayer-icon { color: var(--sunrise); }
+        .prayer-card.dhuhr .prayer-icon { color: var(--dhuhr); }
+        .prayer-card.asr .prayer-icon { color: var(--asr); }
+        .prayer-card.maghrib .prayer-icon { color: var(--maghrib); }
+        .prayer-card.isha .prayer-icon { color: var(--isha); }
+
+        .prayer-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .prayer-time {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .prayer-next {
+            background: rgba(13, 148, 136, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--primary);
+            display: inline-block;
+        }
+
+        .dark .prayer-next {
+            background: rgba(13, 148, 136, 0.15);
+            color: var(--primary-light);
+        }
+
+        .countdown {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 0.5rem;
+        }
+
+        .dark .countdown {
+            color: var(--primary-light);
+        }
+
+        .location-info {
+            background: var(--card-light);
+            border-radius: 18px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .dark .location-info {
+            background: var(--card-dark);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
         /* Dua Section */
         .duas-container {
             display: grid;
@@ -778,6 +895,68 @@
             box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.3);
         }
 
+        /* Settings Panel */
+        .settings-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100vh;
+            background: var(--card-light);
+            box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+            padding: 2rem;
+            overflow-y: auto;
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .dark .settings-panel {
+            background: var(--card-dark);
+        }
+
+        .settings-panel.open {
+            right: 0;
+        }
+
+        .settings-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .dark .settings-header {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .settings-option {
+            margin-bottom: 1.5rem;
+        }
+
+        .settings-option label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .settings-option select, .settings-option input {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            background: var(--card-light);
+            color: var(--text-dark);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .dark .settings-option select, .dark .settings-option input {
+            background: var(--card-dark);
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+
         /* Utility Classes */
         .loading::after {
             content: ' ⏳';
@@ -843,6 +1022,41 @@
             background: rgba(15, 23, 42, 0.9);
         }
 
+        /* Toast Notifications */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--card-light);
+            color: var(--text-dark);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            z-index: 1000;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .dark .toast {
+            background: var(--card-dark);
+            color: #e2e8f0;
+        }
+
+        .toast.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-10px);
+        }
+
+        .toast.success {
+            border-left: 4px solid var(--success);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             h1 {
@@ -863,7 +1077,7 @@
                 font-size: 2rem;
             }
             
-            .surah-grid, .duas-container, .knowledge-grid {
+            .surah-grid, .duas-container, .knowledge-grid, .prayer-times-container {
                 grid-template-columns: 1fr;
             }
             
@@ -881,6 +1095,11 @@
                 width: 50px;
                 height: 50px;
                 font-size: 1.2rem;
+            }
+            
+            .settings-panel {
+                width: 100%;
+                right: -100%;
             }
         }
 
@@ -903,7 +1122,7 @@
                 padding: 0 1rem;
             }
             
-            .surah-card, .ayah-card, .dua-card, .knowledge-card {
+            .surah-card, .ayah-card, .dua-card, .knowledge-card, .prayer-card {
                 padding: 1.5rem 1.2rem;
             }
             
@@ -916,6 +1135,10 @@
             
             .dua-arabic {
                 font-size: 1.6rem;
+            }
+            
+            .prayer-time {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -944,14 +1167,14 @@
             <button class="nav-btn active" onclick="showSection('quran')">
                 <i class="fas fa-book-quran"></i> Quran
             </button>
+            <button class="nav-btn" onclick="showSection('prayer-times')">
+                <i class="fas fa-clock"></i> Prayer Times
+            </button>
             <button class="nav-btn" onclick="showSection('duas')">
                 <i class="fas fa-hands-praying"></i> Daily Duas
             </button>
             <button class="nav-btn" onclick="showSection('knowledge')">
                 <i class="fas fa-graduation-cap"></i> Islamic Knowledge
-            </button>
-            <button class="nav-btn" onclick="showSection('prayer-times')">
-                <i class="fas fa-clock"></i> Prayer Times
             </button>
             <button class="nav-btn" onclick="showSection('about')">
                 <i class="fas fa-info-circle"></i> About
@@ -972,6 +1195,8 @@
                 <option value="ar.alafasy">Mishary Alafasy</option>
                 <option value="ar.hudhaify">Imam Hudhaify</option>
                 <option value="ar.sudais">Abdurrahman As-Sudais</option>
+                <option value="ar.abdulsamad">Abdul Samad</option>
+                <option value="ar.mahermuaiqly">Maher Al Muaiqly</option>
             </select>
         </div>
 
@@ -981,6 +1206,45 @@
 
         <div id="surahDetail" style="display: none;">
             <!-- Detailed surah view will be loaded here -->
+        </div>
+    </section>
+
+    <!-- Prayer Times Section -->
+    <section id="prayer-times" class="content-section">
+        <div class="section-header">
+            <h2>Prayer Times</h2>
+            <p>Accurate prayer times based on your location</p>
+        </div>
+
+        <div class="location-info" id="locationInfo">
+            <div class="loading">Detecting your location... <span class="loading-spinner"></span></div>
+        </div>
+
+        <div class="prayer-times-container" id="prayerTimesContainer">
+            <!-- Prayer times will be loaded here -->
+        </div>
+
+        <div class="knowledge-card" style="max-width: 800px; margin: 2rem auto;">
+            <h3 class="knowledge-title">Prayer Times Information</h3>
+            <div class="knowledge-content">
+                <p>Prayer times are calculated based on your geographical location using the <strong>Islamic Society of North America (ISNA)</strong> calculation method. Times are automatically adjusted for your timezone and daylight saving time.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+                    <div>
+                        <strong>Calculation Method:</strong> ISNA
+                    </div>
+                    <div>
+                        <strong>Juristic Method:</strong> Standard (Shafi, Maliki, Hanbali)
+                    </div>
+                    <div>
+                        <strong>Adjustments:</strong> Auto timezone
+                    </div>
+                </div>
+                
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-light);">
+                    <i class="fas fa-info-circle"></i> For the most accurate prayer times, especially for Fajr and Isha, please consult your local mosque.
+                </p>
+            </div>
         </div>
     </section>
 
@@ -1015,11 +1279,11 @@
                 <h3 class="knowledge-title">Five Pillars of Islam</h3>
                 <div class="knowledge-content">
                     <ul class="knowledge-list">
-                        <li><i class="fas fa-check"></i> Shahada (Faith)</li>
-                        <li><i class="fas fa-check"></i> Salah (Prayer)</li>
-                        <li><i class="fas fa-check"></i> Zakat (Charity)</li>
-                        <li><i class="fas fa-check"></i> Sawm (Fasting)</li>
-                        <li><i class="fas fa-check"></i> Hajj (Pilgrimage)</li>
+                        <li><i class="fas fa-check"></i> Shahada (Declaration of Faith)</li>
+                        <li><i class="fas fa-check"></i> Salah (Five Daily Prayers)</li>
+                        <li><i class="fas fa-check"></i> Zakat (Obligatory Charity)</li>
+                        <li><i class="fas fa-check"></i> Sawm (Fasting in Ramadan)</li>
+                        <li><i class="fas fa-check"></i> Hajj (Pilgrimage to Mecca)</li>
                     </ul>
                 </div>
             </div>
@@ -1031,9 +1295,9 @@
                 <h3 class="knowledge-title">Articles of Faith</h3>
                 <div class="knowledge-content">
                     <ul class="knowledge-list">
-                        <li><i class="fas fa-check"></i> Belief in Allah</li>
+                        <li><i class="fas fa-check"></i> Belief in One God (Allah)</li>
                         <li><i class="fas fa-check"></i> Belief in Angels</li>
-                        <li><i class="fas fa-check"></i> Belief in Revealed Books</li>
+                        <li><i class="fas fa-check"></i> Belief in Divine Books</li>
                         <li><i class="fas fa-check"></i> Belief in Prophets</li>
                         <li><i class="fas fa-check"></i> Belief in Day of Judgment</li>
                         <li><i class="fas fa-check"></i> Belief in Divine Decree</li>
@@ -1047,7 +1311,7 @@
                 </div>
                 <h3 class="knowledge-title">Islamic History</h3>
                 <div class="knowledge-content">
-                    <p>Explore the rich history of Islam from the time of Prophet Muhammad (PBUH) to the modern era. Learn about the Rashidun Caliphs, Islamic civilization's golden age, and contributions to science, mathematics, and philosophy.</p>
+                    <p>Explore the rich history of Islam from the time of Prophet Muhammad (PBUH) to the modern era. Learn about the Rashidun Caliphs, Islamic civilization's golden age, and contributions to science, mathematics, medicine, and philosophy that shaped the modern world.</p>
                 </div>
             </div>
 
@@ -1057,36 +1321,8 @@
                 </div>
                 <h3 class="knowledge-title">Islamic Law & Ethics</h3>
                 <div class="knowledge-content">
-                    <p>Understand the principles of Sharia law, Islamic jurisprudence (Fiqh), and the ethical framework that guides Muslim life. Learn about halal and haram, business ethics, family law, and social responsibilities.</p>
+                    <p>Understand the principles of Sharia law, Islamic jurisprudence (Fiqh), and the ethical framework that guides Muslim life. Learn about halal and haram, business ethics, family law, social responsibilities, and the objectives of Islamic law (Maqasid al-Shariah).</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Prayer Times Section -->
-    <section id="prayer-times" class="content-section">
-        <div class="section-header">
-            <h2>Prayer Times</h2>
-            <p>Current prayer times based on your location</p>
-        </div>
-
-        <div class="knowledge-card" style="max-width: 600px; margin: 0 auto;">
-            <div class="knowledge-icon">
-                <i class="fas fa-clock"></i>
-            </div>
-            <h3 class="knowledge-title" id="prayerLocation">Loading...</h3>
-            <div class="knowledge-content">
-                <div id="prayerTimes">
-                    <div class="loading">Loading prayer times... <span class="loading-spinner"></span></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="knowledge-card" style="max-width: 600px; margin: 2rem auto;">
-            <h3 class="knowledge-title">Prayer Times Calculation</h3>
-            <div class="knowledge-content">
-                <p>Prayer times are calculated based on your geographical location using established Islamic calculation methods. The times may vary slightly depending on the calculation method used by your local mosque.</p>
-                <p><strong>Note:</strong> For the most accurate prayer times, please consult your local mosque.</p>
             </div>
         </div>
     </section>
@@ -1108,14 +1344,14 @@
                     <li><i class="fas fa-check"></i> Complete Quran with multiple translations</li>
                     <li><i class="fas fa-check"></i> Audio recitations by renowned reciters</li>
                     <li><i class="fas fa-check"></i> Tafsir (exegesis) for deeper understanding</li>
+                    <li><i class="fas fa-check"></i> Accurate prayer times with location detection</li>
                     <li><i class="fas fa-check"></i> Daily Duas and supplications</li>
                     <li><i class="fas fa-check"></i> Islamic knowledge and education</li>
-                    <li><i class="fas fa-check"></i> Prayer times based on location</li>
                     <li><i class="fas fa-check"></i> User-friendly interface with dark mode</li>
                 </ul>
 
                 <h4 style="margin-top: 1.5rem; color: var(--primary);">Data Sources</h4>
-                <p>Our Quranic data is sourced from reliable APIs including AlQuran Cloud API. We verify all content to ensure authenticity and accuracy.</p>
+                <p>Our Quranic data is sourced from reliable APIs including AlQuran Cloud API. Prayer times are provided by Aladhan API. We verify all content to ensure authenticity and accuracy.</p>
 
                 <h4 style="margin-top: 1.5rem; color: var(--primary);">Contact & Feedback</h4>
                 <p>We welcome your feedback and suggestions to improve Quran Explorer. If you find any issues or have ideas for new features, please let us know.</p>
@@ -1123,13 +1359,69 @@
         </div>
     </section>
 
+    <!-- Settings Panel -->
+    <div class="settings-panel" id="settingsPanel">
+        <div class="settings-header">
+            <h3>Settings</h3>
+            <button class="control-btn" onclick="toggleSettings()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="settings-option">
+            <label for="fontSize">Font Size</label>
+            <select id="fontSize">
+                <option value="small">Small</option>
+                <option value="medium" selected>Medium</option>
+                <option value="large">Large</option>
+                <option value="x-large">X-Large</option>
+            </select>
+        </div>
+        
+        <div class="settings-option">
+            <label for="arabicFont">Arabic Font</label>
+            <select id="arabicFont">
+                <option value="Noto Naskh Arabic" selected>Noto Naskh Arabic</option>
+                <option value="Amiri">Amiri</option>
+                <option value="Scheherazade">Scheherazade</option>
+                <option value="Lateef">Lateef</option>
+            </select>
+        </div>
+        
+        <div class="settings-option">
+            <label for="calculationMethod">Prayer Calculation</label>
+            <select id="calculationMethod">
+                <option value="1">Muslim World League</option>
+                <option value="2">Islamic Society of North America</option>
+                <option value="3">Egyptian General Authority</option>
+                <option value="4">Umm Al-Qura University, Makkah</option>
+                <option value="5">University of Islamic Sciences, Karachi</option>
+                <option value="7">Institute of Geophysics, University of Tehran</option>
+            </select>
+        </div>
+        
+        <div class="settings-option">
+            <label for="autoPlay">Auto Play Next Ayah</label>
+            <select id="autoPlay">
+                <option value="true">Yes</option>
+                <option value="false" selected>No</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Action completed successfully</span>
+    </div>
+
     <div class="floating-icon" onclick="scrollToTop()">
         <i class="fas fa-arrow-up"></i>
     </div>
 
     <div class="footer">
         <p>Quran Explorer • Complete Islamic Resource • Made with ❤️ for the Ummah</p>
-        <p>© 2023 Quran Explorer Project • Data from AlQuran Cloud API</p>
+        <p>© 2023 Quran Explorer Project • Data from AlQuran Cloud API & Aladhan API</p>
     </div>
 
     <script>
@@ -1137,10 +1429,12 @@
         let allSurahs = [];
         let currentSurah = null;
         let currentReciter = 'ar.alafasy';
+        let prayerTimesData = null;
+        let countdownInterval = null;
+        let userLocation = null;
 
-        // Dua data
+        // Dua data - Expanded with more authentic duas
         const duas = [
-            // ... (same dua data as before, but I'll include a few for brevity)
             {
                 id: 1,
                 title: "Dua for Entering the House",
@@ -1157,7 +1451,110 @@
                 reference: "Tirmidhi 3426",
                 category: "Daily Duas"
             },
-            // ... (more duas would be here in the full implementation)
+            {
+                id: 3,
+                title: "Dua for Entering the Mosque",
+                arabic: "اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ",
+                translation: "O Allah, open for me the doors of Your mercy",
+                reference: "Muslim 713",
+                category: "Masjid Duas"
+            },
+            {
+                id: 4,
+                title: "Dua for Leaving the Mosque",
+                arabic: "اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ",
+                translation: "O Allah, I ask You from Your bounty",
+                reference: "Muslim 713",
+                category: "Masjid Duas"
+            },
+            {
+                id: 5,
+                title: "Dua for Traveling",
+                arabic: "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ",
+                translation: "Glory to Him who has brought this under our control, though we were unable to control it. Indeed, to our Lord we will return.",
+                reference: "Quran 43:13-14",
+                category: "Travel Duas"
+            },
+            {
+                id: 6,
+                title: "Dua for After Eating",
+                arabic: "الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مُسْلِمِينَ",
+                translation: "All praise is for Allah who fed us and gave us drink, and made us Muslims.",
+                reference: "Tirmidhi 3457",
+                category: "Food Duas"
+            },
+            {
+                id: 7,
+                title: "Dua for Seeking Knowledge",
+                arabic: "اللَّهُمَّ انْفَعْنِي بِمَا عَلَّمْتَنِي، وَعَلِّمْنِي مَا يَنْفَعُنِي، وَزِدْنِي عِلْمًا",
+                translation: "O Allah! Benefit me with what You have taught me, teach me what will benefit me, and increase me in knowledge.",
+                reference: "Tirmidhi 3599",
+                category: "Knowledge Duas"
+            },
+            {
+                id: 8,
+                title: "Dua for Forgiveness",
+                arabic: "رَبِّ إِنِّي ظَلَمْتُ نَفْسِي فَاغْفِرْ لِي",
+                translation: "My Lord, indeed I have wronged myself, so forgive me.",
+                reference: "Quran 28:16",
+                category: "Repentance Duas"
+            },
+            {
+                id: 9,
+                title: "Dua for Stress and Anxiety",
+                arabic: "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَالْعَجْزِ وَالْكَسَلِ، وَالْبُخْلِ وَالْجُبْنِ، وَضَلَعِ الدَّيْنِ، وَغَلَبَةِ الرِّجَالِ",
+                translation: "O Allah, I seek refuge in You from anxiety and sorrow, weakness and laziness, miserliness and cowardice, the burden of debts and from being overpowered by men.",
+                reference: "Bukhari 6369",
+                category: "Emotional Duas"
+            },
+            {
+                id: 10,
+                title: "Dua for Protection",
+                arabic: "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",
+                translation: "I seek refuge in the perfect words of Allah from the evil of what He has created.",
+                reference: "Muslim 2708",
+                category: "Protection Duas"
+            },
+            {
+                id: 11,
+                title: "Dua for Morning",
+                arabic: "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ",
+                translation: "We have reached the morning and at this very time all sovereignty belongs to Allah. Praise is to Allah. There is no god but Allah, alone, without partner.",
+                reference: "Muslim 2723",
+                category: "Daily Duas"
+            },
+            {
+                id: 12,
+                title: "Dua for Evening",
+                arabic: "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ",
+                translation: "We have reached the evening and at this very time all sovereignty belongs to Allah. Praise is to Allah. There is no god but Allah, alone, without partner.",
+                reference: "Muslim 2723",
+                category: "Daily Duas"
+            },
+            {
+                id: 13,
+                title: "Dua Before Sleeping",
+                arabic: "بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",
+                translation: "In Your name, O Allah, I die and I live.",
+                reference: "Bukhari 6324",
+                category: "Sleep Duas"
+            },
+            {
+                id: 14,
+                title: "Dua Upon Waking Up",
+                arabic: "الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ",
+                translation: "All praise is for Allah who gave us life after having taken it from us and unto Him is the resurrection.",
+                reference: "Bukhari 6312",
+                category: "Sleep Duas"
+            },
+            {
+                id: 15,
+                title: "Dua for Seeking Goodness",
+                arabic: "اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا، وَرِزْقًا طَيِّبًا، وَعَمَلًا مُتَقَبَّلًا",
+                translation: "O Allah, I ask You for beneficial knowledge, goodly provision, and acceptable deeds.",
+                reference: "Ibn Majah 925",
+                category: "General Duas"
+            }
         ];
 
         // Group duas by category
@@ -1182,6 +1579,9 @@
                 currentReciter = this.value;
             });
 
+            // Load settings
+            loadSettings();
+
             // Check for saved theme preference
             if (localStorage.getItem('quranExplorerDark') === 'true') {
                 document.body.classList.add('dark');
@@ -1205,6 +1605,11 @@
             
             // Add active class to clicked button
             event.target.classList.add('active');
+
+            // If prayer times section is shown, refresh prayer times
+            if (sectionId === 'prayer-times') {
+                refreshPrayerTimes();
+            }
         }
 
         // Load and display surahs
@@ -1372,6 +1777,263 @@
             }
         }
 
+        // PRAYER TIMES IMPLEMENTATION
+        async function loadPrayerTimes() {
+            try {
+                // Get user's location
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        async (position) => {
+                            const lat = position.coords.latitude;
+                            const lng = position.coords.longitude;
+                            userLocation = { lat, lng };
+                            
+                            // Get location name
+                            const locationName = await getLocationName(lat, lng);
+                            document.getElementById('locationInfo').innerHTML = `
+                                <h3 style="margin-bottom: 0.5rem;">📍 ${locationName}</h3>
+                                <p style="color: var(--text-light); font-size: 0.9rem;">
+                                    Coordinates: ${lat.toFixed(4)}, ${lng.toFixed(4)} • 
+                                    <button class="control-btn" onclick="refreshPrayerTimes()" style="padding: 0.3rem 0.8rem; font-size: 0.8rem;">
+                                        <i class="fas fa-sync-alt"></i> Refresh
+                                    </button>
+                                </p>
+                            `;
+                            
+                            // Load prayer times
+                            await fetchPrayerTimes(lat, lng);
+                        },
+                        async () => {
+                            // If location access is denied, use IP-based location
+                            await getLocationByIP();
+                        }
+                    );
+                } else {
+                    // Geolocation not supported
+                    await getLocationByIP();
+                }
+            } catch (error) {
+                document.getElementById('locationInfo').innerHTML = `
+                    <div style="text-align: center;">
+                        <h3>Unable to detect location</h3>
+                        <p>Please enable location access or check your connection.</p>
+                        <button class="control-btn" onclick="loadPrayerTimes()" style="margin-top: 0.5rem;">
+                            <i class="fas fa-sync-alt"></i> Try Again
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+        async function getLocationByIP() {
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                userLocation = { lat: data.latitude, lng: data.longitude };
+                
+                document.getElementById('locationInfo').innerHTML = `
+                    <h3 style="margin-bottom: 0.5rem;">📍 ${data.city}, ${data.country_name}</h3>
+                    <p style="color: var(--text-light); font-size: 0.9rem;">
+                        Detected by IP • 
+                        <button class="control-btn" onclick="refreshPrayerTimes()" style="padding: 0.3rem 0.8rem; font-size: 0.8rem;">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </p>
+                `;
+                
+                await fetchPrayerTimes(data.latitude, data.longitude);
+            } catch (error) {
+                document.getElementById('locationInfo').innerHTML = `
+                    <div style="text-align: center;">
+                        <h3>Location Detection Failed</h3>
+                        <p>Please check your internet connection.</p>
+                        <button class="control-btn" onclick="loadPrayerTimes()" style="margin-top: 0.5rem;">
+                            <i class="fas fa-sync-alt"></i> Try Again
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+        async function getLocationName(lat, lng) {
+            try {
+                const response = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`);
+                const data = await response.json();
+                return data.city ? `${data.city}, ${data.countryName}` : 'Your Location';
+            } catch (error) {
+                return 'Your Location';
+            }
+        }
+
+        async function fetchPrayerTimes(latitude, longitude) {
+            try {
+                const method = document.getElementById('calculationMethod')?.value || '2'; // Default to ISNA
+                const response = await fetch(`https://api.aladhan.com/v1/timings?latitude=${latitude}&longitude=${longitude}&method=${method}`);
+                const data = await response.json();
+                
+                if (data.code === 200) {
+                    prayerTimesData = data.data;
+                    displayPrayerTimes();
+                    startCountdown();
+                } else {
+                    throw new Error('Failed to fetch prayer times');
+                }
+            } catch (error) {
+                document.getElementById('prayerTimesContainer').innerHTML = `
+                    <div class="knowledge-card" style="grid-column: 1 / -1; text-align: center;">
+                        <h3>Error Loading Prayer Times</h3>
+                        <p>Please try again later.</p>
+                        <button class="control-btn" onclick="refreshPrayerTimes()" style="margin-top: 1rem;">
+                            <i class="fas fa-sync-alt"></i> Try Again
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+        function displayPrayerTimes() {
+            if (!prayerTimesData) return;
+            
+            const container = document.getElementById('prayerTimesContainer');
+            const timings = prayerTimesData.timings;
+            const date = prayerTimesData.date;
+            
+            const prayerTimes = [
+                { name: 'Fajr', time: timings.Fajr, icon: 'fas fa-moon', class: 'fajr' },
+                { name: 'Sunrise', time: timings.Sunrise, icon: 'fas fa-sun', class: 'sunrise' },
+                { name: 'Dhuhr', time: timings.Dhuhr, icon: 'fas fa-sun', class: 'dhuhr' },
+                { name: 'Asr', time: timings.Asr, icon: 'fas fa-cloud-sun', class: 'asr' },
+                { name: 'Maghrib', time: timings.Maghrib, icon: 'fas fa-sun', class: 'maghrib' },
+                { name: 'Isha', time: timings.Isha, icon: 'fas fa-moon', class: 'isha' }
+            ];
+            
+            let html = '';
+            prayerTimes.forEach(prayer => {
+                const isCurrent = isCurrentPrayer(prayer.name, prayer.time);
+                html += `
+                    <div class="prayer-card ${prayer.class} ${isCurrent ? 'current' : ''}">
+                        <div class="prayer-icon">
+                            <i class="${prayer.icon}"></i>
+                        </div>
+                        <h3 class="prayer-name">${prayer.name}</h3>
+                        <div class="prayer-time">${formatTime(prayer.time)}</div>
+                        ${isCurrent ? '<div class="prayer-next">Next Prayer</div>' : ''}
+                        ${isCurrent ? `<div class="countdown" id="countdown-${prayer.name}"></div>` : ''}
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+            
+            // Update location info with date
+            const locationElement = document.getElementById('locationInfo');
+            const currentHtml = locationElement.innerHTML;
+            locationElement.innerHTML = currentHtml.replace('</p>', ` • ${date.readable} | ${date.hijri.day} ${date.hijri.month.en} ${date.hijri.year}</p>`);
+        }
+
+        function isCurrentPrayer(prayerName, prayerTime) {
+            const now = new Date();
+            const currentTime = now.getHours() * 60 + now.getMinutes();
+            const prayerTimeMinutes = timeToMinutes(prayerTime);
+            
+            // For Fajr, it's current until Sunrise
+            if (prayerName === 'Fajr') {
+                const sunriseTime = timeToMinutes(prayerTimesData.timings.Sunrise);
+                return currentTime >= prayerTimeMinutes && currentTime < sunriseTime;
+            }
+            
+            // For other prayers, it's current until the next prayer
+            const prayers = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+            const currentIndex = prayers.indexOf(prayerName);
+            const nextPrayer = prayers[currentIndex + 1];
+            
+            if (nextPrayer) {
+                const nextPrayerTime = timeToMinutes(prayerTimesData.timings[nextPrayer]);
+                return currentTime >= prayerTimeMinutes && currentTime < nextPrayerTime;
+            }
+            
+            // Isha is current until next Fajr (next day)
+            if (prayerName === 'Isha') {
+                const nextFajr = timeToMinutes(prayerTimesData.timings.Fajr) + 24 * 60; // Next day
+                return currentTime >= prayerTimeMinutes || currentTime < nextFajr - 24 * 60;
+            }
+            
+            return false;
+        }
+
+        function timeToMinutes(timeStr) {
+            const [hours, minutes] = timeStr.split(':').map(Number);
+            return hours * 60 + minutes;
+        }
+
+        function formatTime(timeStr) {
+            const [hours, minutes] = timeStr.split(':');
+            const hour = parseInt(hours);
+            const ampm = hour >= 12 ? 'PM' : 'AM';
+            const formattedHour = hour % 12 || 12;
+            return `${formattedHour}:${minutes} ${ampm}`;
+        }
+
+        function startCountdown() {
+            if (countdownInterval) {
+                clearInterval(countdownInterval);
+            }
+            
+            countdownInterval = setInterval(() => {
+                const now = new Date();
+                const currentTime = now.getHours() * 60 + now.getMinutes();
+                
+                const prayers = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+                let nextPrayer = null;
+                let nextPrayerTime = null;
+                
+                // Find the next prayer
+                for (const prayer of prayers) {
+                    const prayerTime = timeToMinutes(prayerTimesData.timings[prayer]);
+                    if (prayerTime > currentTime) {
+                        nextPrayer = prayer;
+                        nextPrayerTime = prayerTime;
+                        break;
+                    }
+                }
+                
+                // If no prayer found today, use tomorrow's Fajr
+                if (!nextPrayer) {
+                    nextPrayer = 'Fajr';
+                    nextPrayerTime = timeToMinutes(prayerTimesData.timings.Fajr) + 24 * 60;
+                }
+                
+                // Calculate time difference
+                const timeDiff = nextPrayerTime - currentTime;
+                const hours = Math.floor(timeDiff / 60);
+                const minutes = timeDiff % 60;
+                
+                // Update countdown displays
+                document.querySelectorAll('.countdown').forEach(element => {
+                    element.textContent = `${hours}h ${minutes}m until ${nextPrayer}`;
+                });
+                
+                // Update current prayer highlighting
+                document.querySelectorAll('.prayer-card').forEach(card => {
+                    card.classList.remove('current');
+                    const prayerName = card.querySelector('.prayer-name').textContent;
+                    if (isCurrentPrayer(prayerName, prayerTimesData.timings[prayerName])) {
+                        card.classList.add('current');
+                    }
+                });
+                
+            }, 1000);
+        }
+
+        function refreshPrayerTimes() {
+            if (userLocation) {
+                fetchPrayerTimes(userLocation.lat, userLocation.lng);
+                showToast('Prayer times refreshed', 'success');
+            } else {
+                loadPrayerTimes();
+            }
+        }
+
         // Load and display duas
         function loadDuas() {
             const container = document.getElementById('duasContainer');
@@ -1396,10 +2058,10 @@
                                 <i class="fas fa-book"></i> Reference: ${dua.reference}
                             </div>
                             <div style="margin-top: 1rem; display: flex; gap: 0.5rem;">
-                                <button class="control-btn" onclick="copyToClipboard('${dua.arabic}')" style="padding: 0.5rem 1rem;">
+                                <button class="control-btn" onclick="copyToClipboard('${dua.arabic.replace(/'/g, "\\'")}')" style="padding: 0.5rem 1rem;">
                                     <i class="fas fa-copy"></i> Copy Arabic
                                 </button>
-                                <button class="control-btn" onclick="copyToClipboard('${dua.translation}')" style="padding: 0.5rem 1rem;">
+                                <button class="control-btn" onclick="copyToClipboard('${dua.translation.replace(/'/g, "\\'")}')" style="padding: 0.5rem 1rem;">
                                     <i class="fas fa-copy"></i> Copy Translation
                                 </button>
                             </div>
@@ -1427,77 +2089,94 @@
             });
         }
 
-        // Load prayer times
-        async function loadPrayerTimes() {
-            try {
-                // Get user's location
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(async position => {
-                        const lat = position.coords.latitude;
-                        const lng = position.coords.longitude;
-                        
-                        // Use a prayer times API (this is a placeholder - you'd need a real API)
-                        document.getElementById('prayerLocation').textContent = 'Your Location';
-                        document.getElementById('prayerTimes').innerHTML = `
-                            <div style="text-align: center; padding: 2rem;">
-                                <p>Prayer times feature requires a prayer times API integration.</p>
-                                <p>For accurate prayer times, please consult your local mosque or use a dedicated prayer times app.</p>
-                            </div>
-                        `;
-                    }, () => {
-                        // If location access is denied
-                        document.getElementById('prayerLocation').textContent = 'Default Location';
-                        document.getElementById('prayerTimes').innerHTML = `
-                            <div style="text-align: center; padding: 2rem;">
-                                <p>Location access denied. Using default location.</p>
-                                <p>For accurate prayer times, please enable location access or consult your local mosque.</p>
-                            </div>
-                        `;
-                    });
-                } else {
-                    document.getElementById('prayerLocation').textContent = 'Location Not Supported';
-                    document.getElementById('prayerTimes').innerHTML = `
-                        <div style="text-align: center; padding: 2rem;">
-                            <p>Geolocation is not supported by this browser.</p>
-                            <p>For accurate prayer times, please consult your local mosque.</p>
-                        </div>
-                    `;
-                }
-            } catch (error) {
-                document.getElementById('prayerLocation').textContent = 'Error';
-                document.getElementById('prayerTimes').innerHTML = `
-                    <div style="text-align: center; padding: 2rem;">
-                        <p>Error loading prayer times.</p>
-                        <p>Please try again later or consult your local mosque.</p>
-                    </div>
-                `;
-            }
+        // Settings functions
+        function toggleSettings() {
+            document.getElementById('settingsPanel').classList.toggle('open');
+        }
+
+        function loadSettings() {
+            const fontSize = localStorage.getItem('quranExplorerFontSize') || 'medium';
+            const arabicFont = localStorage.getItem('quranExplorerArabicFont') || 'Noto Naskh Arabic';
+            const calculationMethod = localStorage.getItem('quranExplorerCalculationMethod') || '2';
+            
+            document.getElementById('fontSize').value = fontSize;
+            document.getElementById('arabicFont').value = arabicFont;
+            document.getElementById('calculationMethod').value = calculationMethod;
+            
+            applyFontSize(fontSize);
+            applyArabicFont(arabicFont);
+        }
+
+        function applyFontSize(size) {
+            const sizes = {
+                'small': '0.9rem',
+                'medium': '1rem',
+                'large': '1.1rem',
+                'x-large': '1.2rem'
+            };
+            
+            document.body.style.fontSize = sizes[size];
+        }
+
+        function applyArabicFont(font) {
+            document.querySelectorAll('.ayah, .dua-arabic, .surah-name-arabic').forEach(el => {
+                el.style.fontFamily = font;
+            });
         }
 
         // Utility functions
         function toggleNightMode() {
             const isDark = document.body.classList.toggle('dark');
             localStorage.setItem('quranExplorerDark', isDark);
+            showToast(`Night mode ${isDark ? 'enabled' : 'disabled'}`, 'success');
         }
 
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function toggleSettings() {
-            alert('Settings panel would open here in a full implementation.');
-        }
-
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text)
                 .then(() => {
-                    alert('Text copied to clipboard!');
+                    showToast('Text copied to clipboard!', 'success');
                 })
                 .catch(err => {
                     console.error('Failed to copy: ', err);
-                    alert('Failed to copy text');
+                    showToast('Failed to copy text', 'error');
                 });
         }
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            
+            toastMessage.textContent = message;
+            toast.className = `toast ${type}`;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Save settings when changed
+        document.getElementById('fontSize').addEventListener('change', function() {
+            localStorage.setItem('quranExplorerFontSize', this.value);
+            applyFontSize(this.value);
+        });
+
+        document.getElementById('arabicFont').addEventListener('change', function() {
+            localStorage.setItem('quranExplorerArabicFont', this.value);
+            applyArabicFont(this.value);
+        });
+
+        document.getElementById('calculationMethod').addEventListener('change', function() {
+            localStorage.setItem('quranExplorerCalculationMethod', this.value);
+            if (userLocation) {
+                fetchPrayerTimes(userLocation.lat, userLocation.lng);
+                showToast('Prayer calculation method updated', 'success');
+            }
+        });
     </script>
 </body>
 </html>
