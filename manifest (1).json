@@ -1,0 +1,25 @@
+{
+  "background_color": "#ffffff",
+  "description": "Complete Quran Explorer - Read, listen, and understand the Holy Quran with translations, tafsir, recitations, daily prayers, Islamic knowledge, and accurate prayer times.",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "ibrahimismail14.github",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "ibrahimismail14.github",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "shortcuts": [
+    {
+      "name": "HOLYQURAN",
+      "url": "",
+      "description": ""
+    }
+  ],
+  "categories": [
+    "books",
+    "lifestyle",
+    "personalization",
+    "social"
+  ]
+}
