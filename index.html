@@ -46,6 +46,9 @@
             --asr: #0ea5e9;
             --maghrib: #d97706;
             --isha: #7c3aed;
+            --gradient-primary: linear-gradient(135deg, #0d9488 0%, #0891b2 100%);
+            --gradient-gold: linear-gradient(135deg, #d4af37 0%, #f0e6c2 100%);
+            --gradient-accent: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
         }
 
         * {
@@ -101,7 +104,7 @@
         }
 
         header {
-            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            background: var(--gradient-primary);
             color: white;
             padding: 1.5rem 1rem;
             text-align: center;
@@ -197,7 +200,7 @@
 
         .nav-btn {
             padding: 0.8rem 1.5rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: var(--gradient-primary);
             color: white;
             border: none;
             cursor: pointer;
@@ -238,7 +241,7 @@
         .section-header {
             text-align: center;
             margin-bottom: 2.5rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            background: var(--gradient-primary);
             color: white;
             padding: 2rem;
             border-radius: 20px;
@@ -300,7 +303,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
+            background: var(--gradient-primary);
             opacity: 0.8;
         }
 
@@ -308,7 +311,7 @@
             position: absolute;
             top: 1rem;
             left: 1rem;
-            background: linear-gradient(135deg, var(--gold) 0%, #b8860b 100%);
+            background: var(--gradient-gold);
             color: white;
             width: 40px;
             height: 40px;
@@ -385,7 +388,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
+            background: var(--gradient-primary);
             opacity: 0.8;
         }
 
@@ -393,7 +396,7 @@
             position: absolute;
             top: 1.5rem;
             left: 1.5rem;
-            background: linear-gradient(135deg, var(--gold) 0%, #b8860b 100%);
+            background: var(--gradient-gold);
             color: white;
             width: 40px;
             height: 40px;
@@ -629,7 +632,7 @@
         }
         
         .tafsir-header {
-            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            background: var(--gradient-primary);
             color: white;
             padding: 1rem 1.5rem;
             font-weight: 600;
@@ -836,7 +839,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, var(--gold), var(--light-gold));
+            background: var(--gradient-gold);
             opacity: 0.8;
         }
         
@@ -956,7 +959,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, var(--accent), #a78bfa);
+            background: var(--gradient-accent);
             opacity: 0.8;
         }
         
@@ -1061,7 +1064,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
+            background: var(--gradient-primary);
             opacity: 0.8;
         }
 
@@ -1243,7 +1246,7 @@
             right: 2rem;
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            background: var(--gradient-primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -1312,6 +1315,89 @@
 
         .toast.success {
             border-left: 4px solid var(--success);
+        }
+
+        /* New Features */
+        .feature-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: var(--card-light);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .dark .feature-card {
+            background: var(--card-dark);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+
+        .dark .feature-title {
+            color: var(--primary-light);
+        }
+
+        .feature-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: var(--card-light);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .dark .stat-card {
+            background: var(--card-dark);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-light);
         }
 
         /* Responsive Design */
@@ -1590,6 +1676,56 @@
             <p>Learn about Islam, pillars, history and teachings</p>
         </div>
 
+        <div class="feature-highlights">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-mosque"></i>
+                </div>
+                <h3 class="feature-title">Five Pillars</h3>
+                <p class="feature-desc">Foundation of Islamic faith and practice</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-star-and-crescent"></i>
+                </div>
+                <h3 class="feature-title">Articles of Faith</h3>
+                <p class="feature-desc">Core beliefs in Islam</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-history"></i>
+                </div>
+                <h3 class="feature-title">Islamic History</h3>
+                <p class="feature-desc">Rich heritage and civilization</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <h3 class="feature-title">Islamic Law</h3>
+                <p class="feature-desc">Principles of Sharia and Fiqh</p>
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number">114</div>
+                <div class="stat-label">Surahs in Quran</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">6,236</div>
+                <div class="stat-label">Verses in Quran</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Daily Prayers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">99</div>
+                <div class="stat-label">Names of Allah</div>
+            </div>
+        </div>
+
         <div class="knowledge-grid">
             <div class="knowledge-card">
                 <div class="knowledge-icon">
@@ -1651,6 +1787,37 @@
         <div class="section-header">
             <h2>About Quran Explorer</h2>
             <p>Your comprehensive Islamic resource</p>
+        </div>
+
+        <div class="feature-highlights">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3 class="feature-title">Complete Quran</h3>
+                <p class="feature-desc">Full text with translations</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-headphones"></i>
+                </div>
+                <h3 class="feature-title">Audio Recitations</h3>
+                <p class="feature-desc">Multiple renowned reciters</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3 class="feature-title">Prayer Times</h3>
+                <p class="feature-desc">Accurate location-based times</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-hands-praying"></i>
+                </div>
+                <h3 class="feature-title">Daily Duas</h3>
+                <p class="feature-desc">Authentic supplications</p>
+            </div>
         </div>
 
         <div class="knowledge-card" style="max-width: 800px; margin: 0 auto;">
