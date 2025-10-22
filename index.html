@@ -1400,6 +1400,269 @@
             color: var(--text-light);
         }
 
+        /* NEW FEATURES STYLES */
+        
+        /* User Dashboard */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .dashboard-card {
+            background: var(--card-light);
+            border-radius: 18px;
+            padding: 1.8rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .dark .dashboard-card {
+            background: var(--card-dark);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .dashboard-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+            opacity: 0.8;
+        }
+        
+        .dashboard-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .dark .dashboard-title {
+            color: var(--primary-light);
+        }
+        
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+        
+        .progress-ring-circle {
+            transition: stroke-dashoffset 0.35s;
+            stroke: var(--primary);
+        }
+        
+        /* Word by Word */
+        .word-highlight {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-radius: 4px;
+            padding: 0 2px;
+        }
+        
+        .word-highlight:hover {
+            background-color: rgba(13, 148, 136, 0.1);
+        }
+        
+        .word-tooltip {
+            position: absolute;
+            background: var(--card-light);
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 0.8rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 100;
+            max-width: 300px;
+            font-size: 0.9rem;
+            display: none;
+        }
+        
+        .dark .word-tooltip {
+            background: var(--card-dark);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Qibla Finder */
+        .qibla-container {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .compass {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+        
+        .compass-face {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, #f87171, #fb923c, #fbbf24, #a3e635, #4ade80, #22d3ee, #818cf8, #c084fc, #f87171);
+            position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .compass-needle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 4px;
+            height: 90px;
+            background: #dc2626;
+            border-radius: 2px;
+            transition: transform 0.5s ease;
+        }
+        
+        .compass-needle::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 15px solid #dc2626;
+        }
+        
+        .qibla-direction {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            color: var(--primary);
+        }
+        
+        /* Islamic Calendar */
+        .calendar-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+        }
+        
+        .calendar-day {
+            text-align: center;
+            padding: 0.8rem 0.5rem;
+            border-radius: 8px;
+            background: var(--card-light);
+            font-weight: 500;
+        }
+        
+        .dark .calendar-day {
+            background: var(--card-dark);
+        }
+        
+        .calendar-date {
+            text-align: center;
+            padding: 0.8rem 0.5rem;
+            border-radius: 8px;
+            background: var(--card-light);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .dark .calendar-date {
+            background: var(--card-dark);
+        }
+        
+        .calendar-date:hover {
+            background: rgba(13, 148, 136, 0.1);
+        }
+        
+        .calendar-date.today {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .calendar-date.hijri-date {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 0.3rem;
+        }
+        
+        /* Memorization Mode */
+        .memorization-container {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .memorization-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .memorization-text {
+            font-size: 2rem;
+            margin: 2rem 0;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-light);
+            border-radius: 18px;
+            padding: 2rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        }
+        
+        .dark .memorization-text {
+            background: var(--card-dark);
+        }
+        
+        .memorization-text.hidden {
+            color: transparent;
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        
+        /* Kids Mode */
+        .kids-mode .header-content h1 {
+            font-size: 2.2rem;
+        }
+        
+        .kids-mode .surah-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .kids-mode .feature-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .kids-mode .knowledge-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .dark .kids-mode .surah-card,
+        .dark .kids-mode .feature-card,
+        .dark .kids-mode .knowledge-card {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+        }
+        
         /* Responsive Design */
         @media (max-width: 768px) {
             h1 {
@@ -1454,6 +1717,14 @@
                 width: 100%;
                 right: -100%;
             }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .memorization-controls {
+                flex-wrap: wrap;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1493,6 +1764,11 @@
             .prayer-time {
                 font-size: 1.5rem;
             }
+            
+            .compass {
+                width: 150px;
+                height: 150px;
+            }
         }
     </style>
 </head>
@@ -1512,6 +1788,12 @@
                     <button class="control-btn" onclick="toggleSettings()">
                         <i class="fas fa-cog"></i> <span>Settings</span>
                     </button>
+                    <button class="control-btn" id="kidsModeToggle" onclick="toggleKidsMode()">
+                        <i class="fas fa-child"></i> <span>Kids Mode</span>
+                    </button>
+                    <button class="control-btn" id="userLoginBtn" onclick="toggleUserPanel()">
+                        <i class="fas fa-user"></i> <span>Account</span>
+                    </button>
                 </div>
             </div>
         </header>
@@ -1523,6 +1805,12 @@
             <button class="nav-btn" onclick="showSection('prayer-times')">
                 <i class="fas fa-clock"></i> Prayer Times
             </button>
+            <button class="nav-btn" onclick="showSection('qibla')">
+                <i class="fas fa-compass"></i> Qibla Finder
+            </button>
+            <button class="nav-btn" onclick="showSection('islamic-calendar')">
+                <i class="fas fa-calendar"></i> Islamic Calendar
+            </button>
             <button class="nav-btn" onclick="showSection('duas')">
                 <i class="fas fa-hands-praying"></i> Daily Duas
             </button>
@@ -1532,10 +1820,100 @@
             <button class="nav-btn" onclick="showSection('knowledge')">
                 <i class="fas fa-graduation-cap"></i> Islamic Knowledge
             </button>
+            <button class="nav-btn" onclick="showSection('dashboard')">
+                <i class="fas fa-tachometer-alt"></i> Dashboard
+            </button>
             <button class="nav-btn" onclick="showSection('about')">
                 <i class="fas fa-info-circle"></i> About
             </button>
         </nav>
+    </div>
+
+    <!-- User Panel -->
+    <div class="settings-panel" id="userPanel">
+        <div class="settings-header">
+            <h3>User Account</h3>
+            <button class="control-btn" onclick="toggleUserPanel()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div id="userLoginForm">
+            <div class="settings-option">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter your username">
+            </div>
+            
+            <div class="settings-option">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password">
+            </div>
+            
+            <button class="control-btn" style="width: 100%; margin-top: 1rem;" onclick="loginUser()">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </button>
+            
+            <p style="text-align: center; margin-top: 1rem; color: var(--text-light);">
+                Don't have an account? <a href="#" onclick="showRegisterForm()" style="color: var(--primary);">Register</a>
+            </p>
+        </div>
+        
+        <div id="userRegisterForm" style="display: none;">
+            <div class="settings-option">
+                <label for="regUsername">Username</label>
+                <input type="text" id="regUsername" placeholder="Choose a username">
+            </div>
+            
+            <div class="settings-option">
+                <label for="regEmail">Email</label>
+                <input type="email" id="regEmail" placeholder="Enter your email">
+            </div>
+            
+            <div class="settings-option">
+                <label for="regPassword">Password</label>
+                <input type="password" id="regPassword" placeholder="Create a password">
+            </div>
+            
+            <button class="control-btn" style="width: 100%; margin-top: 1rem;" onclick="registerUser()">
+                <i class="fas fa-user-plus"></i> Register
+            </button>
+            
+            <p style="text-align: center; margin-top: 1rem; color: var(--text-light);">
+                Already have an account? <a href="#" onclick="showLoginForm()" style="color: var(--primary);">Login</a>
+            </p>
+        </div>
+        
+        <div id="userProfile" style="display: none;">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div style="width: 80px; height: 80px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-size: 2rem;">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3 id="profileUsername">User</h3>
+                <p style="color: var(--text-light);" id="profileEmail">user@example.com</p>
+            </div>
+            
+            <div class="settings-option">
+                <h4>Reading Progress</h4>
+                <div style="display: flex; align-items: center; gap: 1rem; margin-top: 0.5rem;">
+                    <div style="flex: 1; height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden;">
+                        <div id="readingProgressBar" style="height: 100%; background: var(--primary); width: 25%;"></div>
+                    </div>
+                    <span id="readingProgressText">25%</span>
+                </div>
+            </div>
+            
+            <div class="settings-option">
+                <h4>Current Streak</h4>
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem;">
+                    <i class="fas fa-fire" style="color: #f59e0b;"></i>
+                    <span id="streakCount">7 days</span>
+                </div>
+            </div>
+            
+            <button class="control-btn" style="width: 100%; margin-top: 1rem;" onclick="logoutUser()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
     </div>
 
     <!-- Quran Section -->
@@ -1574,6 +1952,15 @@
                     <i class="fas fa-volume-up"></i>
                     <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="100">
                 </div>
+                
+                <div class="player-controls" style="background: transparent; border: none; padding: 0; gap: 0.5rem;">
+                    <button class="control-btn" onclick="toggleRepeatMode()" id="repeatBtn" style="padding: 0.5rem;">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                    <button class="control-btn" onclick="togglePlaybackSpeed()" id="speedBtn" style="padding: 0.5rem;">
+                        1x
+                    </button>
+                </div>
             </div>
             <audio id="globalAudio" preload="metadata"></audio>
         </div>
@@ -1587,6 +1974,12 @@
                 <option value="ar.abdulsamad">Abdul Samad</option>
                 <option value="ar.mahermuaiqly">Maher Al Muaiqly</option>
             </select>
+            <select class="search-input" id="translationSelector" style="max-width: 250px;">
+                <option value="en.asad">Muhammad Asad</option>
+                <option value="en.yusufali">Yusuf Ali</option>
+                <option value="en.pickthall">Pickthall</option>
+                <option value="en.sahih">Sahih International</option>
+            </select>
         </div>
 
         <div class="surah-grid" id="surahGrid">
@@ -1595,6 +1988,44 @@
 
         <div id="surahDetail" style="display: none;">
             <!-- Detailed surah view will be loaded here -->
+        </div>
+        
+        <div id="memorizationMode" style="display: none;">
+            <div class="section-header">
+                <h2>Memorization Mode</h2>
+                <p>Practice and test your memorization of the Quran</p>
+            </div>
+            
+            <div class="memorization-container">
+                <div class="memorization-controls">
+                    <button class="control-btn" onclick="startMemorization()">
+                        <i class="fas fa-play"></i> Start
+                    </button>
+                    <button class="control-btn" onclick="toggleTextVisibility()">
+                        <i class="fas fa-eye"></i> Show/Hide
+                    </button>
+                    <button class="control-btn" onclick="previousAyahMemorization()">
+                        <i class="fas fa-step-backward"></i> Previous
+                    </button>
+                    <button class="control-btn" onclick="nextAyahMemorization()">
+                        <i class="fas fa-step-forward"></i> Next
+                    </button>
+                    <button class="control-btn" onclick="exitMemorizationMode()">
+                        <i class="fas fa-times"></i> Exit
+                    </button>
+                </div>
+                
+                <div class="memorization-text" id="memorizationText">
+                    Select a verse to start memorization
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress" id="memorizationProgress" style="width: 0%;"></div>
+                    </div>
+                    <div class="time-display" id="memorizationProgressText">0/0</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1633,6 +2064,63 @@
                 <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-light);">
                     <i class="fas fa-info-circle"></i> For the most accurate prayer times, especially for Fajr and Isha, please consult your local mosque.
                 </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Qibla Finder Section -->
+    <section id="qibla" class="content-section">
+        <div class="section-header">
+            <h2>Qibla Finder</h2>
+            <p>Find the direction to the Kaaba in Mecca</p>
+        </div>
+
+        <div class="qibla-container">
+            <div class="compass">
+                <div class="compass-face">
+                    <div class="compass-needle" id="compassNeedle"></div>
+                </div>
+            </div>
+            <div class="qibla-direction" id="qiblaDirection">
+                Calculating...
+            </div>
+            <p style="margin-top: 1rem; color: var(--text-light);">
+                Point your device towards the Kaaba. Make sure location services are enabled.
+            </p>
+            
+            <button class="control-btn" onclick="startCompass()" style="margin-top: 2rem;">
+                <i class="fas fa-sync-alt"></i> Start Compass
+            </button>
+        </div>
+    </section>
+
+    <!-- Islamic Calendar Section -->
+    <section id="islamic-calendar" class="content-section">
+        <div class="section-header">
+            <h2>Islamic Calendar</h2>
+            <p>Hijri dates and important Islamic events</p>
+        </div>
+
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <button class="control-btn" onclick="changeCalendarMonth(-1)">
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <h3 id="calendarMonthYear">Month Year</h3>
+                <button class="control-btn" onclick="changeCalendarMonth(1)">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <div class="calendar-grid" id="calendarGrid">
+                <!-- Calendar will be generated here -->
+            </div>
+            
+            <div class="knowledge-card" style="margin-top: 2rem;">
+                <h3 class="knowledge-title">Important Dates</h3>
+                <div class="knowledge-content" id="importantDates">
+                    <!-- Important dates will be loaded here -->
+                </div>
             </div>
         </div>
     </section>
@@ -1779,6 +2267,154 @@
                     <p>Understand the principles of Sharia law, Islamic jurisprudence (Fiqh), and the ethical framework that guides Muslim life. Learn about halal and haram, business ethics, family law, social responsibilities, and the objectives of Islamic law (Maqasid al-Shariah).</p>
                 </div>
             </div>
+            
+            <div class="knowledge-card">
+                <div class="knowledge-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3 class="knowledge-title">99 Names of Allah</h3>
+                <div class="knowledge-content">
+                    <p>The 99 Names of Allah (Asma ul-Husna) are the beautiful names and attributes of God in Islam. Each name reflects a different aspect of Allah's perfection and majesty. Learning and reflecting on these names helps deepen one's understanding and connection with the Divine.</p>
+                    <button class="control-btn" onclick="showSection('names-of-allah')" style="margin-top: 1rem; width: 100%;">
+                        <i class="fas fa-star"></i> Explore the 99 Names
+                    </button>
+                </div>
+            </div>
+            
+            <div class="knowledge-card">
+                <div class="knowledge-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="knowledge-title">Stories of the Prophets</h3>
+                <div class="knowledge-content">
+                    <p>The Quran contains numerous stories of prophets sent by Allah to guide humanity. These stories provide valuable lessons about faith, patience, perseverance, and submission to God's will. From Adam to Muhammad (peace be upon them all), each prophet's story carries profound wisdom.</p>
+                    <button class="control-btn" onclick="showSection('prophet-stories')" style="margin-top: 1rem; width: 100%;">
+                        <i class="fas fa-book-open"></i> Read Prophet Stories
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Dashboard Section -->
+    <section id="dashboard" class="content-section">
+        <div class="section-header">
+            <h2>Your Dashboard</h2>
+            <p>Track your progress and personalized content</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="dashboard-card">
+                <div class="dashboard-title">
+                    <i class="fas fa-book-open"></i> Reading Progress
+                </div>
+                <div style="text-align: center; margin: 1.5rem 0;">
+                    <svg width="120" height="120" viewBox="0 0 120 120" class="progress-ring">
+                        <circle cx="60" cy="60" r="54" fill="transparent" stroke="#e2e8f0" stroke-width="8"></circle>
+                        <circle cx="60" cy="60" r="54" fill="transparent" stroke="var(--primary)" stroke-width="8" stroke-dasharray="339.292" stroke-dashoffset="254.469" class="progress-ring-circle"></circle>
+                        <text x="60" y="65" text-anchor="middle" fill="var(--primary)" font-size="16" font-weight="600">25%</text>
+                    </svg>
+                </div>
+                <p style="text-align: center; color: var(--text-light);">You've completed 285 out of 1140 pages</p>
+            </div>
+            
+            <div class="dashboard-card">
+                <div class="dashboard-title">
+                    <i class="fas fa-fire"></i> Current Streak
+                </div>
+                <div style="text-align: center; margin: 1.5rem 0;">
+                    <div style="font-size: 3rem; color: #f59e0b;">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--primary);">7 days</div>
+                </div>
+                <p style="text-align: center; color: var(--text-light);">Keep going! You're on a roll.</p>
+            </div>
+            
+            <div class="dashboard-card">
+                <div class="dashboard-title">
+                    <i class="fas fa-bookmark"></i> Bookmarks
+                </div>
+                <div style="margin: 1.5rem 0;">
+                    <div class="knowledge-list">
+                        <li><i class="fas fa-bookmark" style="color: var(--primary);"></i> Surah Al-Fatihah</li>
+                        <li><i class="fas fa-bookmark" style="color: var(--primary);"></i> Surah Al-Baqarah: 255</li>
+                        <li><i class="fas fa-bookmark" style="color: var(--primary);"></i> Surah Yaseen</li>
+                        <li><i class="fas fa-bookmark" style="color: var(--primary);"></i> Surah Ar-Rahman</li>
+                    </div>
+                </div>
+                <button class="control-btn" style="width: 100%;">
+                    <i class="fas fa-eye"></i> View All Bookmarks
+                </button>
+            </div>
+            
+            <div class="dashboard-card">
+                <div class="dashboard-title">
+                    <i class="fas fa-sticky-note"></i> Personal Notes
+                </div>
+                <div style="margin: 1.5rem 0;">
+                    <div class="knowledge-list">
+                        <li><i class="fas fa-sticky-note" style="color: var(--primary);"></i> Reflection on Surah Al-Kahf</li>
+                        <li><i class="fas fa-sticky-note" style="color: var(--primary);"></i> Questions about Zakat</li>
+                        <li><i class="fas fa-sticky-note" style="color: var(--primary);"></i> Ramadan preparation list</li>
+                    </div>
+                </div>
+                <button class="control-btn" style="width: 100%;">
+                    <i class="fas fa-plus"></i> Add New Note
+                </button>
+            </div>
+            
+            <div class="dashboard-card">
+                <div class="dashboard-title">
+                    <i class="fas fa-trophy"></i> Achievements
+                </div>
+                <div style="margin: 1.5rem 0;">
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        <div style="background: var(--primary); color: white; padding: 0.5rem; border-radius: 8px; font-size: 0.8rem;">
+                            <i class="fas fa-award"></i> First Reading
+                        </div>
+                        <div style="background: var(--primary); color: white; padding: 0.5rem; border-radius: 8px; font-size: 0.8rem;">
+                            <i class="fas fa-award"></i> 7-Day Streak
+                        </div>
+                        <div style="background: #e2e8f0; color: var(--text-light); padding: 0.5rem; border-radius: 8px; font-size: 0.8rem;">
+                            <i class="fas fa-award"></i> Quran Completer
+                        </div>
+                        <div style="background: #e2e8f0; color: var(--text-light); padding: 0.5rem; border-radius: 8px; font-size: 0.8rem;">
+                            <i class="fas fa-award"></i> Hadith Scholar
+                        </div>
+                    </div>
+                </div>
+                <p style="text-align: center; color: var(--text-light); font-size: 0.9rem;">2 of 12 achievements unlocked</p>
+            </div>
+            
+            <div class="dashboard-card">
+                <div class="dashboard-title">
+                    <i class="fas fa-bullseye"></i> Reading Goals
+                </div>
+                <div style="margin: 1.5rem 0;">
+                    <div style="margin-bottom: 1rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Daily Goal</span>
+                            <span>3/5 pages</span>
+                        </div>
+                        <div style="height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden;">
+                            <div style="height: 100%; background: var(--primary); width: 60%;"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Weekly Goal</span>
+                            <span>15/30 pages</span>
+                        </div>
+                        <div style="height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden;">
+                            <div style="height: 100%; background: var(--primary); width: 50%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <button class="control-btn" style="width: 100%;">
+                    <i class="fas fa-edit"></i> Edit Goals
+                </button>
+            </div>
         </div>
     </section>
 
@@ -1836,6 +2472,12 @@
                     <li><i class="fas fa-check"></i> Advanced audio playback controls</li>
                     <li><i class="fas fa-check"></i> Islamic knowledge and education</li>
                     <li><i class="fas fa-check"></i> User-friendly interface with dark mode</li>
+                    <li><i class="fas fa-check"></i> <strong>NEW:</strong> User accounts and progress tracking</li>
+                    <li><i class="fas fa-check"></i> <strong>NEW:</strong> Qibla finder with compass</li>
+                    <li><i class="fas fa-check"></i> <strong>NEW:</strong> Islamic calendar with important dates</li>
+                    <li><i class="fas fa-check"></i> <strong>NEW:</strong> Memorization mode for Quran revision</li>
+                    <li><i class="fas fa-check"></i> <strong>NEW:</strong> Kids mode with simplified interface</li>
+                    <li><i class="fas fa-check"></i> <strong>NEW:</strong> Word-by-word Quran analysis</li>
                 </ul>
 
                 <h4 style="margin-top: 1.5rem; color: var(--primary);">Data Sources</h4>
@@ -1895,6 +2537,22 @@
                 <option value="false" selected>No</option>
             </select>
         </div>
+        
+        <div class="settings-option">
+            <label for="wordByWord">Word-by-Word Translation</label>
+            <select id="wordByWord">
+                <option value="true">Enable</option>
+                <option value="false" selected>Disable</option>
+            </select>
+        </div>
+        
+        <div class="settings-option">
+            <label for="notifications">Prayer Time Notifications</label>
+            <select id="notifications">
+                <option value="true">Enable</option>
+                <option value="false" selected>Disable</option>
+            </select>
+        </div>
     </div>
 
     <!-- Toast Notification -->
@@ -1907,6 +2565,9 @@
         <i class="fas fa-arrow-up"></i>
     </div>
 
+    <!-- Word Tooltip -->
+    <div class="word-tooltip" id="wordTooltip"></div>
+
     <div class="footer">
         <p>Quran Explorer • Complete Islamic Resource • Made with ❤️ for the Ummah</p>
         <p>© 2023 Quran Explorer Project • Data from AlQuran Cloud API & Aladhan API</p>
@@ -1917,14 +2578,44 @@
         let allSurahs = [];
         let currentSurah = null;
         let currentReciter = 'ar.alafasy';
+        let currentTranslation = 'en.asad';
         let prayerTimesData = null;
         let countdownInterval = null;
         let userLocation = null;
+        let compassActive = false;
+        let currentCalendarMonth = new Date().getMonth();
+        let currentCalendarYear = new Date().getFullYear();
+        let kidsMode = false;
+        let repeatMode = false;
+        let playbackSpeed = 1;
+        let memorizationMode = false;
+        let memorizationCurrentAyah = 0;
+        let memorizationAyahs = [];
+        let textVisible = true;
         
         // Audio player variables
         let currentAyahIndex = 0;
         let isPlaying = false;
         let autoPlayNext = false;
+
+        // User data
+        let currentUser = null;
+        let userData = {
+            readingProgress: 25,
+            streak: 7,
+            bookmarks: [
+                { type: 'surah', id: 1, name: 'Surah Al-Fatihah' },
+                { type: 'ayah', id: 255, surah: 2, name: 'Surah Al-Baqarah: 255' },
+                { type: 'surah', id: 36, name: 'Surah Yaseen' },
+                { type: 'surah', id: 55, name: 'Surah Ar-Rahman' }
+            ],
+            notes: [
+                { title: 'Reflection on Surah Al-Kahf', content: 'Important lessons about faith and trials...' },
+                { title: 'Questions about Zakat', content: 'Need to research more about zakat calculations...' },
+                { title: 'Ramadan preparation list', content: 'Spiritual and physical preparation for Ramadan...' }
+            ],
+            achievements: ['first_reading', '7_day_streak']
+        };
 
         // Dua data - Expanded with more authentic duas
         const duas = [
@@ -2159,6 +2850,8 @@
             loadHadiths();
             loadPrayerTimes();
             setupAudioPlayer();
+            generateCalendar();
+            loadImportantDates();
             
             // Set up event listeners
             document.getElementById('surahSearch').addEventListener('input', filterSurahs);
@@ -2167,6 +2860,12 @@
             document.getElementById('reciterSelector').addEventListener('change', function() {
                 currentReciter = this.value;
             });
+            document.getElementById('translationSelector').addEventListener('change', function() {
+                currentTranslation = this.value;
+                if (currentSurah) {
+                    loadSurahDetail(currentSurah.number);
+                }
+            });
 
             // Load settings
             loadSettings();
@@ -2174,6 +2873,18 @@
             // Check for saved theme preference
             if (localStorage.getItem('quranExplorerDark') === 'true') {
                 document.body.classList.add('dark');
+            }
+            
+            // Check for kids mode
+            if (localStorage.getItem('quranExplorerKidsMode') === 'true') {
+                toggleKidsMode();
+            }
+            
+            // Check for user login
+            const savedUser = localStorage.getItem('quranExplorerUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                updateUserInterface();
             }
         });
 
@@ -2198,6 +2909,11 @@
             // If prayer times section is shown, refresh prayer times
             if (sectionId === 'prayer-times') {
                 refreshPrayerTimes();
+            }
+            
+            // If qibla section is shown, start compass if not already active
+            if (sectionId === 'qibla' && !compassActive) {
+                startCompass();
             }
         }
 
@@ -2234,8 +2950,15 @@
                         <span>${surah.revelationType}</span>
                         <span>${surah.numberOfAyahs} verses</span>
                     </div>
+                    <div style="margin-top: 1rem; display: flex; gap: 0.5rem;">
+                        <button class="control-btn" onclick="loadSurahDetail(${surah.number})" style="padding: 0.5rem 1rem;">
+                            <i class="fas fa-book-open"></i> Read
+                        </button>
+                        <button class="control-btn" onclick="startMemorizationForSurah(${surah.number})" style="padding: 0.5rem 1rem;">
+                            <i class="fas fa-brain"></i> Memorize
+                        </button>
+                    </div>
                 `;
-                card.addEventListener('click', () => loadSurahDetail(surah.number));
                 grid.appendChild(card);
             });
         }
@@ -2254,13 +2977,14 @@
         async function loadSurahDetail(surahNumber) {
             try {
                 document.getElementById('surahGrid').style.display = 'none';
+                document.getElementById('memorizationMode').style.display = 'none';
                 const detailContainer = document.getElementById('surahDetail');
                 detailContainer.style.display = 'block';
                 detailContainer.innerHTML = '<div class="loading">Loading surah... <span class="loading-spinner"></span></div>';
                 
                 const [arabicResponse, translationResponse] = await Promise.all([
                     fetch(`https://api.alquran.cloud/v1/surah/${surahNumber}`),
-                    fetch(`https://api.alquran.cloud/v1/surah/${surahNumber}/en.asad`)
+                    fetch(`https://api.alquran.cloud/v1/surah/${surahNumber}/${currentTranslation}`)
                 ]);
                 
                 const arabicData = await arabicResponse.json();
@@ -2273,9 +2997,17 @@
                     <div class="section-header">
                         <h2>${surah.englishName} (${surah.name})</h2>
                         <p>${surah.englishNameTranslation} • ${surah.revelationType} • ${surah.numberOfAyahs} verses</p>
-                        <button class="control-btn" onclick="backToSurahList()" style="margin-top: 1rem;">
-                            <i class="fas fa-arrow-left"></i> Back to Surah List
-                        </button>
+                        <div style="display: flex; gap: 0.5rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap;">
+                            <button class="control-btn" onclick="backToSurahList()">
+                                <i class="fas fa-arrow-left"></i> Back to Surah List
+                            </button>
+                            <button class="control-btn" onclick="startMemorizationForSurah(${surah.number})">
+                                <i class="fas fa-brain"></i> Memorization Mode
+                            </button>
+                            <button class="control-btn" onclick="toggleWordByWord()" id="wordByWordBtn">
+                                <i class="fas fa-language"></i> Word-by-Word
+                            </button>
+                        </div>
                     </div>
                 `;
                 
@@ -2286,7 +3018,7 @@
                     html += `
                         <div class="ayah-card">
                             <div class="ayah-number">${ayah.numberInSurah}</div>
-                            <div class="ayah">${ayah.text}</div>
+                            <div class="ayah" id="ayah-${i}">${ayah.text}</div>
                             <div class="translation">${translation}</div>
                             
                             <div class="audio-player-container">
@@ -2298,6 +3030,9 @@
                                         <div class="player-surah">${surah.englishName}</div>
                                         <div class="player-ayah">Ayah ${ayah.numberInSurah}</div>
                                     </div>
+                                    <button class="control-btn" onclick="bookmarkAyah(${surah.number}, ${ayah.numberInSurah})" style="padding: 0.5rem;">
+                                        <i class="fas fa-bookmark"></i>
+                                    </button>
                                 </div>
                                 <audio id="audio-${i}" preload="metadata">
                                     <source src="https://cdn.islamic.network/quran/audio/128/${currentReciter}/${ayah.number}.mp3">
@@ -2324,6 +3059,11 @@
                     loadTafsir(surah.ayahs[i].number);
                 }
                 
+                // Setup word-by-word if enabled
+                if (localStorage.getItem('quranExplorerWordByWord') === 'true') {
+                    enableWordByWord();
+                }
+                
             } catch (error) {
                 document.getElementById('surahDetail').innerHTML = `
                     <div class="knowledge-card" style="text-align: center;">
@@ -2339,6 +3079,7 @@
 
         function backToSurahList() {
             document.getElementById('surahDetail').style.display = 'none';
+            document.getElementById('memorizationMode').style.display = 'none';
             document.getElementById('surahGrid').style.display = 'grid';
             stopPlayback();
         }
@@ -2401,7 +3142,10 @@
             
             // Handle audio ended event
             audio.addEventListener('ended', function() {
-                if (autoPlayNext && currentSurah && currentAyahIndex < currentSurah.ayahs.length - 1) {
+                if (repeatMode) {
+                    audio.currentTime = 0;
+                    audio.play();
+                } else if (autoPlayNext && currentSurah && currentAyahIndex < currentSurah.ayahs.length - 1) {
                     playNextAyah();
                 } else {
                     isPlaying = false;
@@ -2441,6 +3185,7 @@
             
             // Set audio source
             audio.src = `https://cdn.islamic.network/quran/audio/128/${currentReciter}/${ayah.number}.mp3`;
+            audio.playbackRate = playbackSpeed;
             
             // Show global player
             document.getElementById('globalPlayer').style.display = 'block';
@@ -2502,6 +3247,32 @@
             isPlaying = false;
             updatePlayPauseButton();
             document.getElementById('globalPlayer').style.display = 'none';
+        }
+        
+        function toggleRepeatMode() {
+            repeatMode = !repeatMode;
+            const button = document.getElementById('repeatBtn');
+            if (repeatMode) {
+                button.style.background = 'var(--primary)';
+                showToast('Repeat mode enabled', 'success');
+            } else {
+                button.style.background = '';
+                showToast('Repeat mode disabled', 'success');
+            }
+        }
+        
+        function togglePlaybackSpeed() {
+            const speeds = [0.5, 0.75, 1, 1.25, 1.5, 2];
+            const currentIndex = speeds.indexOf(playbackSpeed);
+            playbackSpeed = speeds[(currentIndex + 1) % speeds.length];
+            
+            const audio = document.getElementById('globalAudio');
+            audio.playbackRate = playbackSpeed;
+            
+            const button = document.getElementById('speedBtn');
+            button.textContent = `${playbackSpeed}x`;
+            
+            showToast(`Playback speed: ${playbackSpeed}x`, 'success');
         }
 
         // PRAYER TIMES IMPLEMENTATION
@@ -2761,6 +3532,460 @@
             }
         }
 
+        // QIBLA FINDER IMPLEMENTATION
+        function startCompass() {
+            if (!userLocation) {
+                showToast('Please enable location services first', 'error');
+                return;
+            }
+            
+            if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+                // iOS 13+ devices
+                DeviceOrientationEvent.requestPermission()
+                    .then(permissionState => {
+                        if (permissionState === 'granted') {
+                            initCompass();
+                        } else {
+                            showToast('Compass permission denied', 'error');
+                        }
+                    })
+                    .catch(console.error);
+            } else {
+                // Non-iOS devices
+                initCompass();
+            }
+        }
+        
+        function initCompass() {
+            compassActive = true;
+            window.addEventListener('deviceorientation', handleCompass);
+            showToast('Compass activated. Point your device towards Mecca.', 'success');
+        }
+        
+        function handleCompass(event) {
+            if (!compassActive || !userLocation) return;
+            
+            // Calculate Qibla direction (simplified calculation)
+            // In a real app, you would use more precise formulas
+            const meccaLat = 21.4225;
+            const meccaLng = 39.8262;
+            
+            const phiK = meccaLat * Math.PI / 180.0;
+            const lambdaK = meccaLng * Math.PI / 180.0;
+            const phi = userLocation.lat * Math.PI / 180.0;
+            const lambda = userLocation.lng * Math.PI / 180.0;
+            
+            const qiblaDirection = Math.atan2(
+                Math.sin(lambdaK - lambda),
+                Math.cos(phi) * Math.tan(phiK) - Math.sin(phi) * Math.cos(lambdaK - lambda)
+            ) * 180 / Math.PI;
+            
+            // Adjust for device orientation
+            let direction = 0;
+            if (event.alpha !== null) {
+                direction = event.alpha; // Compass direction in degrees
+            }
+            
+            // Calculate the angle to rotate the needle
+            const needleAngle = (360 - direction + qiblaDirection + 360) % 360;
+            
+            // Update compass needle
+            const needle = document.getElementById('compassNeedle');
+            needle.style.transform = `translate(-50%, -50%) rotate(${needleAngle}deg)`;
+            
+            // Update direction text
+            const directionElement = document.getElementById('qiblaDirection');
+            directionElement.textContent = `Qibla Direction: ${Math.round(qiblaDirection)}°`;
+        }
+
+        // ISLAMIC CALENDAR IMPLEMENTATION
+        function generateCalendar() {
+            const calendarGrid = document.getElementById('calendarGrid');
+            const monthYearElement = document.getElementById('calendarMonthYear');
+            
+            // Get first day of month and number of days
+            const firstDay = new Date(currentCalendarYear, currentCalendarMonth, 1).getDay();
+            const daysInMonth = new Date(currentCalendarYear, currentCalendarMonth + 1, 0).getDate();
+            
+            // Month names
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                'July', 'August', 'September', 'October', 'November', 'December'];
+            
+            // Update month/year display
+            monthYearElement.textContent = `${monthNames[currentCalendarMonth]} ${currentCalendarYear}`;
+            
+            // Clear previous calendar
+            calendarGrid.innerHTML = '';
+            
+            // Add day headers
+            const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            dayNames.forEach(day => {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day';
+                dayElement.textContent = day;
+                calendarGrid.appendChild(dayElement);
+            });
+            
+            // Add empty cells for days before the first day of the month
+            for (let i = 0; i < firstDay; i++) {
+                const emptyElement = document.createElement('div');
+                emptyElement.className = 'calendar-date';
+                calendarGrid.appendChild(emptyElement);
+            }
+            
+            // Add days of the month
+            const today = new Date();
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateElement = document.createElement('div');
+                dateElement.className = 'calendar-date';
+                
+                // Check if this is today
+                if (day === today.getDate() && 
+                    currentCalendarMonth === today.getMonth() && 
+                    currentCalendarYear === today.getFullYear()) {
+                    dateElement.classList.add('today');
+                }
+                
+                dateElement.innerHTML = `
+                    <div>${day}</div>
+                    <div class="hijri-date">${getHijriDate(day, currentCalendarMonth, currentCalendarYear)}</div>
+                `;
+                
+                calendarGrid.appendChild(dateElement);
+            }
+        }
+        
+        function changeCalendarMonth(direction) {
+            currentCalendarMonth += direction;
+            
+            if (currentCalendarMonth > 11) {
+                currentCalendarMonth = 0;
+                currentCalendarYear++;
+            } else if (currentCalendarMonth < 0) {
+                currentCalendarMonth = 11;
+                currentCalendarYear--;
+            }
+            
+            generateCalendar();
+            loadImportantDates();
+        }
+        
+        function getHijriDate(day, month, year) {
+            // Simplified conversion - in a real app, you would use a proper conversion algorithm
+            // This is just a placeholder that shows approximate Hijri dates
+            const hijriMonths = ['Muharram', 'Safar', 'Rabi al-Awwal', 'Rabi al-Thani', 
+                'Jumada al-Awwal', 'Jumada al-Thani', 'Rajab', 'Sha\'ban', 
+                'Ramadan', 'Shawwal', 'Dhu al-Qi\'dah', 'Dhu al-Hijjah'];
+            
+            // Very simplified conversion (not accurate)
+            const hijriDay = day;
+            const hijriMonthIndex = month;
+            const hijriYear = year - 579; // Approximate difference
+            
+            return `${hijriDay} ${hijriMonths[hijriMonthIndex]}`;
+        }
+        
+        function loadImportantDates() {
+            const importantDatesElement = document.getElementById('importantDates');
+            
+            // Sample important dates - in a real app, you would fetch this data
+            const importantDates = [
+                { date: '1 Ramadan', event: 'Start of Ramadan' },
+                { date: '27 Ramadan', event: 'Laylat al-Qadr' },
+                { date: '1 Shawwal', event: 'Eid al-Fitr' },
+                { date: '10 Dhu al-Hijjah', event: 'Eid al-Adha' },
+                { date: '12 Rabi al-Awwal', event: 'Mawlid al-Nabi' }
+            ];
+            
+            let html = '<ul class="knowledge-list">';
+            importantDates.forEach(item => {
+                html += `<li><i class="fas fa-star" style="color: var(--gold);"></i> <strong>${item.date}:</strong> ${item.event}</li>`;
+            });
+            html += '</ul>';
+            
+            importantDatesElement.innerHTML = html;
+        }
+
+        // MEMORIZATION MODE FUNCTIONS
+        function startMemorizationForSurah(surahNumber) {
+            if (!currentSurah || currentSurah.number !== surahNumber) {
+                // Need to load the surah first
+                loadSurahDetail(surahNumber).then(() => {
+                    setTimeout(() => startMemorization(), 500);
+                });
+                return;
+            }
+            
+            startMemorization();
+        }
+        
+        function startMemorization() {
+            if (!currentSurah) return;
+            
+            memorizationMode = true;
+            memorizationCurrentAyah = 0;
+            memorizationAyahs = currentSurah.ayahs;
+            textVisible = true;
+            
+            document.getElementById('surahDetail').style.display = 'none';
+            document.getElementById('surahGrid').style.display = 'none';
+            document.getElementById('memorizationMode').style.display = 'block';
+            
+            updateMemorizationDisplay();
+        }
+        
+        function updateMemorizationDisplay() {
+            const textElement = document.getElementById('memorizationText');
+            const progressElement = document.getElementById('memorizationProgress');
+            const progressTextElement = document.getElementById('memorizationProgressText');
+            
+            if (memorizationCurrentAyah < memorizationAyahs.length) {
+                const ayah = memorizationAyahs[memorizationCurrentAyah];
+                textElement.textContent = ayah.text;
+                textElement.className = `memorization-text ${textVisible ? '' : 'hidden'}`;
+                
+                const progress = ((memorizationCurrentAyah + 1) / memorizationAyahs.length) * 100;
+                progressElement.style.width = `${progress}%`;
+                progressTextElement.textContent = `${memorizationCurrentAyah + 1}/${memorizationAyahs.length}`;
+            } else {
+                textElement.textContent = 'Congratulations! You have completed memorizing this section.';
+                textElement.className = 'memorization-text';
+                progressElement.style.width = '100%';
+                progressTextElement.textContent = 'Complete!';
+            }
+        }
+        
+        function toggleTextVisibility() {
+            textVisible = !textVisible;
+            updateMemorizationDisplay();
+        }
+        
+        function nextAyahMemorization() {
+            if (memorizationCurrentAyah < memorizationAyahs.length - 1) {
+                memorizationCurrentAyah++;
+                textVisible = true;
+                updateMemorizationDisplay();
+            }
+        }
+        
+        function previousAyahMemorization() {
+            if (memorizationCurrentAyah > 0) {
+                memorizationCurrentAyah--;
+                textVisible = true;
+                updateMemorizationDisplay();
+            }
+        }
+        
+        function exitMemorizationMode() {
+            memorizationMode = false;
+            document.getElementById('memorizationMode').style.display = 'none';
+            document.getElementById('surahDetail').style.display = 'block';
+        }
+
+        // WORD-BY-WORD FEATURE
+        function toggleWordByWord() {
+            const enabled = localStorage.getItem('quranExplorerWordByWord') === 'true';
+            
+            if (enabled) {
+                disableWordByWord();
+                localStorage.setItem('quranExplorerWordByWord', 'false');
+                showToast('Word-by-word translation disabled', 'success');
+            } else {
+                enableWordByWord();
+                localStorage.setItem('quranExplorerWordByWord', 'true');
+                showToast('Word-by-word translation enabled', 'success');
+            }
+        }
+        
+        function enableWordByWord() {
+            if (!currentSurah) return;
+            
+            // This is a simplified implementation
+            // In a real app, you would fetch word-by-word data from an API
+            const ayahElements = document.querySelectorAll('.ayah');
+            
+            ayahElements.forEach((ayahElement, index) => {
+                const words = ayahElement.textContent.split(' ');
+                let newHTML = '';
+                
+                words.forEach(word => {
+                    newHTML += `<span class="word-highlight" data-word="${word}">${word} </span>`;
+                });
+                
+                ayahElement.innerHTML = newHTML;
+                
+                // Add event listeners for word tooltips
+                const wordElements = ayahElement.querySelectorAll('.word-highlight');
+                wordElements.forEach(wordElement => {
+                    wordElement.addEventListener('mouseenter', showWordTooltip);
+                    wordElement.addEventListener('mouseleave', hideWordTooltip);
+                });
+            });
+        }
+        
+        function disableWordByWord() {
+            if (!currentSurah) return;
+            
+            const ayahElements = document.querySelectorAll('.ayah');
+            
+            ayahElements.forEach((ayahElement, index) => {
+                ayahElement.textContent = currentSurah.ayahs[index].text;
+            });
+        }
+        
+        function showWordTooltip(event) {
+            const word = event.target.getAttribute('data-word');
+            const tooltip = document.getElementById('wordTooltip');
+            
+            // Simplified translation - in a real app, you would fetch this from an API
+            const translations = {
+                'بِسْمِ': 'In the name of',
+                'اللَّهِ': 'Allah',
+                'الرَّحْمَٰنِ': 'the Most Gracious',
+                'الرَّحِيمِ': 'the Most Merciful'
+                // Add more translations as needed
+            };
+            
+            const translation = translations[word] || 'Translation not available';
+            
+            tooltip.innerHTML = `
+                <div><strong>${word}</strong></div>
+                <div>${translation}</div>
+            `;
+            
+            tooltip.style.display = 'block';
+            tooltip.style.left = `${event.pageX + 10}px`;
+            tooltip.style.top = `${event.pageY + 10}px`;
+        }
+        
+        function hideWordTooltip() {
+            const tooltip = document.getElementById('wordTooltip');
+            tooltip.style.display = 'none';
+        }
+
+        // KIDS MODE
+        function toggleKidsMode() {
+            kidsMode = !kidsMode;
+            document.body.classList.toggle('kids-mode');
+            
+            if (kidsMode) {
+                localStorage.setItem('quranExplorerKidsMode', 'true');
+                showToast('Kids mode enabled', 'success');
+            } else {
+                localStorage.setItem('quranExplorerKidsMode', 'false');
+                showToast('Kids mode disabled', 'success');
+            }
+        }
+
+        // USER ACCOUNT FUNCTIONS
+        function toggleUserPanel() {
+            document.getElementById('userPanel').classList.toggle('open');
+        }
+        
+        function showRegisterForm() {
+            document.getElementById('userLoginForm').style.display = 'none';
+            document.getElementById('userRegisterForm').style.display = 'block';
+        }
+        
+        function showLoginForm() {
+            document.getElementById('userRegisterForm').style.display = 'none';
+            document.getElementById('userLoginForm').style.display = 'block';
+        }
+        
+        function loginUser() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (!username || !password) {
+                showToast('Please enter username and password', 'error');
+                return;
+            }
+            
+            // In a real app, you would verify credentials with a server
+            // For this demo, we'll just create a user object
+            currentUser = {
+                username: username,
+                email: `${username}@example.com`
+            };
+            
+            localStorage.setItem('quranExplorerUser', JSON.stringify(currentUser));
+            updateUserInterface();
+            toggleUserPanel();
+            showToast(`Welcome back, ${username}!`, 'success');
+        }
+        
+        function registerUser() {
+            const username = document.getElementById('regUsername').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            
+            if (!username || !email || !password) {
+                showToast('Please fill all fields', 'error');
+                return;
+            }
+            
+            // In a real app, you would send this data to a server
+            currentUser = {
+                username: username,
+                email: email
+            };
+            
+            localStorage.setItem('quranExplorerUser', JSON.stringify(currentUser));
+            updateUserInterface();
+            toggleUserPanel();
+            showToast(`Account created for ${username}!`, 'success');
+        }
+        
+        function logoutUser() {
+            currentUser = null;
+            localStorage.removeItem('quranExplorerUser');
+            updateUserInterface();
+            toggleUserPanel();
+            showToast('You have been logged out', 'success');
+        }
+        
+        function updateUserInterface() {
+            const loginBtn = document.getElementById('userLoginBtn');
+            const profileSection = document.getElementById('userProfile');
+            const loginForm = document.getElementById('userLoginForm');
+            
+            if (currentUser) {
+                loginBtn.innerHTML = '<i class="fas fa-user"></i> <span>Account</span>';
+                profileSection.style.display = 'block';
+                loginForm.style.display = 'none';
+                
+                document.getElementById('profileUsername').textContent = currentUser.username;
+                document.getElementById('profileEmail').textContent = currentUser.email;
+                
+                // Update progress based on user data
+                document.getElementById('readingProgressBar').style.width = `${userData.readingProgress}%`;
+                document.getElementById('readingProgressText').textContent = `${userData.readingProgress}%`;
+                document.getElementById('streakCount').textContent = `${userData.streak} days`;
+            } else {
+                loginBtn.innerHTML = '<i class="fas fa-user"></i> <span>Login</span>';
+                profileSection.style.display = 'none';
+                loginForm.style.display = 'block';
+            }
+        }
+        
+        function bookmarkAyah(surahNumber, ayahNumber) {
+            if (!currentUser) {
+                showToast('Please login to use bookmarks', 'error');
+                return;
+            }
+            
+            // Add to bookmarks
+            const bookmark = {
+                type: 'ayah',
+                id: ayahNumber,
+                surah: surahNumber,
+                name: `Surah ${currentSurah.englishName}: ${ayahNumber}`
+            };
+            
+            userData.bookmarks.push(bookmark);
+            showToast('Ayah bookmarked', 'success');
+        }
+
         // Load and display duas
         function loadDuas() {
             const container = document.getElementById('duasContainer');
@@ -2881,11 +4106,13 @@
             const arabicFont = localStorage.getItem('quranExplorerArabicFont') || 'Noto Naskh Arabic';
             const calculationMethod = localStorage.getItem('quranExplorerCalculationMethod') || '2';
             autoPlayNext = localStorage.getItem('quranExplorerAutoPlay') === 'true';
+            const wordByWord = localStorage.getItem('quranExplorerWordByWord') === 'true';
             
             document.getElementById('fontSize').value = fontSize;
             document.getElementById('arabicFont').value = arabicFont;
             document.getElementById('calculationMethod').value = calculationMethod;
             document.getElementById('autoPlay').value = autoPlayNext ? 'true' : 'false';
+            document.getElementById('wordByWord').value = wordByWord ? 'true' : 'false';
             
             applyFontSize(fontSize);
             applyArabicFont(arabicFont);
@@ -2966,6 +4193,16 @@
             autoPlayNext = this.value === 'true';
             localStorage.setItem('quranExplorerAutoPlay', autoPlayNext);
             showToast(`Auto-play ${autoPlayNext ? 'enabled' : 'disabled'}`, 'success');
+        });
+
+        document.getElementById('wordByWord').addEventListener('change', function() {
+            localStorage.setItem('quranExplorerWordByWord', this.value);
+            if (this.value === 'true' && currentSurah) {
+                enableWordByWord();
+            } else if (currentSurah) {
+                disableWordByWord();
+            }
+            showToast(`Word-by-word ${this.value === 'true' ? 'enabled' : 'disabled'}`, 'success');
         });
     </script>
 </body>
