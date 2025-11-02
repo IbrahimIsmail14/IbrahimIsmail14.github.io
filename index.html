@@ -15,15 +15,15 @@
     <meta name="description" content="Complete Quran Explorer - Read, listen, and understand the Holy Quran with translations, tafsir, recitations, daily prayers, Islamic knowledge, and accurate prayer times.">
     <meta name="keywords" content="Quran, Islam, Muslim, Arabic, translation, tafsir, recitation, prayer times, salah, dua, Islamic knowledge">
     <title>Quran Explorer - Complete Islamic Resource: Quran, Tafsir, Prayers & Knowledge</title>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3006614855562533" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googletagmanager.com/pagead/js/adsbygoogle.js?client=ca-pub-3006614855562533" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&family=Amiri&family=Scheherazade&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #0d9488;
-            --primary-light: #14b8a6;
-            --primary-dark: #0f766e;
-            --secondary: #0891b2;
+            --primary: #1a5f7a;
+            --primary-light: #2d8faa;
+            --primary-dark: #0d4b63;
+            --secondary: #57cc99;
             --light: #f8fafc;
             --dark: #0f172a;
             --text-light: #64748b;
@@ -34,7 +34,7 @@
             --gold: #d4af37;
             --light-gold: #f0e6c2;
             --accent: #8b5cf6;
-            --play-btn: #10b981;
+            --play-btn: #38b2ac;
             --pause-btn: #f59e0b;
             --success: #059669;
             --warning: #d97706;
@@ -46,9 +46,11 @@
             --asr: #0ea5e9;
             --maghrib: #d97706;
             --isha: #7c3aed;
-            --gradient-primary: linear-gradient(135deg, #0d9488 0%, #0891b2 100%);
+            --gradient-primary: linear-gradient(135deg, #1a5f7a 0%, #57cc99 100%);
             --gradient-gold: linear-gradient(135deg, #d4af37 0%, #f0e6c2 100%);
             --gradient-accent: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+            --gradient-secondary: linear-gradient(135deg, #57cc99 0%, #80ed99 100%);
+            --gradient-hero: linear-gradient(135deg, #1a5f7a 0%, #22577a 50%, #38a3a5 100%);
         }
 
         * {
@@ -81,7 +83,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 10% 20%, rgba(13, 148, 136, 0.05) 0%, rgba(8, 145, 178, 0.05) 90%);
+            background: radial-gradient(circle at 10% 20%, rgba(26, 95, 122, 0.05) 0%, rgba(87, 204, 153, 0.05) 90%);
             z-index: -1;
         }
 
@@ -91,7 +93,7 @@
         }
 
         .dark::before {
-            background: radial-gradient(circle at 10% 20%, rgba(13, 148, 136, 0.1) 0%, rgba(8, 145, 178, 0.1) 90%);
+            background: radial-gradient(circle at 10% 20%, rgba(26, 95, 122, 0.1) 0%, rgba(87, 204, 153, 0.1) 90%);
         }
 
         /* Header & Navigation */
@@ -104,7 +106,7 @@
         }
 
         header {
-            background: var(--gradient-primary);
+            background: var(--gradient-hero);
             color: white;
             padding: 1.5rem 1rem;
             text-align: center;
@@ -245,7 +247,7 @@
             color: white;
             padding: 2rem;
             border-radius: 20px;
-            box-shadow: 0 12px 30px rgba(13, 148, 136, 0.3);
+            box-shadow: 0 12px 30px rgba(26, 95, 122, 0.3);
             position: relative;
             overflow: hidden;
         }
@@ -749,7 +751,7 @@
         }
 
         .prayer-next {
-            background: rgba(13, 148, 136, 0.1);
+            background: rgba(26, 95, 122, 0.1);
             padding: 0.5rem 1rem;
             border-radius: 50px;
             font-size: 0.9rem;
@@ -758,7 +760,7 @@
         }
 
         .dark .prayer-next {
-            background: rgba(13, 148, 136, 0.15);
+            background: rgba(26, 95, 122, 0.15);
             color: var(--primary-light);
         }
 
@@ -894,7 +896,7 @@
         .dua-reference {
             margin-top: 1.5rem;
             padding: 0.8rem;
-            background: rgba(13, 148, 136, 0.1);
+            background: rgba(26, 95, 122, 0.1);
             border-radius: 10px;
             font-size: 0.9rem;
             color: var(--primary-dark);
@@ -902,7 +904,7 @@
         }
         
         .dark .dua-reference {
-            background: rgba(13, 148, 136, 0.15);
+            background: rgba(26, 95, 122, 0.15);
             color: var(--primary-light);
             border-left-color: var(--primary-light);
         }
@@ -1152,7 +1154,7 @@
         .search-input:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.3);
+            box-shadow: 0 0 0 3px rgba(26, 95, 122, 0.3);
         }
 
         /* Settings Panel */
@@ -1233,7 +1235,7 @@
             display: inline-block;
             width: 1.2rem;
             height: 1.2rem;
-            border: 3px solid rgba(13, 148, 136, 0.3);
+            border: 3px solid rgba(26, 95, 122, 0.3);
             border-radius: 50%;
             border-top-color: var(--primary);
             animation: spin 1s linear infinite;
@@ -1470,7 +1472,7 @@
         }
         
         .word-highlight:hover {
-            background-color: rgba(13, 148, 136, 0.1);
+            background-color: rgba(26, 95, 122, 0.1);
         }
         
         .word-tooltip {
@@ -1590,7 +1592,7 @@
         }
         
         .calendar-date:hover {
-            background: rgba(13, 148, 136, 0.1);
+            background: rgba(26, 95, 122, 0.1);
         }
         
         .calendar-date.today {
@@ -1663,6 +1665,437 @@
             background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
         }
         
+        /* NEW: Names of Allah Section */
+        .names-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .name-card {
+            background: var(--card-light);
+            border-radius: 18px;
+            padding: 1.8rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .dark .name-card {
+            background: var(--card-dark);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .name-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .name-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-gold);
+            opacity: 0.8;
+        }
+        
+        .name-number {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--gradient-primary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            z-index: 2;
+        }
+        
+        .name-arabic {
+            font-family: 'Noto Naskh Arabic', serif;
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            direction: rtl;
+            color: var(--text-dark);
+        }
+        
+        .dark .name-arabic {
+            color: #e2e8f0;
+        }
+        
+        .name-transliteration {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+        
+        .dark .name-transliteration {
+            color: var(--primary-light);
+        }
+        
+        .name-meaning {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+        
+        /* NEW: Prophet Stories Section */
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .story-card {
+            background: var(--card-light);
+            border-radius: 18px;
+            padding: 1.8rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .dark .story-card {
+            background: var(--card-dark);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .story-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-secondary);
+            opacity: 0.8;
+        }
+        
+        .story-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .dark .story-title {
+            color: var(--primary-light);
+        }
+        
+        .story-title i {
+            color: var(--secondary);
+        }
+        
+        .story-content {
+            line-height: 1.7;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+        
+        .dark .story-content {
+            color: #e2e8f0;
+        }
+        
+        .story-reference {
+            margin-top: 1.5rem;
+            padding: 0.8rem;
+            background: rgba(87, 204, 153, 0.1);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            border-left: 3px solid var(--secondary);
+        }
+        
+        .dark .story-reference {
+            background: rgba(87, 204, 153, 0.15);
+            color: #80ed99;
+            border-left-color: #80ed99;
+        }
+        
+        /* NEW: Ramadan Section */
+        .ramadan-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .ramadan-card {
+            background: var(--card-light);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .dark .ramadan-card {
+            background: var(--card-dark);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .ramadan-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .ramadan-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .ramadan-label {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+        
+        /* NEW: Community Section */
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .community-card {
+            background: var(--card-light);
+            border-radius: 18px;
+            padding: 1.8rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .dark .community-card {
+            background: var(--card-dark);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .community-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .community-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+            opacity: 0.8;
+        }
+        
+        .community-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .community-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+        
+        .dark .community-title {
+            color: var(--primary-light);
+        }
+        
+        .community-desc {
+            line-height: 1.7;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* NEW: Quiz Section */
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .quiz-question {
+            background: var(--card-light);
+            border-radius: 18px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .dark .quiz-question {
+            background: var(--card-dark);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .quiz-option {
+            padding: 1rem 1.5rem;
+            background: #f8fafc;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .dark .quiz-option {
+            background: #1e293b;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .quiz-option:hover {
+            background: rgba(26, 95, 122, 0.1);
+        }
+        
+        .quiz-option.selected {
+            background: rgba(26, 95, 122, 0.2);
+            border-color: var(--primary);
+        }
+        
+        .quiz-option.correct {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: var(--success);
+        }
+        
+        .quiz-option.incorrect {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: var(--error);
+        }
+        
+        .quiz-progress {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .quiz-results {
+            text-align: center;
+            padding: 2rem;
+            background: var(--card-light);
+            border-radius: 18px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .dark .quiz-results {
+            background: var(--card-dark);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .quiz-score {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+        
+        /* NEW: Resources Section */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .resource-card {
+            background: var(--card-light);
+            border-radius: 18px;
+            padding: 1.8rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .dark .resource-card {
+            background: var(--card-dark);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .resource-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-accent);
+            opacity: 0.8;
+        }
+        
+        .resource-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .resource-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+        
+        .dark .resource-title {
+            color: var(--primary-light);
+        }
+        
+        .resource-desc {
+            line-height: 1.7;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+        
         /* Responsive Design */
         @media (max-width: 768px) {
             h1 {
@@ -1683,7 +2116,7 @@
                 font-size: 2rem;
             }
             
-            .surah-grid, .duas-container, .hadiths-container, .knowledge-grid, .prayer-times-container {
+            .surah-grid, .duas-container, .hadiths-container, .knowledge-grid, .prayer-times-container, .names-grid, .stories-grid, .community-grid, .resources-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -1725,6 +2158,10 @@
             .memorization-controls {
                 flex-wrap: wrap;
             }
+            
+            .ramadan-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 480px) {
@@ -1746,7 +2183,7 @@
                 padding: 0 1rem;
             }
             
-            .surah-card, .ayah-card, .dua-card, .hadith-card, .knowledge-card, .prayer-card {
+            .surah-card, .ayah-card, .dua-card, .hadith-card, .knowledge-card, .prayer-card, .name-card, .story-card, .community-card, .resource-card {
                 padding: 1.5rem 1.2rem;
             }
             
@@ -1768,6 +2205,10 @@
             .compass {
                 width: 150px;
                 height: 150px;
+            }
+            
+            .ramadan-stats {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -1819,6 +2260,24 @@
             </button>
             <button class="nav-btn" onclick="showSection('knowledge')">
                 <i class="fas fa-graduation-cap"></i> Islamic Knowledge
+            </button>
+            <button class="nav-btn" onclick="showSection('names-of-allah')">
+                <i class="fas fa-star"></i> 99 Names
+            </button>
+            <button class="nav-btn" onclick="showSection('prophet-stories')">
+                <i class="fas fa-book-open"></i> Prophet Stories
+            </button>
+            <button class="nav-btn" onclick="showSection('ramadan')">
+                <i class="fas fa-moon"></i> Ramadan
+            </button>
+            <button class="nav-btn" onclick="showSection('community')">
+                <i class="fas fa-users"></i> Community
+            </button>
+            <button class="nav-btn" onclick="showSection('quiz')">
+                <i class="fas fa-question-circle"></i> Islamic Quiz
+            </button>
+            <button class="nav-btn" onclick="showSection('resources')">
+                <i class="fas fa-link"></i> Resources
             </button>
             <button class="nav-btn" onclick="showSection('dashboard')">
                 <i class="fas fa-tachometer-alt"></i> Dashboard
@@ -2267,31 +2726,312 @@
                     <p>Understand the principles of Sharia law, Islamic jurisprudence (Fiqh), and the ethical framework that guides Muslim life. Learn about halal and haram, business ethics, family law, social responsibilities, and the objectives of Islamic law (Maqasid al-Shariah).</p>
                 </div>
             </div>
-            
-            <div class="knowledge-card">
-                <div class="knowledge-icon">
+        </div>
+    </section>
+
+    <!-- NEW: 99 Names of Allah Section -->
+    <section id="names-of-allah" class="content-section">
+        <div class="section-header">
+            <h2>The 99 Names of Allah</h2>
+            <p>Asma-ul-Husna - The Most Beautiful Names of God</p>
+        </div>
+
+        <div class="search-container">
+            <input type="text" class="search-input" id="namesSearch" placeholder="Search names of Allah...">
+        </div>
+
+        <div class="names-grid" id="namesGrid">
+            <!-- Names of Allah will be loaded here -->
+        </div>
+    </section>
+
+    <!-- NEW: Prophet Stories Section -->
+    <section id="prophet-stories" class="content-section">
+        <div class="section-header">
+            <h2>Stories of the Prophets</h2>
+            <p>Inspiring stories of the messengers of Allah</p>
+        </div>
+
+        <div class="search-container">
+            <input type="text" class="search-input" id="storiesSearch" placeholder="Search prophet stories...">
+        </div>
+
+        <div class="stories-grid" id="storiesGrid">
+            <!-- Prophet stories will be loaded here -->
+        </div>
+    </section>
+
+    <!-- NEW: Ramadan Section -->
+    <section id="ramadan" class="content-section">
+        <div class="section-header">
+            <h2>Ramadan Resources</h2>
+            <p>Special section for the blessed month of Ramadan</p>
+        </div>
+
+        <div class="ramadan-stats">
+            <div class="ramadan-card">
+                <div class="ramadan-icon">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="ramadan-number" id="ramadanCountdown">--</div>
+                <div class="ramadan-label">Days until Ramadan</div>
+            </div>
+            <div class="ramadan-card">
+                <div class="ramadan-icon">
                     <i class="fas fa-book"></i>
                 </div>
-                <h3 class="knowledge-title">99 Names of Allah</h3>
-                <div class="knowledge-content">
-                    <p>The 99 Names of Allah (Asma ul-Husna) are the beautiful names and attributes of God in Islam. Each name reflects a different aspect of Allah's perfection and majesty. Learning and reflecting on these names helps deepen one's understanding and connection with the Divine.</p>
-                    <button class="control-btn" onclick="showSection('names-of-allah')" style="margin-top: 1rem; width: 100%;">
-                        <i class="fas fa-star"></i> Explore the 99 Names
-                    </button>
-                </div>
+                <div class="ramadan-number">30</div>
+                <div class="ramadan-label">Days of Fasting</div>
             </div>
-            
+            <div class="ramadan-card">
+                <div class="ramadan-icon">
+                    <i class="fas fa-pray"></i>
+                </div>
+                <div class="ramadan-number">5</div>
+                <div class="ramadan-label">Daily Prayers</div>
+            </div>
+            <div class="ramadan-card">
+                <div class="ramadan-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="ramadan-number">1</div>
+                <div class="ramadan-label">Laylatul Qadr</div>
+            </div>
+        </div>
+
+        <div class="knowledge-grid">
             <div class="knowledge-card">
                 <div class="knowledge-icon">
+                    <i class="fas fa-sun"></i>
+                </div>
+                <h3 class="knowledge-title">Fasting Guidelines</h3>
+                <div class="knowledge-content">
+                    <p>Learn the proper way to observe fasting during Ramadan, including the timings, intentions, and actions that break or validate the fast.</p>
+                    <ul class="knowledge-list">
+                        <li><i class="fas fa-check"></i> Suhur - Pre-dawn meal</li>
+                        <li><i class="fas fa-check"></i> Iftar - Breaking the fast</li>
+                        <li><i class="fas fa-check"></i> Things that break the fast</li>
+                        <li><i class="fas fa-check"></i> Exemptions from fasting</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="knowledge-card">
+                <div class="knowledge-icon">
+                    <i class="fas fa-praying-hands"></i>
+                </div>
+                <h3 class="knowledge-title">Taraweeh Prayers</h3>
+                <div class="knowledge-content">
+                    <p>Special night prayers performed during Ramadan. Learn about their significance, how to perform them, and their spiritual benefits.</p>
+                    <ul class="knowledge-list">
+                        <li><i class="fas fa-check"></i> Significance of Taraweeh</li>
+                        <li><i class="fas fa-check"></i> Number of rak'ahs</li>
+                        <li><i class="fas fa-check"></i> Best time to pray</li>
+                        <li><i class="fas fa-check"></i> Completing the Quran</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="knowledge-card">
+                <div class="knowledge-icon">
+                    <i class="fas fa-hand-holding-heart"></i>
+                </div>
+                <h3 class="knowledge-title">Zakat & Charity</h3>
+                <div class="knowledge-content">
+                    <p>Ramadan is a time of increased charity and giving. Learn about Zakat al-Fitr and the rewards of charitable acts during this blessed month.</p>
+                    <ul class="knowledge-list">
+                        <li><i class="fas fa-check"></i> Zakat al-Fitr</li>
+                        <li><i class="fas fa-check"></i> Sadaqah in Ramadan</li>
+                        <li><i class="fas fa-check"></i> Iftar for others</li>
+                        <li><i class="fas fa-check"></i> Multiplying rewards</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="knowledge-card">
+                <div class="knowledge-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3 class="knowledge-title">Laylatul Qadr</h3>
+                <div class="knowledge-content">
+                    <p>The Night of Decree is better than a thousand months. Learn how to seek this blessed night and what deeds to perform during it.</p>
+                    <ul class="knowledge-list">
+                        <li><i class="fas fa-check"></i> Significance</li>
+                        <li><i class="fas fa-check"></i> When to expect it</li>
+                        <li><i class="fas fa-check"></i> Recommended prayers</li>
+                        <li><i class="fas fa-check"></i> Special duas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Community Section -->
+    <section id="community" class="content-section">
+        <div class="section-header">
+            <h2>Islamic Community</h2>
+            <p>Connect, learn and grow with fellow Muslims</p>
+        </div>
+
+        <div class="community-grid">
+            <div class="community-card">
+                <div class="community-icon">
                     <i class="fas fa-users"></i>
                 </div>
-                <h3 class="knowledge-title">Stories of the Prophets</h3>
-                <div class="knowledge-content">
-                    <p>The Quran contains numerous stories of prophets sent by Allah to guide humanity. These stories provide valuable lessons about faith, patience, perseverance, and submission to God's will. From Adam to Muhammad (peace be upon them all), each prophet's story carries profound wisdom.</p>
-                    <button class="control-btn" onclick="showSection('prophet-stories')" style="margin-top: 1rem; width: 100%;">
-                        <i class="fas fa-book-open"></i> Read Prophet Stories
-                    </button>
+                <h3 class="community-title">Discussion Forums</h3>
+                <p class="community-desc">Join discussions on various Islamic topics, ask questions, and share knowledge with the community.</p>
+                <button class="control-btn" style="width: 100%;">
+                    <i class="fas fa-comments"></i> Join Discussions
+                </button>
+            </div>
+
+            <div class="community-card">
+                <div class="community-icon">
+                    <i class="fas fa-calendar-check"></i>
                 </div>
+                <h3 class="community-title">Events & Activities</h3>
+                <p class="community-desc">Find Islamic events, lectures, and activities happening in your area or online.</p>
+                <button class="control-btn" style="width: 100%;">
+                    <i class="fas fa-search"></i> Find Events
+                </button>
+            </div>
+
+            <div class="community-card">
+                <div class="community-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <h3 class="community-title">Volunteer Opportunities</h3>
+                <p class="community-desc">Discover ways to serve the community through various volunteer initiatives and charitable projects.</p>
+                <button class="control-btn" style="width: 100%;">
+                    <i class="fas fa-hand-holding-heart"></i> Volunteer
+                </button>
+            </div>
+
+            <div class="community-card">
+                <div class="community-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 class="community-title">Study Groups</h3>
+                <p class="community-desc">Join or create study groups to learn Quran, Hadith, and Islamic sciences together.</p>
+                <button class="control-btn" style="width: 100%;">
+                    <i class="fas fa-book-open"></i> Join Study Group
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Islamic Quiz Section -->
+    <section id="quiz" class="content-section">
+        <div class="section-header">
+            <h2>Islamic Knowledge Quiz</h2>
+            <p>Test your knowledge of Islam with interactive quizzes</p>
+        </div>
+
+        <div class="quiz-container" id="quizContainer">
+            <div class="quiz-progress">
+                <div>Question <span id="currentQuestion">1</span> of <span id="totalQuestions">10</span></div>
+                <div>Score: <span id="quizScore">0</span></div>
+            </div>
+
+            <div class="quiz-question" id="quizQuestion">
+                <h3 id="questionText">Loading question...</h3>
+                <div class="quiz-options" id="quizOptions">
+                    <!-- Quiz options will be loaded here -->
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between;">
+                <button class="control-btn" id="prevQuestionBtn" onclick="previousQuestion()" disabled>
+                    <i class="fas fa-arrow-left"></i> Previous
+                </button>
+                <button class="control-btn" id="nextQuestionBtn" onclick="nextQuestion()">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <div class="quiz-results" id="quizResults" style="display: none;">
+                <h3>Quiz Completed!</h3>
+                <div class="quiz-score" id="finalScore">0/10</div>
+                <p id="resultMessage">Well done! You have a good understanding of Islamic knowledge.</p>
+                <button class="control-btn" onclick="restartQuiz()" style="margin-top: 1rem;">
+                    <i class="fas fa-redo"></i> Try Again
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Resources Section -->
+    <section id="resources" class="content-section">
+        <div class="section-header">
+            <h2>Islamic Resources</h2>
+            <p>Curated collection of authentic Islamic resources</p>
+        </div>
+
+        <div class="resources-grid">
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3 class="resource-title">Quran Translations</h3>
+                <p class="resource-desc">Access multiple translations of the Holy Quran in various languages to enhance your understanding.</p>
+                <button class="control-btn" style="width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-external-link-alt"></i> Explore Translations
+                </button>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-microphone"></i>
+                </div>
+                <h3 class="resource-title">Islamic Lectures</h3>
+                <p class="resource-desc">Listen to lectures from renowned scholars on various Islamic topics and issues.</p>
+                <button class="control-btn" style="width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-external-link-alt"></i> Browse Lectures
+                </button>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 class="resource-title">Online Courses</h3>
+                <p class="resource-desc">Enroll in structured online courses to systematically learn about Islam and its teachings.</p>
+                <button class="control-btn" style="width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-external-link-alt"></i> View Courses
+                </button>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-mosque"></i>
+                </div>
+                <h3 class="resource-title">Mosque Finder</h3>
+                <p class="resource-desc">Locate mosques and Islamic centers near you for prayers, events, and community activities.</p>
+                <button class="control-btn" style="width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-external-link-alt"></i> Find Mosques
+                </button>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <h3 class="resource-title">Charity Organizations</h3>
+                <p class="resource-desc">Discover reputable Islamic charity organizations to support worthy causes worldwide.</p>
+                <button class="control-btn" style="width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-external-link-alt"></i> Support Charities
+                </button>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-child"></i>
+                </div>
+                <h3 class="resource-title">Kids Resources</h3>
+                <p class="resource-desc">Find age-appropriate Islamic content, games, and activities for children.</p>
+                <button class="control-btn" style="width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-external-link-alt"></i> Explore Kids Content
+                </button>
             </div>
         </div>
     </section>
@@ -2472,6 +3212,12 @@
                     <li><i class="fas fa-check"></i> Advanced audio playback controls</li>
                     <li><i class="fas fa-check"></i> Islamic knowledge and education</li>
                     <li><i class="fas fa-check"></i> User-friendly interface with dark mode</li>
+                    <li><i class="fas fa-check"></i> <strong>NEW:</strong> 99 Names of Allah with meanings</li>
+                    <li><i class="fas fa-check"></i> <strong>NEW:</strong> Stories of the Prophets</li>
+                    <li><i class="fas fa-check"></i> <strong>NEW:</strong> Ramadan resources and countdown</li>
+                    <li><i class="fas fa-check"></i> <strong>NEW:</strong> Islamic community features</li>
+                    <li><i class="fas fa-check"></i> <strong>NEW:</strong> Interactive Islamic quiz</li>
+                    <li><i class="fas fa-check"></i> <strong>NEW:</strong> Curated Islamic resources</li>
                     <li><i class="fas fa-check"></i> <strong>NEW:</strong> User accounts and progress tracking</li>
                     <li><i class="fas fa-check"></i> <strong>NEW:</strong> Qibla finder with compass</li>
                     <li><i class="fas fa-check"></i> <strong>NEW:</strong> Islamic calendar with important dates</li>
@@ -2616,6 +3362,89 @@
             ],
             achievements: ['first_reading', '7_day_streak']
         };
+
+        // NEW: Names of Allah data
+        const namesOfAllah = [
+            { number: 1, arabic: "الرَّحْمَنُ", transliteration: "Ar-Rahman", meaning: "The Most Gracious" },
+            { number: 2, arabic: "الرَّحِيمُ", transliteration: "Ar-Rahim", meaning: "The Most Merciful" },
+            { number: 3, arabic: "الْمَلِكُ", transliteration: "Al-Malik", meaning: "The King" },
+            { number: 4, arabic: "الْقُدُّوسُ", transliteration: "Al-Quddus", meaning: "The Holy" },
+            { number: 5, arabic: "السَّلاَمُ", transliteration: "As-Salam", meaning: "The Source of Peace" },
+            { number: 6, arabic: "الْمُؤْمِنُ", transliteration: "Al-Mu'min", meaning: "The Guardian of Faith" },
+            { number: 7, arabic: "الْمُهَيْمِنُ", transliteration: "Al-Muhaymin", meaning: "The Protector" },
+            { number: 8, arabic: "الْعَزِيزُ", transliteration: "Al-Aziz", meaning: "The Mighty" },
+            { number: 9, arabic: "الْجَبَّارُ", transliteration: "Al-Jabbar", meaning: "The Compeller" },
+            { number: 10, arabic: "الْمُتَكَبِّرُ", transliteration: "Al-Mutakabbir", meaning: "The Supreme" }
+        ];
+
+        // NEW: Prophet Stories data
+        const prophetStories = [
+            {
+                id: 1,
+                title: "Prophet Adam (AS)",
+                content: "Adam was the first human and prophet created by Allah. He was created from clay and given knowledge of all things. He and his wife Hawwa (Eve) lived in Paradise but were tested by Shaytan and eventually sent to Earth as Allah's vicegerents.",
+                reference: "Quran 2:30-39"
+            },
+            {
+                id: 2,
+                title: "Prophet Nuh (AS)",
+                content: "Nuh preached to his people for 950 years, calling them to worship Allah alone. When they rejected him, Allah commanded him to build an ark. He and the believers were saved from the flood while the disbelievers perished.",
+                reference: "Quran 71:1-28"
+            },
+            {
+                id: 3,
+                title: "Prophet Ibrahim (AS)",
+                content: "Ibrahim was known as the friend of Allah. He rejected idol worship from a young age and was thrown into fire for his beliefs, but Allah saved him. He rebuilt the Kaaba with his son Ismail and was tested with the command to sacrifice his son.",
+                reference: "Quran 21:51-70"
+            },
+            {
+                id: 4,
+                title: "Prophet Musa (AS)",
+                content: "Musa was saved as a baby from Pharaoh's decree and raised in the palace. He later received revelation at Mount Sinai and was sent to free the Children of Israel from Pharaoh's oppression. He performed many miracles by Allah's permission.",
+                reference: "Quran 20:9-99"
+            },
+            {
+                id: 5,
+                title: "Prophet Isa (AS)",
+                content: "Isa was born miraculously to Maryam without a father. He spoke as a baby and performed miracles by Allah's permission, including healing the blind and raising the dead. He was raised to heaven and will return before the Day of Judgment.",
+                reference: "Quran 3:45-59"
+            },
+            {
+                id: 6,
+                title: "Prophet Muhammad (PBUH)",
+                content: "Muhammad is the final messenger of Allah. He received revelation at age 40 and spent 23 years delivering the message of Islam. Despite persecution, he established an Islamic state in Medina and returned to Mecca in victory, forgiving his former enemies.",
+                reference: "Quran 33:40"
+            }
+        ];
+
+        // NEW: Quiz questions
+        const quizQuestions = [
+            {
+                question: "How many pillars of Islam are there?",
+                options: ["3", "5", "7", "9"],
+                correctAnswer: 1
+            },
+            {
+                question: "Which surah is called the 'Heart of the Quran'?",
+                options: ["Surah Al-Fatihah", "Surah Al-Baqarah", "Surah Yaseen", "Surah Al-Ikhlas"],
+                correctAnswer: 2
+            },
+            {
+                question: "How many times do Muslims pray in a day?",
+                options: ["3", "5", "7", "9"],
+                correctAnswer: 1
+            },
+            {
+                question: "Which month is Ramadan?",
+                options: ["7th", "9th", "10th", "12th"],
+                correctAnswer: 1
+            },
+            {
+                question: "What is the first pillar of Islam?",
+                options: ["Salah", "Zakat", "Shahada", "Hajj"],
+                correctAnswer: 2
+            }
+        ];
 
         // Dua data - Expanded with more authentic duas
         const duas = [
@@ -2853,10 +3682,18 @@
             generateCalendar();
             loadImportantDates();
             
+            // NEW: Load additional sections
+            loadNamesOfAllah();
+            loadProphetStories();
+            setupRamadanCountdown();
+            setupQuiz();
+            
             // Set up event listeners
             document.getElementById('surahSearch').addEventListener('input', filterSurahs);
             document.getElementById('duaSearch').addEventListener('input', filterDuas);
             document.getElementById('hadithSearch').addEventListener('input', filterHadiths);
+            document.getElementById('namesSearch').addEventListener('input', filterNames);
+            document.getElementById('storiesSearch').addEventListener('input', filterStories);
             document.getElementById('reciterSelector').addEventListener('change', function() {
                 currentReciter = this.value;
             });
@@ -3986,6 +4823,218 @@
             showToast('Ayah bookmarked', 'success');
         }
 
+        // NEW: Load and display Names of Allah
+        function loadNamesOfAllah() {
+            const container = document.getElementById('namesGrid');
+            let html = '';
+            
+            namesOfAllah.forEach(name => {
+                html += `
+                    <div class="name-card">
+                        <div class="name-number">${name.number}</div>
+                        <div class="name-arabic">${name.arabic}</div>
+                        <div class="name-transliteration">${name.transliteration}</div>
+                        <div class="name-meaning">${name.meaning}</div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        function filterNames() {
+            const searchTerm = document.getElementById('namesSearch').value.toLowerCase();
+            const allNameCards = document.querySelectorAll('.name-card');
+            
+            allNameCards.forEach(card => {
+                const transliteration = card.querySelector('.name-transliteration').textContent.toLowerCase();
+                const meaning = card.querySelector('.name-meaning').textContent.toLowerCase();
+                
+                if (transliteration.includes(searchTerm) || meaning.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // NEW: Load and display Prophet Stories
+        function loadProphetStories() {
+            const container = document.getElementById('storiesGrid');
+            let html = '';
+            
+            prophetStories.forEach(story => {
+                html += `
+                    <div class="story-card">
+                        <div class="story-title">
+                            <i class="fas fa-user"></i> ${story.title}
+                        </div>
+                        <div class="story-content">
+                            ${story.content}
+                        </div>
+                        <div class="story-reference">
+                            <i class="fas fa-book"></i> Reference: ${story.reference}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        function filterStories() {
+            const searchTerm = document.getElementById('storiesSearch').value.toLowerCase();
+            const allStoryCards = document.querySelectorAll('.story-card');
+            
+            allStoryCards.forEach(card => {
+                const title = card.querySelector('.story-title').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // NEW: Ramadan Countdown
+        function setupRamadanCountdown() {
+            // Calculate days until next Ramadan (simplified)
+            const now = new Date();
+            const currentYear = now.getFullYear();
+            
+            // Ramadan typically starts around April 2-3 in 2023 (this is a simplified calculation)
+            // In a real app, you would use proper Islamic calendar calculations
+            let ramadanStart = new Date(currentYear, 3, 2); // April 2
+            
+            // If we've already passed Ramadan this year, calculate for next year
+            if (now > ramadanStart) {
+                ramadanStart = new Date(currentYear + 1, 3, 2);
+            }
+            
+            const timeDiff = ramadanStart.getTime() - now.getTime();
+            const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            
+            document.getElementById('ramadanCountdown').textContent = daysDiff;
+        }
+
+        // NEW: Quiz functionality
+        let currentQuizQuestion = 0;
+        let quizScore = 0;
+        let selectedOption = null;
+
+        function setupQuiz() {
+            displayQuizQuestion();
+        }
+
+        function displayQuizQuestion() {
+            if (currentQuizQuestion >= quizQuestions.length) {
+                showQuizResults();
+                return;
+            }
+
+            const question = quizQuestions[currentQuizQuestion];
+            const questionElement = document.getElementById('questionText');
+            const optionsElement = document.getElementById('quizOptions');
+            
+            questionElement.textContent = question.question;
+            
+            let optionsHTML = '';
+            question.options.forEach((option, index) => {
+                optionsHTML += `
+                    <div class="quiz-option" onclick="selectOption(${index})">
+                        ${option}
+                    </div>
+                `;
+            });
+            
+            optionsElement.innerHTML = optionsHTML;
+            
+            // Update progress
+            document.getElementById('currentQuestion').textContent = currentQuizQuestion + 1;
+            document.getElementById('totalQuestions').textContent = quizQuestions.length;
+            document.getElementById('quizScore').textContent = quizScore;
+            
+            // Update button states
+            document.getElementById('prevQuestionBtn').disabled = currentQuizQuestion === 0;
+        }
+
+        function selectOption(index) {
+            // Remove selected class from all options
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            document.querySelectorAll('.quiz-option')[index].classList.add('selected');
+            
+            selectedOption = index;
+        }
+
+        function nextQuestion() {
+            if (selectedOption === null) {
+                showToast('Please select an answer', 'error');
+                return;
+            }
+            
+            // Check if answer is correct
+            const question = quizQuestions[currentQuizQuestion];
+            if (selectedOption === question.correctAnswer) {
+                quizScore++;
+                document.querySelectorAll('.quiz-option')[selectedOption].classList.add('correct');
+            } else {
+                document.querySelectorAll('.quiz-option')[selectedOption].classList.add('incorrect');
+                document.querySelectorAll('.quiz-option')[question.correctAnswer].classList.add('correct');
+            }
+            
+            // Wait a moment before moving to next question
+            setTimeout(() => {
+                currentQuizQuestion++;
+                selectedOption = null;
+                displayQuizQuestion();
+            }, 1500);
+        }
+
+        function previousQuestion() {
+            if (currentQuizQuestion > 0) {
+                currentQuizQuestion--;
+                selectedOption = null;
+                displayQuizQuestion();
+            }
+        }
+
+        function showQuizResults() {
+            document.getElementById('quizContainer').style.display = 'none';
+            document.getElementById('quizResults').style.display = 'block';
+            
+            const finalScore = document.getElementById('finalScore');
+            finalScore.textContent = `${quizScore}/${quizQuestions.length}`;
+            
+            const resultMessage = document.getElementById('resultMessage');
+            const percentage = (quizScore / quizQuestions.length) * 100;
+            
+            if (percentage >= 80) {
+                resultMessage.textContent = 'Excellent! You have a deep understanding of Islamic knowledge.';
+            } else if (percentage >= 60) {
+                resultMessage.textContent = 'Good job! You have a solid understanding of Islamic knowledge.';
+            } else if (percentage >= 40) {
+                resultMessage.textContent = 'Not bad! Keep learning to improve your Islamic knowledge.';
+            } else {
+                resultMessage.textContent = 'Keep studying! There\'s always more to learn about Islam.';
+            }
+        }
+
+        function restartQuiz() {
+            currentQuizQuestion = 0;
+            quizScore = 0;
+            selectedOption = null;
+            
+            document.getElementById('quizResults').style.display = 'none';
+            document.getElementById('quizContainer').style.display = 'block';
+            
+            displayQuizQuestion();
+        }
+
         // Load and display duas
         function loadDuas() {
             const container = document.getElementById('duasContainer');
@@ -4130,7 +5179,7 @@
         }
 
         function applyArabicFont(font) {
-            document.querySelectorAll('.ayah, .dua-arabic, .hadith-arabic, .surah-name-arabic').forEach(el => {
+            document.querySelectorAll('.ayah, .dua-arabic, .hadith-arabic, .surah-name-arabic, .name-arabic').forEach(el => {
                 el.style.fontFamily = font;
             });
         }
