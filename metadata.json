@@ -1,0 +1,7 @@
+{
+  "name": "Nur Quran - Read & Listen",
+  "description": "A high-performance, elegant Quran application that allows users to read the Holy Quran, listen to beautiful recitations, and explore deeper meanings with AI-powered Tafsir using Gemini.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
